@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./css/bootstrap.css"
+    />
+    <style>
+      .table {
+        width: 80%;
+        margin: auto;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <table class="table table-hover table-striped">
+      <button type="button" class="btn btn-primary but" data-toggle="modal" data-target="#myModal">添加</button>
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="checkAll"></th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>班级</th>
+          <th>电话</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+
+      <!-- 页码显示 -->
+      <div id="divPage"></div>
+
+      <!-- 添加 -->
+      <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">添加信息</h4>
+            </div>
+            <div class="modal-body">
+                <p><input type="text" placeholder="姓名" required="required" id="xm"></p>
+                <p><input type="number" placeholder="年龄" required="required" id="age"></p>
+                <p><input type="number" placeholder="班级" required="required" id="bj"></p>
+                <p><input type="number" placeholder="电话" required="required" id="dh"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" id="tiji">添加</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 修改 -->
+      <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="mot">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+            </div>
+            <div class="modal-body">
+              <p><input type="text" placeholder="姓名" required="required" id="xgxm"></p>
+              <p><input type="number" placeholder="年龄" required="required" id="xgage"></p>
+              <p><input type="number" placeholder="班级" required="required" id="xgbj"></p>
+              <p><input type="number" placeholder="电话" required="required" id="xgdh"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" id="tj">修改</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </table>
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+.big{
+    font-size: 4em;
+    float: left;
+    line-height: 1em;
+}
+.imgright{
+    float: right;
+    border: 1px snow dashed;
+    margin-left: 10px;
+}
+.imgleft{
+    float: left;
+    border: 1px snow dashed;
+    margin-right: 10px;
+}
+.pright{
+    text-align: right;
+    text-decoration: underline;
+}
+body{
+    background-color: black;
+    color: snow;
+}
+.p{
+    text-decoration: underline;
+}
+
+

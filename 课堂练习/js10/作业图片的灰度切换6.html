@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #tz{
+            height: 400px;
+            /*水平居中*/
+            width: 500px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #box1{
+            width: 500px;
+            height: 400px;
+            background-image: url("img-original.jpg");
+            background-size: 500px 400px;
+        }
+        #box2{
+            width: 0px;
+            height: 400px;
+            background-image: url("img-modified.jpg");
+            background-size: 500px 400px;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 1s;
+        }
+        #btn{
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: deeppink;
+            position: absolute;
+            left: -25px;
+            top:175px;
+            /*定位的元素的水平居中的方法
+                margin:0 auto;
+                left:0;
+                right:0;
+            */
+            transition: all 1s;
+            z-index: 10;
+        }
+
+        #lb{
+            position: absolute;
+            left: 20px;
+            bottom: 10px;
+            color: white;
+        }
+        #rb{
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="tz" >
+        <!--原图-->
+        <div id="box1"></div>
+        <!--灰度图-->
+        <div id="box2"></div>
+        <!--小圆点-->
+        <div id="btn"></div>
+        <p id="lb">left</p>
+        <p id="rb">right</p>
+    </div>
+<script>
+    /*通过id获取元素节点*/
+    function $(id){
+       return document.getElementById(id);
+    }
+    var tz=$('tz'), box1 = $('box1'),box2=$('box2'),btn=$('btn'),tz_left;
+
+    //网页加载的时候，元素往中间滑动
+    window.onload = function(){
+        box2.style.width = '250px';
+        btn.style.left = '225px'
+    }
+
+    /*
+    *  var startX 记录鼠标初始位置
+    *  circleLeft 记录小圆点离左边的距离
+    *  garyWidth  记录遮罩的宽度
+    *
+    *   小圆点.addEventListener('鼠标按下'，function（）{
+           获取小圆点的坐标
+           startX = e.clientX;
+            circleLeft =  circleLeft + 25 获取开始是中心点距离左边的距离
+            garyWidth = gray.offsetWidth; 获取灰度的开始宽度
+
+            小圆点.addEventListener('鼠标移动',move;false);
+    *   }，false)
+    *
+    *   window.addEventListener('鼠标松开’,function（）{
+    *       小圆点.removeEventListener('鼠标移动',move;false);
+    *   }，false)
+    *
+    * function move(e){
+    * //获取鼠标的实时位置
+            var endX = e.clientX
+            //鼠标移动后，两次坐标的差，鼠标移动了的位置
+            var  cha = endX - startX;
+            小圆点.style.left = circleLeft + cha + 'px'
+            gary.style.width = garyWidth + cha + 'px'
+    * }
+    *25  60
+    * */
+
+    //给按钮添加一个鼠标按下事件，考虑了兼容性问题
+    if(document.addEventListener){
+        btn.addEventListener('mousedown',down_1,false);
+    }else{
+        btn.attachEvent('mousedown',down_1);
+    }
+
+   function down_1(){
+        box2.style.transition = 'none';
+        btn.style.transition = 'none';
+        this.style.cursor = 'move';
+//添加鼠标的移动事件，添加在小圆点上，如果离开了小圆点，移动事件就获取不到了
+       if(document.addEventListener){
+           tz.addEventListener('mousemove',move_1,false);
+       }else{
+           tz.attachEvent('mousemove',move_1);
+       }
+       //添加鼠标弹起事件
+       if(document.addEventListener){
+           tz.addEventListener('mouseup',up_1,false);
+       }else{
+           tz.attachEvent('mouseup',up_1);
+       }
+        //获取最外层的左边界里页面边界的距离
+//       tz_left = tz.offsetLeft
+       tz_left = document.defaultView.getComputedStyle(tz,null).marginLeft;
+       tz_left = parseInt(tz_left);
+   }
+
+    function move_1(){
+        var e = arguments[0]||window.event;
+        //记录鼠标的实时位置
+        var x = e.clientX;
+        //box2的宽度
+        var box2_width  = x - tz_left;
+        if(box2_width<=0){
+            box2_width=0;
+        }
+        if(box2_width >= 500){
+            box2_width=500;
+        }
+        //按钮定位的左边偏移，遮罩的宽度减去按钮的一半宽度
+        var btn_left = box2_width - 25;
+
+        //开始修改样式
+        box2.style.width = box2_width + 'px';
+        btn.style.left = btn_left + 'px';
+
+        //隐藏显示左右的文字
+        if(box2_width <= 60){
+            $('lb').style.display = 'none';
+        }else{
+            $('lb').style.display = 'block';
+        }
+
+        if(box2_width >= 440){
+            $('rb').style.display = 'none';
+        }else{
+            $('rb').style.display = 'block';
+        }
+    }
+    function up_1(){
+        this.style.cursor = 'default';
+        //移除move事件
+        if(document.removeEventListener){
+            tz.removeEventListener('mousemove',move_1,false);
+        }else{
+            tz.detachEvent('mousemove',move_1);
+        }
+    }
+</script>
+</body>
+</html>

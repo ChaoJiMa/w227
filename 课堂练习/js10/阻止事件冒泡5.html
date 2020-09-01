@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>aaa</li>
+    <li>bbb</li>
+
+</ul>
+<script>
+    var ul=document.getElementsByTagName('ul')[0]
+    var li=document.getElementsByTagName('li')[0]
+
+    li.onclick = function(){
+        var e = window.event || arguments[0];
+        console.log('li的点击');
+        if(e.stopPropagation){
+            //dom
+            e.stopPropagation();
+        }else{
+            //ie
+            e.cancelBubble = true;
+        }
+
+    }
+    ul.onclick=function(){
+        console.log('ul的点击')
+    }
+</script>
+
+</body>
+</html>

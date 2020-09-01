@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="" id="user">
+        <p></p>
+    </form>
+    <script>
+        var input = document.getElementById('user');
+        var p=document.getElementsByTagName('p')[0];
+        input.oninput = function(){
+            if(input.value.match(/[0-9a-zA-Z]{6}/)==null){
+               p.innerHTML='输入6个数字或字母';
+               input.style.borderColor='red';
+            }else{
+                p.innerHTML='';
+                input.style.borderColor='black';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header id="sha">
+        sha
+    </header>
+    <a href="/课堂练习/day2/day01.html#hjc">hjc</a>
+    <!-- action代表数据发送到哪里 -->
+    <form action="./day01.html">
+        <div>
+            <label for="zhanghao">姓名</label>
+            <input type="text" id="zhanghao" name="zhanghao" required placeholder="请输入姓名">
+        </div>
+        <div>
+            <label >性别</label>
+            <input type="radio" name="xingbie" value="1">男
+            <input type="radio" name="xingbie" value="0" checked>女
+        </div>
+        <div>
+            <label>爱好</label>
+            <input id="youxi" type="checkbox" checked value="" name="likes"><label for="youxi">打游戏</label>
+            <input id="shuijiao" type="checkbox" value="" name="likes"><label for="shuijiao">睡觉</label>
+        </div>
+        <div>
+            <input type="date" name="chushengriqi">
+        </div>
+        <div>
+            <label for="mima">手机</label>
+            <input type="text" id="mima" name="mima" minlength="3" maxlength="9" required placeholder="请输入手机号">
+        </div>
+        <div>
+            <label for="emall">电子邮箱</label>
+            <input type="text" id="emall" name="emall" required placeholder="请输入电子邮箱">
+        </div>
+        <div>
+            <label for="shenfen">省份：</label>
+            <select name="sheng" id="shengfen" >
+                <option value="1">四川</option>
+                <option value="2">叭叭叭啦</option>
+                <option value="3">叽里呱啦</option>
+                <option value="4">有有有</option>
+                <option value="5">水水水水</option>
+                <option value="6">永远永远</option>
+            </select>
+        </div>
+        <div>
+            <label for="jinyan">项目经验</label>
+            <textarea name="jinyan" id="jinyan" cols="30" rows="10"></textarea>
+            <input type="button" value="添加">
+        </div>
+        <div>
+            <input type="submit" value="登录">
+            <input type="reset" value="重置" disabled>
+        </div>
+        
+    </form>
+</body>
+</html>

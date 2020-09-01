@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.猜数字游戏，有一个0-100随机数 玩家有5次输入的机会猜，
+
+        // 每次猜一次，都要将结果告诉玩家是小了，还是大了
+
+        // 如果在5次机会内猜中，输出“聪明”，程序结束
+
+        // 如果5次机会用完 程序直接结束。
+           var num = Math.floor(Math.random()*100);//100随机数
+                console.log(num);//控制台查看随机数
+            var a = parseInt(prompt('请输入0-100之间的整数：'));
+            for(i=1;i<=5;i++){ //输入的次数
+                if(i>=5){   //次数大于等于5
+                    alert('你没有机会了');
+                }else if(a!=num){ //如果输入的和随机数不等 那么
+                    if (a>num) { //如果输入的大于随机数 那么
+                        if (a-num<=10) {    //在大于的前提下 相差10以内的数就提示很接近
+                        alert('你输入的数字很接近了');
+                        a = parseInt(prompt('请输入0-100之间的整数：'));
+                        }else{ //相差超过10就提示差距很大
+                            alert('你输入的数字太大了');
+                        a = parseInt(prompt('请输入0-100之间的整数：'));
+                        }
+                    }else if(a<num){
+                        if(num-a<=10){
+                            alert('你输入的数字很接近了');
+                        a = parseInt(prompt('请输入0-100之间的整数：'));
+                        }else{
+                            alert('你输入的数字太小了');
+                        a = parseInt(prompt('请输入0-100之间的整数：'));
+                        }
+                    }
+                }else { //否则 a=num 
+                    alert('真聪明');
+                    break;
+                }
+            }
+            alert('程序结束！');
+         
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+顺序结构
+选择结构
+循环结构
+var day=prompt('今天星期几？')
+var tiaoxiu=prompt('调休')
+
+    if（今天周一到周五day>=1 && day<=5）{
+        alert('shangban')
+    }else{
+        if(tiaoxiu){
+            alert('shangban')
+        }else{
+            alert('xiuxi')
+        }
+        
+    }
+-------------------------------------------------
+var sec=prompt('请输入秒数');
+var h=parseInt(sec/3600);
+alert (h);
+语法 
+    周一周五上班 其他时候休息
+    if（条件）{
+        满足条件要做的事情
+    }else{
+        不满足条件要做的事情
+    }
+    双分支结构
+        如果下雨我就带伞
+    单分支 if（）{}满足条件就做什么
+如果 今天是周一到周五
+        上班
+否则 如果今天周六
+        完
+    否则
+        休息
+    多分支 
+        如果 条件 {
+            事情
+        }
+        否则 如果 条件2{
+            事情
+        }
+        否则 条件3{
+            事情
+        }
+    
+-----------------------------------------------------
+var day=prompt('今天星期几');
+day = Number(day);
+swith(day){
+    case '1';
+        alert('打球')
+        break;
+    case 2;
+        alert('看电影')
+        break;
+    case 3;
+        alert('打游戏')
+        break;
+    case 4;
+        alert('学习')
+        break;
+    case 5;
+        alert('遛狗')
+        break;
+    case 6;
+        alert('补习班')
+        break;
+    case 6;
+        alert('健身')
+        break;
+    default:
+        alert('默认情况');
+        break;
+}
+----------------------------------------------------
+多分支
+    if(){}else if(){}  既可以是固定值也可以是范围
+    swith case 固定值的情况
+分支的嵌套
+    if(day>=1&&day<=5){
+        上班
+        if(day==3){
+            福利休息
+        }
+    }else{
+        alert('上班');
+    }

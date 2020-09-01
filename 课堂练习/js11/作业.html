@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #shadow{
+            display: none;
+            position: fixed;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color:rgba(0,0,0,0.5);
+        }
+        #modal{
+            display: none;
+            width: 400px;
+            height: 200px;
+            position: fixed;
+            background-color: #fff;
+
+            /* 定位的元素垂直水平居中的方法*/
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+    /*图片切换部分*/
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #imgChange >div:first-child{
+            float: left;
+            width: 140px;
+            border: 1px solid;
+        }
+        #imgChange >div:first-child li{
+            height: 140px;
+        }
+        #imgChange img{
+            width: 140px;
+        }
+        #imgChange >div:last-child{
+            float: left;
+            width: calc(4 * 140px);
+            height: calc(4 * 140px);
+            border: 1px solid;
+            background-image:url("img/3.jpg") ;
+            background-repeat: no-repeat;
+            background-size: calc(4 * 140px);
+        }
+    </style>
+</head>
+<body>
+    <p>数据  </p>
+    <a href="javascript:;">删除</a>
+
+    <div id="shadow"></div>
+    <div id="modal">
+        <p>确定要删除么？</p>
+        <button type="button" id="confirm">确定</button>
+        <button type="button" id="cancel">取消</button>
+    </div>
+    <!--图片切换-->
+    <div id="imgChange">
+        <div>
+            <ul>
+                <li><img src="img/3.jpg" alt=""/></li>
+                <li><img src="img/5.jpg" alt=""/></li>
+                <li><img src="img/6.jpg" alt=""/></li>
+                <li><img src="img/7.jpg" alt=""/></li>
+            </ul>
+        </div>
+        <div>
+            <!-- 展示大图，可以是加img，也可以是背景图-->
+        </div>
+    </div>
+
+    <!--计时器作业-->
+    <input type="text" id="count" />
+    <button id="startBtn">开始计数</button>
+    <button id="pauseBtn">暂停计数</button>
+<script>
+    /*导航实现网站 http://www.seahavennoosa.com.au/
+
+     1.实现网站导航+banner
+
+   练习2：使用超链接添加一个删除按钮，点击的时候提示“你确定删除该数据吗”，如果是确定就进行删除，如果是取消，就什么也不做。
+    */
+    var delBtn = document.getElementsByTagName('a')[0];
+    var pNode = document.getElementsByTagName('p')[0];
+
+/*  第一种方法  delBtn.onclick = function(){
+       var result= confirm('确定要删除么？');
+        if(result){
+            document.body.removeChild(pNode);
+            pNode.innerHTML = '';
+        }
+    }*/
+    var shadow = document.getElementById('shadow');
+    var modal = document.getElementById('modal');
+    delBtn.onclick = function(){
+        shadow.style.display = 'block';
+        modal.style.display = 'block';
+    }
+    var confirmBtn = document.getElementById('confirm');
+    var cancelBtn = document.getElementById('cancel');
+    confirmBtn.onclick = function(){
+//        pNode.innerHTML = '';
+        document.body.removeChild(pNode);
+        shadow.style.display = 'none';
+        modal.style.display = 'none';
+    }
+    cancelBtn.onclick = function(){
+        shadow.style.display = 'none';
+        modal.style.display = 'none';
+    }
+    /*
+    练习3.自定义一个右键事件
+    4.用事件委托的方式实现一个点击小图列表，右边展示对应大图的效果
+     */
+
+    /*
+    2.实现计数统计效果，点击开始按钮，数值随着时间的流逝，逐渐增大，并在文本框中显示数值，点击暂停，数值停止不变。
+    */
+
+    /*字符串拼接*/
+    var str1 = 'abc', str2='nsd';
+   var result = '结果是"'+str1+'"hahah'
+   var result1 = "结果是'"+str1+"'hahah"
+
+/*图片切换作业*/
+    var ul = document.querySelector('#imgChange ul');
+    var divImg = document.querySelector('#imgChange div:last-child');
+    ul.onclick = function(){
+        var e = arguments[0] || window.event;
+        if(e.target.nodeName == 'IMG'){
+            divImg.style.backgroundImage = "url('"  +e.target.src+  " ')"
+        }
+    }
+
+    /*计时器作业*/
+    var count = document.getElementById('count');
+    var startBtn = document.getElementById('startBtn');
+    var pauseBtn = document.getElementById('pauseBtn');
+
+    var num = 0;
+    var timer = null;
+    startBtn.onclick = function(){
+      timer =   setInterval(function(){
+            num++;
+            count.value = num;
+        },1000)
+    }
+    pauseBtn.onclick = function(){
+        clearInterval(timer);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        a{
+            color: snow;
+            text-decoration: none;
+        }
+        li{
+            background-color: pink;
+            width: 200px;
+            /* height: 60px; */
+            text-align: center;
+            line-height: 60px;
+        }
+        .down{
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <ui>
+        <li><a href="javascript:;">首页</a></li>
+        <li>
+            <a href="javascript:;">语言1</a>
+            <div class="down">
+                <div>HTML</div>
+                <div>CSS</div>
+                <div>JS</div>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:;">语言2</a>
+            <div class="down">
+                <div>HTML</div>
+                <div>CSS</div>
+                <div>JS</div>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:;">语言3</a>
+            <div class="down">
+                <div>HTML</div>
+                <div>CSS</div>
+                <div>JS</div>
+            </div>
+        </li>
+    </ui>
+    <script>
+        var a=document.getElementsByTagName('a');
+        var downs=document.getElementsByClassName('down');
+        for(var i=0;i<a.length;i++){
+            if(a[i].nextElementSibling){
+                //如果有二级菜单
+                a[i].onclick = function(){
+                    for(var j=0;j<downs.length;j++){
+                        //先把所有二级菜单折叠起来 就是高度为0
+                        downs[j].style.height='0';
+                    }
+                if(this.nextElementSibling.offsetHeight==0){
+                    this.nextElementSibling.style.height='auto';
+                }else{
+                    this.nextElementSibling.style.height='0';
+                }
+            }
+            
+                
+                // 怎么获取元素的高度
+                // this.nextElementSibling.style.height=this.nextElementSibling.children.length*60+'px';
+                //不可取
+                // this.nextElementSibling.style.height=this.nextElementSibling.children.scrollHeoght;
+                console.log('导航',a[i].nextElementSibling);
+                
+            }
+        }
+            
+
+    </script>
+</body>
+</html>

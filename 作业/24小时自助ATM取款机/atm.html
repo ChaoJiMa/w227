@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./atm.css" type="text/css">
+    <title>24小时自助ATM取款机</title>
+</head>
+
+<body>
+    <div class='div'>
+        <div>
+            <h1>24小时自助取款机</h1>
+            <button id="cun">存</button>
+            <button id="qu">取</button>
+            <button id="cha">查</button>
+            <button id="zhuan">转</button>
+        </div>
+    </div>
+
+    <script>
+        /*
+        1、登陆
+        要求用户输入卡号和密码。如果三次之内可以重复输入；三次以上输入错误，则退出系统。
+        */
+        var yue = 9999;
+        var isLoginIn = false;
+
+        function login() {
+            var yonghuming = 'houjiechao',
+                mima = 123456;
+            var isLoginIn = false;
+            for (i = 1; i <= 3; i++) {
+                var yhm = prompt('请输入用户名');
+                var mm = Number(prompt('请输入用户名密码'));
+                if (i < 3) {
+                    if (yhm != yonghuming || mm != mima) {
+                        alert('用户名错误或密码错误！（剩余次数' + (3 - i) + '）');
+                    } else if (yhm == yonghuming && mm == mima) {
+                        isLoginIn = true;
+                        break;
+                    }
+                } else if (i = 3) {
+                    alert('错误三次，退出系统！');
+                    var isLoginIn = false;
+                    break;
+                }
+            }
+            return isLoginIn;
+        }
+
+        //查询余额
+        function getMoney() {
+            alert('你的余额为：' + yue);
+        }
+        //存取款
+        function setMoney(caozuo, isZhuan) {
+            if (caozuo == true) {
+                var cun = Number(prompt('请输入存款钱'));
+                yue = yue + cun; //yue+=cun;
+            } else {
+                var message = '请输入取款钱';
+                if (isZhuan) {
+                    message = '请输入转账';
+                }
+                var qu = Number(prompt(message));
+                if (yue < qu) {
+                    alert('你的余额不足');
+                } else {
+                    yue = yue - qu;
+                }
+            }
+        }
+
+        function Money() {
+            prompt('请输入转账卡号：');
+            setMoney(false, false);
+        }
+
+        var signIn = login();
+
+        document.getElementById('cun').onclick = function () {
+            setMoney(true);
+        }
+        document.getElementById('qu').onclick = function () {
+            setMoney(false);
+        }
+        document.getElementById('cha').onclick = function () {
+            getMoney();
+        }
+        document.getElementById('zhuan').onclick = function () {
+            Money();
+        }
+        /*if(signIn) {
+         //存
+         setMoney(true);
+         //  取
+         setMoney(false);
+         //查询余额
+         getMoney();
+         //转账
+         Money();
+         getMoney();
+        }else{
+            alert('退出系统');
+        }*/
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <from method = "post" enctype = "multipart/form-data">
+        上传图片<input type = "file" name = "uploadfile" onchange = "fun(this.value)">
+    </from>
+
+    <div style="text-align:center; margin-top:100px;width:100%;">
+        <div id="show" style="margin:auto;font-size:40px;width:200px;height:50px; background:#0af50a"></div>
+        <div style="margin-top:20px;">
+            <input id="bt" type="button" onclick="action()" value="开始"/>
+        </div>
+    </div>
+    <script>
+        // 1.写一个函数，参数为有2个： 一个字符，一个字符串。
+        // 返回这个字符出现在这个字符串的第一次出现的位置，
+        // 如果没有该字符，则返回-1
+        // function fun(a,b){
+        //    if(a.indexOf(b)==-1){  //indexOf如果a当中没有b返回-1等于-1 
+        //         return -1;
+        //    }else{
+        //         return a.indexOf(b);    
+        //    }
+        // }
+        // var j=prompt();
+        // var h=prompt();
+        // fun(j,h);
+        // console.log(fun(j,h));
+        // 2.写一个函数，参数有3个: 1.为截取字符串的起始位置，2.截取字符串的结束位置，3.要截取的字符串，
+        // 最后根据函数参数返回对应截取的字符串
+        // function fun(qi,jie,chuan){
+        //     chuan=chuan.substring(qi,jie);         //slice
+        //     return chuan;
+        // }
+        // var a=Number(prompt('请输入开始下标'));
+        // var b=Number(prompt('请输入结束下标'));
+        // var c=prompt('请输入要截取的字符串');
+        // fun(a,b,c);
+        // console.log(fun(a,b,c));
+        // 3.写一个函数，参数有2个： 1.为一个字符，2.一个字符串，
+        // 根据这个字符 将 传入的字符串 分割成多个字符串，
+        // 并用数组返回这些分割的字符串
+        // function fun(zifu,zifuchuan){
+        //     var zifuchuan=zifuchuan.split(zifu)   
+        //     return zifuchuan;
+        // }
+        // var a=prompt();
+        // var b=prompt();
+        // fun(a,b)
+        // console.log(fun(a,b))
+        // 练习1：'-'命名方式转驼峰命名方式
+            // function fun(b){
+            //     var b=b.split('-');
+            //     for(var i=1;i<b.length;i++){                                //下标为1开始
+            //         b[i]=b[i].charAt(0).toUpperCase()+b[i].substring(1);  
+            //     }
+            //     return b.join('');
+            // }
+            // var a='ds-ads-a-d-sa';
+            // fun(a);
+            // console.log(fun(a));
+            // 练习2：替换掉所有的空格。
+            // function fun(a){
+            //     var a=a.replace(/ /g,'');
+            //     return a;
+            // }
+            // var b='das dasd sadas da ';
+            // fun(b);
+            // console.log(fun(b));
+            // 练习3：删除首尾空格。
+            // function fun(a){
+            //     var a=a.trim();
+            //     return a;
+            // }
+            // b=' asdsa dsadsa ';
+            // fun(b);
+            // console.log(fun(b));
+            // 练习4：将以下字符串的每个单词的首字母转化为大写：'i love javascript !'
+            // function fun(a){
+            //     var a=a.toLowerCase().split(/\s+/);
+            //     for(var i=0;i<a.length;i++){                                
+            //         a[i] = a[i].slice(0, 1).toUpperCase() + a[i].slice(1);
+            //     } 
+            //     return a.join(' ');
+            // }
+            // var b='i love javascript !';
+            // fun(b);
+            // console.log(fun(b))
+            // 练习5：消除数组中重复的数字，例如：arr = ['a','c','d','e','e','a','b','a','e','d','c']
+                // function fun(a){
+                //     for(i=0;i<a.length;i++){
+                //         for(j=i+1;j<a.length;j++){
+                //             if(a[i]==a[j]){
+                //                 a.splice(j,1);
+                //                 j--;
+                //             }
+                //         }
+                //     }
+                //     return a;
+                // }
+                // var a=['a','sd','f','g','a','s','d','g','b',1,3,2,6,4,1,2,5,63,4,5,1,2,6]
+                // console.log(fun(a));
+                // 练习6：利用prompt() 获取用户输入的字符，并将其反转。比如说输入 hello ,输出：olleh
+                // function fun(a){
+                //     var ar=a.split('');                   //使用split在a空格的位置进行分割为数组
+                //         var str1=[];                          //定义一个空数组
+                //         var str2=ar.length-1;                 //ar长度-1为ar的下标 赋值给str2 
+                //         for(var i=ar.length-1;i>=0;i--){      //利用for循环从后往前输出数组 当ar长度-1为下标5 i=5;i++
+                //             str1[str2-i]=ar[i];  
+                //         }    
+                //             return str1.join('');
+                // }
+                // console.log(fun('hello'));
+                // 练习7：脏话过滤。
+                // 滚蛋,瓜娃子、傻逼、二货、二逼、王八蛋、龟儿子、仙人板板、不要脸、畜生、杂种、吃屎、狗日的、婊子、卵蛋、脑残…
+                // function fun(zanghua){
+                //     var zanghua=zanghua.replace(/滚蛋|嘟嘟|瓜娃子|傻逼|二货|二逼|王八蛋|龟儿子|仙人板板|不要脸|畜生|杂种|吃屎|狗日的|婊子|卵蛋|脑残/g,'**');
+                //     return zanghua;
+                // }
+                // console.log(fun('滚蛋,瓜娃子、傻逼、二货、二逼、王八蛋、龟儿子、仙人板板、不要脸、畜生、杂种、吃屎、狗日的、婊子、卵蛋、脑残…'));
+                // 练习8：点击上传图片按钮检测上传文件后缀是否支持指定的上传后缀名（'jpg','png','gif','jpeg'）。
+                // function fun(a){
+                //     var arr=['jpg','png','gif','jpeg'];
+                //     var index = a.lastIndexOf(".");     //找到文件名.最后出现的位置下标
+                //     var ext = a.substr(index+1);        //找到.下标 +1开始后面的所有字符
+                //     for(var i=0;i<arr.length;i++){
+                //         if(ext==arr[i]){
+                //             document.write('文件名合法');
+                //             break; 
+                //         }else if(ext!=arr[i]){
+                //             document.write("文件不合法");
+                //             break;
+                //         }
+                //     }  
+                // }
+                // 3.实现一个点名器，随机显示一个名字，点过的不可以再出现  
+                var isRun=true;
+                var a = ['罗涛','肖晚秋','孔思以','唐天保','刘炼','李小勇','朱娇贞','向运儒','黄卓','杨勇','冯瑞','吉峙燊','余潼','谢林江','兰馨','汪玲林','黄雪','叶乾','郑愉心','朱孝鑫','苟开鑫','尤力平','谢凯伦','宋文杰','宋柯','黄琰云','袁帅','彭聖杰','王搏','刘记琳','凌月梅','陈露','余天慧','伏成','向雯','吴明瀚','靳梓宁','康丰强','郭子豪','齐朝鑫','刘茂','王泽龙','舒述军','夏波','张耀文'];  
+                var a2 = new Array();
+                function action(str){
+                    var s = document.getElementById("bt").value;
+                    if(s=="开始"){
+                        isRun=true;
+                        run();
+                        document.getElementById("bt").value="结束";
+                    }else{
+                        isRun=false;
+                        document.getElementById("bt").value="开始";
+                    }
+                }
+                function run(){
+                    var i = Math.floor(Math.random() * a.length+ 1)-1;
+                    document.getElementById("show").innerHTML=a[i];
+                    if(isRun==false){
+                        var b =true;
+                        for(var j in a2){
+                            if(a2[j]==i){
+                                b=false;
+                            }
+                        }
+                        if(b){
+                            a2[a2.length]=i;
+                            return;
+                        }
+                    }
+                    setTimeout("run()",10);
+                }
+    </script>
+</body>
+</html>

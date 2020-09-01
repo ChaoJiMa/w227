@@ -1,0 +1,141 @@
+1.html 文档结构
+ 声明
+ html
+     head
+        meta
+        title
+     body
+        内容
+
+2.标签的特点
+   双标签
+   单标签
+   标签名小写
+   section div span
+   属性 id class name  id='account' class=''
+    共有属性 id class name title
+    私有属性 href  src
+   属性之间要有空格
+3.行内元素，块级元素
+4.table
+    caption
+    thead》tr>th
+    tbody>tr>td
+    tfoot>tr>td|th
+
+6.form action method
+    label for
+        input type value() name id(和label里面的for对应)
+    input type='submit'
+    button type='submit|button|reset'（默认值）
+
+    一个form表单一定只有一个提交按钮，而且提交按钮必须在form标签内
+    fieldset》legend  区域划分
+
+7. a href target（_blank,_self, iframeName）
+    iframe src name frameboder='0' scrolling width height
+
+========================================CSS=================================
+1.什么是css   cascading style sheet 层叠样式表
+2.css的引入方式
+  **  a.link 外联样式 写在head标签最后
+        <link rel="stylesheet" href="css1.css"/>
+  **  b.style标签内，head内部，内嵌样式
+         <style>
+                  p{
+                      background: yellow;
+       
+       
+                  }
+         </style>
+
+    不推荐 c.style属性写在标签内，这种方式不推荐，优先级高
+   不推荐 d.import  写在style标签内，css的特点，这种方式不推荐
+        @import "css1.css";
+
+3.语法规则
+    选择器{
+        属性:值;
+    }
+    属性：设置哪个样式，值：样式的值是什么
+
+    注释信息， /*  注释的内容  */
+        ctrl+/ 行注释
+        ctrl+shift+/ 块儿注释
+
+4. 简单选择器
+       元素选择器，
+            标签的名字{
+                属性：值；
+            }
+       id，
+            #idValue{ }
+       class 类选择器
+            .classValue{}
+        先不管   * 通配符选择器,一般用于处理统一的样式
+                    *{}
+
+5.  复合选择器
+   ** 并集选择器
+        逗号隔开的选择器都会应用花括号里的样式
+    交集选择器
+        选择器之间什么都不写，取多个选择器的交集（共同部分）
+   ** 后代选择器
+        空格隔开，可以隔代选择
+        >  子代选择器，只选子代
+
+6.样式的优先级
+    引入的方式
+        style属性》style标签》link》@import
+
+    选择器 越能确定是哪个元素，优先级就越高
+        id 》 class 》 元素选择器 》 通配符
+        同等级别的选择器，后面的覆盖前面的（同样的样式）
+
+7.常用属性
+     a. color 文字颜色
+       * 1.可以是英文单词，
+        2.可以是十六进制 #000000（黑） - #ffffff(白)
+        3.rgb(0-255,0-255,0-255);
+        4.rgba(0-255,0-255,0-255,0-1) 支持透明度（透明度写法可以是小数）
+     b. background-color背景色，类似上面的color
+     c. width 宽度,行内元素设置宽度无效
+        *1.屏幕像素 px
+        2.字    em
+        3.根字  rem  相对根节点字体大小
+        4.百分比 一般会配合一个最小宽度，min-width
+     d. height，一般不用百分比，
+         *1.屏幕像素 px
+     e.border 边框 复合属性
+         border: 1px（粗细） dashed（边框线的类型） red（边框的颜色）;
+     f.外边距
+        margin:0px;
+        margin-left 左边距
+        margin-right 右边距
+        margin-top 上边距
+        margin-bottom 下边距
+
+     g.padding 内边距   也分上下左右四个方向（padding-top）
+
+        text-decoration: none; 去除a标签的下划线 underline 加下划线
+        text-align: left|right|center;  文本图片的水平对齐方式，注意宽度要够
+
+     h.font-size
+     设置文字的大小
+        *1.屏幕像素 px
+             2.字    em
+
+8.文本居中
+    水平居中，文本图片 text-algin：center；
+    垂直居中
+        单行文本
+        ****    line-height: 80px;和容器的高度一致
+        多行文本
+            display: table-cell;
+            vertical-align: middle;
+9.图文排列
+    单行文本和图片的对齐
+        默认图片和文字是底部对齐
+        改变图片的基线，vertical-align: top|middle|bottom;
+     多行文本
+        图片设置float 浮动，图文顶部对齐，实现文字围绕图片排布

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // 1.猜数字游戏，有一个0-100随机数 玩家有5次输入的机会猜，
+
+        // 每次猜一次，都要将结果告诉玩家是小了，还是大了
+
+        // 如果在5次机会内猜中，输出“聪明”，程序结束
+
+        // 如果5次机会用完 程序直接结束。
+        //    var num = Math.floor(Math.random()*100+1);//100随机数
+        //         console.log(num);//控制台查看随机数
+        //     var a = parseInt(prompt('请输入0-100之间的整数：'));
+        //     for(i=1;i<=5;i++){ //输入的次数
+        //         if(i>=5){   //次数大于等于5
+        //             alert('你没有机会了');
+        //         }else if(a!=num){ //如果输入的和随机数不等 那么
+        //             if (a>num) { //如果输入的大于随机数 那么
+        //                 if (a-num<=10) {    //在大于的前提下 相差10以内的数就提示很接近
+        //                 alert('你输入的数字很接近了');
+        //                 a = parseInt(prompt('请输入0-100之间的整数：'));
+        //                 }else{ //相差超过10就提示差距很大
+        //                     alert('你输入的数字太大了');
+        //                 a = parseInt(prompt('请输入0-100之间的整数：'));
+        //                 }
+        //             }else if(a<num){
+        //                 if(num-a<=10){
+        //                     alert('你输入的数字很接近了');
+        //                 a = parseInt(prompt('请输入0-100之间的整数：'));
+        //                 }else{
+        //                     alert('你输入的数字太小了');
+        //                 a = parseInt(prompt('请输入0-100之间的整数：'));
+        //                 }
+        //             }
+        //         }else { //否则 a=num 
+        //             alert('真聪明');
+        //             break;
+        //         }
+        //     }
+        //     alert('程序结束！');
+            
+            // 2.有一个4个长度的数组，每个位置装有0-9之间的随机数字，有10次输入的机会来猜每个位置的上的数是什么，
+
+            // 每次猜完4个数字以后都要给出提示，正确几个 错误几个，
+
+            // 只有位置和数字完全正确才算正确，其他情况全视为错误。
+                // var A=Math.floor(Math.random()*10);
+                // var B=Math.floor(Math.random()*10);
+                // var C=Math.floor(Math.random()*10);
+                // var D=Math.floor(Math.random()*10);
+                //     arr=[A,B,C,D];                          //转换为数组
+                //     console.log(arr);                       //控制台查看随机数字
+                // var a=parseInt(prompt('输入整数0-9'));
+                // var b=parseInt(prompt('输入整数0-9'));
+                // var c=parseInt(prompt('输入整数0-9'));
+                // var d=parseInt(prompt('输入整数0-9'));
+                //     h=0;                                    //计数
+                //     for(i=1;i<=10;i++){                     //10次输入次数循环
+                //        if(i<=10){                           //如果小于10
+                //                 for(j=0;j<arr.length;j++){  //当j<数组长度的循环 
+                //                     var arr2=[a,b,c,d];     //将输入的数字转换为数组并赋值给arr2
+                //                     if(arr[j]==arr2[j]){    //如果arr数组的j和arr2数组的j相等
+                //                     h++;                    //随循环计数
+                //                     }
+                //                 }
+                //                 if(h==4){                   //如果计数h等于4 就是4个数全部相等
+                //                     alert('全对');
+                //                     break;                  //跳出
+                //                 }
+                //                     alert('你猜对了'+h+'个'+'猜错了'+(arr.length-h)+'个')
+                //                     a=parseInt(prompt('输入第'+(i+1)+'次整数0-9'));
+                //                     b=parseInt(prompt('输入'+(i+1)+'次整数0-9'));
+                //                     c=parseInt(prompt('输入'+(i+1)+'次整数0-9'));
+                //                     d=parseInt(prompt('输入'+(i+1)+'次整数0-9'));
+                //                     h=0;                    // 清理继续计算次数
+                //                 }else{                      //次数大于10
+                //                 alert('你没有机会了');
+                //        }
+                //     }
+                //     alert('程序结束');
+
+
+                //     let trueList = [Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)];
+                //     console.log(trueList);
+                //     for(let i = 0; i < 10; i++) {
+                //     let right = 0;
+                //     for(let j = 0; j < 4; j++) {
+                //         let x = prompt('第' + (i + i) +'次，请输入数字 ' + (j + 1));
+                //         if(x == trueList[j]) {
+                //         right++;
+                //         }
+                //     }
+                //     if(right === 4) {
+                //         alert('完全正确');
+                //         break;
+                //     } else {
+                //         alert('正确:' + right + '错误:' + (4 - right));
+                //     }
+                //     }
+
+
+                    // 1   //输出数组a
+
+
+
+                    // 1.写一个函数，参数为一个字符，一个字符串，返回这个字符出现在这个字符串的第几个位置，如果没有该字符，则返回-1
+                    // document.write('在什么位置的值是什么'+str3.indexOf(3));//在字符串中查找3，-1代表没找到，出来值为长度位置，返回第一个找到值的下标
+                    // function arr(a,b){                      //函数arr中 两个形参a,b
+                    //     if(a.indexOf(b)==-1){               //如果用indexOf检索 a当中没有b 当检索为空时为-1 当他等于-1时 
+                    //         return -1;                      //返回-1
+                    //     }else{                              //如果用indexOf检索 a当中有b  
+                    //         return a.indexOf(b);            //返回b在a当中的位置
+                    //     }
+                    // }
+                    // var i=prompt('请输入一个字符串');         //定义实参  
+                    // var j=Number(prompt('请输入一个字符')) ;  //定义实参  
+                    // arr(i,j);                                //调用函数
+                    // console.log(arr(i,j));                   //控制台输出函数
+
+
+                    // 2.写一个函数，参数为截取字符串的起始位置，截取字符串的结束位置，要截取的字符串，最后根据函数参数返回对应截取的字符串
+                    // document.write('字符串截取'+str3.slice(-1,2));//包含开始下标 不包含结束下标 可以是负值 
+                    // document.write('字符串截取substring'+str3.substring(0,2));//不可以负数
+                    // document.write('字符串截取substr'+str3.substr(0,2));//参数 第一个位置 第二个长度 从m开始到n的长度
+                        // function arr(a,b,c){                            //a为开始位置，b结束位置，c为截取的字符串
+                        //     c=c.slice(a-1,b);                           //使用slice截取字符串c赋值给c 下标从0开始所以开始截取位置-1
+                        //     return c;                                   //输出截取之后的字符串
+                        // }
+                        // console.log(arr(4,8,'asdfghjkl'));
+
+                    // 3.写一个函数，参数为一个字符，一个字符串，根据这个字符 将 传入的字符串 分割成多个字符串，并用数组返回这些分割的字符串
+                            // function arr(a,b){      
+                            //     b=b.split(a);                              //使用split 在b中的a的位置进行分割为数组
+                            //     return b;
+                            // }
+                            // console.log(arr('j','asdfghjkl'));
+                    // 4.写一个函数，参数为一个字符串，返回这个字符串的反向字符串。
+                                function arr(a){                                
+                                    if(a.length>0){                           //判断传入的参数是否为空；
+                                        var ar=a.split('');                   //使用split在a空格的位置进行分割为数组
+                                        var str1=[];                          //定义一个空数组
+                                        var str2=ar.length-1;                 //ar长度-1为ar的下标 赋值给str2 
+                                        for(var i=ar.length-1;i>=0;i--){      //利用for循环从后往前输出数组 当ar长度-1为下标5 i=5;i++
+                                            str1[str2-i]=ar[i];               //str1下标为5-5为0=ar为a的下标5 赋值
+                                            
+                                        }
+                                        return str1;
+                                    }
+                                }
+                                console.log(arr('aasdsa'));
+
+</script>
+</body>
+</html>

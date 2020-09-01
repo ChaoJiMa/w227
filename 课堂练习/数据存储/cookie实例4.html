@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+<script src="cookie.js"> </script>
+<script>
+    var oDiv = document.getElementById('div1');
+
+    oDiv.onmousedown = function(e){
+        var x = e.clientX - oDiv.offsetLeft;
+        var y = e.clientY - oDiv.offsetTop;
+        document.onmousemove = function(e){
+            var l = e.clientX - x;
+            var t = e.clientY - y;
+            //{left:l,top:t}
+            setCookie('position','{left:'+l+',top:'+t+'}');
+            oDiv.style.left = l+'px';
+            oDiv.style.top = t+'px';
+        }
+    }
+    document.onmouseup = function(){
+        document.onmousemove = null;
+    }
+    window.onload = function(){
+        var str1 = getCookie('position');
+        var json = eval("("+str1+")");
+        console.log(json);
+        oDiv.style.left = json.left+'px';
+        oDiv.style.top = json.top+'px';
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        /* div{
+            background-image: url(./seahaven-hero-shot-1.jpg);
+            height:900px;
+            background-position: 50% 100%;
+            margin: 5px; 
+        } */
+        li{
+            display: inline-block;
+            line-height: 75px;
+            
+        }
+        .img{
+            width: 280px;
+            height: 39px;
+            float: left;
+            margin: 18px;
+            transition: all 1s;
+        }
+        #div{
+            height: 115px;
+            background-color: rgb(150,199,218);
+            /* border: 1px solid; */
+            text-align: center;
+            transition: all 1s;
+        }
+        #div a{
+            color: snow;
+            font-size: 30px;
+        }
+        #div2{
+            height: 75px;
+            background-color: snow;
+            /* border: 1px solid black; */
+            text-align: right;
+            position: relative;
+            overflow: hidden;
+        }
+        #nav{
+            position: relative;
+            transition: all 1s;
+        }
+        #nav li>a{
+            color: rgb(111, 111, 111);
+            font-size: 20px;
+            /* position: relative; */
+        }
+        #div #nav li a:hover{
+            color: rgb(150,199,218);
+        }
+        #nav li{
+           padding-right: 20px; 
+           position: relative;
+           right: -150px;
+        }
+        button{
+            background-color: rgb(150,199,218);
+            padding: 20px;
+            color: snow;
+            border: none;
+            border-radius: 3px;
+        }
+        button:hover{
+            background-color: rgb(120,159,174);
+            
+        }
+        #li{
+            text-align: center;
+            line-height: 65px;
+            vertical-align: middle;
+           
+        }
+        #div3 img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <a href="">We’re Open | Important information regarding COVID-19</a>
+        <div id="div2">
+            <img src="./seahaven-horizontal-v3.png" alt="" class="img">
+            <nav id="nav">
+                <li><a href="">HOME</a></li>
+                <li><a href="">OUR ROOMS</a></li>
+                <li><a href="">THE RESORT</a></li>
+                <li><a href="">WHAT'S ON</a></li>
+                <li><a href="">SPECIALS</a></li>
+                <li><a href="">GALLERY</a></li>
+                <li><a href="">GONTACT</a></li>
+                <li><button>BOOK NOW</button></li>
+                <li id="li">
+                    <img src="./S.png" alt="">
+                    <a href="">18244463261</a>
+                </li>
+            </nav>
+        </div>
+    </div> 
+    <div id="div3">
+        <img src="./seahaven-hero-shot-1.jpg" alt="">
+    </div>
+    <script>
+        var nav=document.getElementById('nav');
+        var li=document.getElementById('li');
+        var div=document.getElementById('div');
+        // var img=document.getElementsByClassName('img');
+        li.onmouseover = function(){
+            nav.style.right='150px';            
+        }
+        li.onmouseout = function(){
+            nav.style.right=0;
+        }
+        window.onscroll = function(){
+            var scroll=document.body.scrollTop||document.documentElement.scrollTop;
+                console.log(scroll);
+
+                if(scroll>200){
+                    div.style.position='fixed';
+                    div.style.top=0;
+                    div.style.width='100%';
+                    // img.style.width='336px';
+                    // img.style.width='47px';
+                }else{
+                    div.style.position='static';
+                    // img.style.width='280px';
+                    // img.style.width='39px';
+                }
+        }
+    </script>
+</body>
+</html>

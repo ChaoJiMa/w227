@@ -1,0 +1,59 @@
+<!-- 练习3.自定义一个右键事件 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body{
+            background-color: powderblue;
+        }
+        ul{
+            position: absolute;
+            overflow: hidden;
+            width: 0;
+            height: 200px;
+            background-color: rgb(45, 210, 231);
+        }
+        li{
+            padding: 2px 50px 2px 10px; 
+        }
+        li:hover{
+            background-color: rgb(140, 228, 240);
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li >查看</li>
+        <li >排序方式</li>
+        <li >刷新</li>
+        <li >新建</li>
+        <li >查看</li>
+        <li >排序方式</li>
+        <li >刷新</li>
+        <li >新建</li>
+        <li >刷新</li>
+    </ul>
+    <script>
+        var ul=document.getElementsByTagName('ul')[0];
+            window.oncontextmenu=function(e){
+                e.preventDefault();
+                ul.style.left=e.clientX+'px';//根据事件对象中鼠标点击的位置，进行定位
+                ul.style.top=e.clientY+'px';
+                ul.style.width='180px';//改变自定义菜单的宽高，让它显示出来
+                ul.style.height='200px';
+            }
+            window.onclick=function(e){             //关闭右键菜单
+　　　　            ul.style.height=0;//触发click事件就关闭 
+            }
+    </script>
+</body>
+</html>

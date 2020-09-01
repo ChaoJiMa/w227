@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*    普通函数
+        var arr=[];
+        function addValue(){
+            for(var i=1;i<=5;i++){
+                arr[arr.length]=i;
+            }
+        }
+        addValue();
+        addValue();
+        // console.log(arr);
+
+        var a=[];
+        function ar(){
+            for(i=1;i<=10;i++){
+                a[a.length]=i
+            }
+        }
+        ar();
+        console.log(a,arr);
+        */
+    /*   函数的参数 形参和实参
+        var arr=[];
+        var arr1=[1,2,3];
+        // function add(a){
+        //         arr[arr.length]=a
+        //         // arr1[arr1.length]=a
+        //     }
+        //     add('a');
+        //     add(1);
+        //     add([123,5]);
+        //     console.log(arr,arr1);
+        function add1(arrd,val){   //arrd替换为
+            arrd[arrd.length]=val;
+        }
+        add1(arr1,'333');   //arr1替换arrd后面加val 333
+        add1(arr,'444');
+        console.log(arr1)
+        console.log(arr)
+    
+        function juxing(hang,lie,sha){
+            for(var i=1;i<=hang;i++){
+                for(var j=1;j<=lie;j++){
+                    document.write('*')
+                    for(var h=1;h<=sha;h++){
+                    document.write('-')
+                    }
+                }
+                document.write('<br>');
+            }
+        }
+        juxing(2,5,5);
+
+        var arr1=[];
+        function add(arr,val){
+            arr1[arr.length]=val
+        }
+        add([1,2,3],3)
+       console.log(arr1)
+*/
+
+    //    var arr=[];
+    //    function add(a,val){
+    //        console.log(arguments);
+    //        a[a.length]=val
+    //    }
+    //    add(arr,1,2,3,45,);
+    //    console.log(arr);
+
+    //    给数组添加 值
+    //    添加的值个数不确定
+
+    //    第一个参数是数组，后面的参数都是要添加的值
+/*
+       function add(){  //第一个参数是数组，后面的都是值
+            var arr=arguments[0]   
+           console.log(arguments); //arguments类似一个数组 存放所有参数
+           
+           for(var i=1;i<arguments.length;i++){
+                arr[arr.length]=arguments[i]
+           }
+           console.log(arr)
+           
+       }
+       var arr1=[5,5,5,5,]
+       add(arr1,1,28,5,6,'p');
+*/    
+// 圆柱体 面积 体积
+function mianji(r,g){
+    var yuan=3.14*r*r*2+2*3.14*r*g;
+    var tiji=r*r*3.14*g;
+    return '面积'+yuan+'体积'+tiji;
+}
+    var a=prompt('请输入半径');
+    var b=prompt('请输入高度');
+console.log(mianji(a,b));
+
+//     function shuixianhua(a,b,c){
+        
+//     }
+
+
+
+        // 给数组添加值之后 要知道数组的长度是多少
+        // function add(arr,val){
+        //     arr[arr.length]=val;
+        //     return arr.length;
+        // }
+        // var len=add([1,2,5,9,9],3);
+        // document.write('长度',len);
+
+        //预解析
+        // console.log(fun1)
+        // console.log(fun1())  //相当于undefined fun1声明提升 但是赋值没提升
+        // var fun1=function() {
+        //     console.log('111');
+        //     return 1;
+        // }
+        // fun1();
+        // console.log(fun1());
+        // console.log(fun1);
+        
+    
+    
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <ul>
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+    </ul>
+    <button id="btn">add</button>
+<script>
+    /*
+    * 事件委派的好处
+    *  1.新添的元素不需要再添加事件
+    *  2.代码量少，只给祖先元素添加一次事件就可以了，不需要每个子孙都添加事件
+    * */
+    var ul = document.getElementsByTagName('ul')[0];
+    var lis = document.getElementsByTagName('li');
+    var btn = document.getElementById('btn');
+    btn.onclick = function(){
+        var newNode = document.createElement('li');
+        newNode.innerHTML = '新添的';
+        ul.appendChild(newNode);
+    }
+ /*  for(var i =0;i<lis.length;i++){
+        lis[i].onclick = function(){
+            for(var j =0;j<lis.length;j++){
+                lis[j].style.background='';
+            }
+            this.style.background='red';
+        }
+    }*/
+    ul.onclick = function(){
+        console.log('ul');
+       var e = arguments[0] || window.event;
+       var target =  e.target || e.srcElement;
+//屏蔽掉ul本身的点击事件
+       if(target.nodeName == 'LI'){
+           for(var j =0;j<lis.length;j++){
+               lis[j].style.background='';
+               lis[j].style.marginLeft='0'
+
+           }
+           target.style.background='red'
+           target.style.marginLeft='200px'
+       }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            position: relative;
+            height: 200px;
+            width: 200px;
+            border: 1px solid;
+            float: left;
+            margin: 10px;
+        }
+        li button{
+            position: absolute;
+            top:0;
+            right: 0;
+        }
+        ul{
+            overflow: hidden;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+
+</head>
+<body>
+<input type="file" id="imgFile"/>
+<button id="upload">上传</button>
+<ul id="imgs">
+  <!--  <li>
+        <img src="" alt="style"/>
+    </li>
+    <li>
+        <img src="" alt="style"/>
+    </li>-->
+</ul>
+<script>
+    var imgFile = document.getElementById('imgFile');
+    var upload = document.getElementById('upload');
+    var imgNode = document.getElementById('imgs');
+    var imgArr = [];
+    var imgType = ['jpg','jpeg','png'];
+    upload.onclick = function(){
+        var str = imgFile.value;
+        var ext = str.split('.');
+            ext = ext[ext.length-1];
+       if(imgType.indexOf(ext.toLowerCase()) > -1) {
+           //上传
+           var fileReader = new FileReader();
+//           console.log(imgFile.files[0])
+           fileReader.readAsDataURL(imgFile.files[0]);
+           fileReader.onloadend = function(e){
+           //    console.log(e.target.result);  图片
+               imgArr.unshift(e.target.result);
+               var liNode =  document.createElement('li');
+               liNode.innerHTML =  '<img src="'+e.target.result+'" /> <button>X</button>';
+               imgNode.appendChild(liNode);
+           }
+       }else{
+           alert('图片格式不正确')
+       }
+    }
+</script>
+</body>
+</html>

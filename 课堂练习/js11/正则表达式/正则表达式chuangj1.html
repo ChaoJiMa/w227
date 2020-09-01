@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*创建规则*/
+    var reg = /[a-z]{8}/g;
+    var reg2 = new RegExp('[a-z]');
+    /*string matchp匹配*/
+/*调用规则*/
+    var str = 'abc123daba';
+    var result = str.match(reg);
+    /*match
+    如果有匹配结果，返回一个数组，满足的条件的每个值
+    如果没有匹配到结果，返回null
+    */
+    //console.log(result);
+    var result1 = reg2.test('avd');
+    /*规则匹配方式，返回true 或 false*/
+//    console.log(result1);
+
+    var str2 = 'abc123#qqq./';
+    console.log(str2.match(/[0-9]/g))
+    console.log(str2.match(/[0-9][0-9][0-9]/g))
+    console.log(str2.match(/[0-9]{3}/g))
+    console.log(str2.match(/[0-9]+/g))
+    console.log(str2.match(/\d+/g))
+    console.log(str2.match(/\D+/g)) //非数字匹配
+    console.log(str2.match(/[A-Z]+/ig)) //忽略大小写，全局匹配
+    console.log(str2.match(/[\.,\/]/ig)) //匹配. 或者 /
+
+</script>
+</body>
+</html>

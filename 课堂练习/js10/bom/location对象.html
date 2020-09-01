@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button>重新加载页面</button>
+<script>
+    var user = window.location.search;
+    user = user.split('=')[1];
+    document.write('欢迎'+user)
+   document.getElementsByTagName('button')[0].onclick=function(){
+       location.href='http://www.baidu.com'
+//       location.reload();
+   }
+</script>
+</body>
+</html>

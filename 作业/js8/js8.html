@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* margin-left:20px; */
+            position:relative;
+            left: 0;
+            transition: all 0.5s;
+        }
+        button{
+            background-color: pink;
+            margin: 10px 0px;
+            padding: 10px;
+            border: 0;
+            border-radius:5px;
+            
+        }
+
+        
+    </style>
+</head>
+<body>
+    <p>1.把一个文本输入框设置为只读模式；</p>
+    <input type="text" value="只给你看" readonly>
+    <input type="text" value="只给你看" disabled>
+    <p>2.点击按钮，让div每次向右移动20px，当超过200px时停留在200px</p>
+    <div></div>
+    <button>点击向右移动</button>
+    <script>
+    // 2.点击按钮，让div每次向右移动20px，当超过200px时停留在200px
+        var divRight=document.getElementsByTagName('div')[0];
+        var btn=document.getElementsByTagName('button')[0];
+        console.log(divRight,btn);
+        i=0;
+        btn.onclick=function(){
+            if(i<=200){
+                divRight.style.left=(i+=20)+'px';
+            }else{
+                return;
+            }
+                    
+        }
+    </script>
+</body>
+</html>

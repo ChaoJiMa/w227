@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #menu{
+            display: none;
+            position: fixed;
+            width: 120px;
+            border: 1px solid #999999;
+            background-color: pink;
+            box-shadow: 1px 2px 3px #ddd;
+        }
+        #menu li{
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        #menu li:hover{
+            background-color: #969896;
+        }
+
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li data-index="1">js</li>
+        <li data-index="2" >html</li>
+        <li data-index="3">css</li>
+        <li data-index="4">sql</li>
+        <li data-index="5">chartjs</li>
+    </ul>
+<script>
+    var menu = document.getElementById('menu');
+    window.oncontextmenu = function(){
+        var e = window.event || arguments[0];
+        if(e.preventDefault) {
+            e.preventDefault();
+        }else{
+            e.returnValue = false;
+        }
+        console.log(e.clientX);
+        menu.style.display = 'block';
+        menu.style.left = e.clientX + 'px';
+        menu.style.top =  e.clientY+ 'px';
+    }
+    menu.onclick = function(){
+        var e =  window.event || arguments[0];
+        var target = e.target || e.srcElement;
+        if(target.nodeName == 'LI'){
+            menu.style.display = 'none';
+            console.log(target.innerHTML);
+            console.log(target.dataset.index);
+        }
+    }
+</script>
+</body>
+</html>

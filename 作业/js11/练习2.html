@@ -1,0 +1,27 @@
+<!-- 练习2：使用超链接添加一个删除按钮，点击的时候提示“你确定删除该数据吗”，如果是确定就进行删除，如果是取消，就什么也不做 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <a href="">超链接</a>
+    </div>
+    <input type="button" onclick="con()" value="删除" >
+    <script>
+        function con(){
+            var a=document.getElementsByTagName('a')[0];
+            var r=confirm("请确认删除");
+            if(r==true){
+                a.innerHTML='';
+            }else{
+                alert('已取消');
+
+            }
+        }
+    </script>
+</body>
+</html>

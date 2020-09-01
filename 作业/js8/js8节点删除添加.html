@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        p{
+            text-align: center;
+            padding: 20px;
+            font-size: 20px;
+        }
+        body{
+            background-color: pink;
+        }
+        #div{
+            width: 600px;
+            height: 200px;
+            background-color: snow;
+            margin: 0 auto;
+            /* border-radius: 10px; */
+        }
+        #div1{
+            width: 100%;  
+        }
+        ul{
+            width: 400px;
+            margin: 0 auto;
+            height: 300px;
+        }
+        li{
+            list-style: none;
+            height: 40px;
+            
+            line-height: 40px;
+        }
+        .but1{
+            margin: 5px 0 10px 0;
+            padding: 5px 30px;
+            border-radius: 5px;
+            border: 0;
+        }
+        .but{
+            padding: 5px 30px;
+            float: right;
+            margin-top: 5px;
+            margin-right:100px;
+            border-radius: 5px;
+            border: 0;
+        };
+    </style>
+</head>
+<body>
+    <p>单击下面的“添加”按钮，添加标签</p>
+    <div id='div'> </div>
+    <div id="div1">
+        <ul>
+            <button class="but1">全部清除</button>
+            <li><span>John Doe</span><button class="but">添加</button></li>
+            <li><span>Jane Doe</span><button class="but">添加</button></li>
+            <li><span>Dan Doe</span><button class="but">添加</button></li>
+            <li><span>Danielle Doe</span><button class="but">添加</button></li>
+            <li><span>Mike Doe</span><button class="but">添加</button></li>
+            <li><span>Leah Doe</span><button class="but">添加</button></li>
+        </ul> 
+    </div>
+    <script>
+        var but=document.getElementsByTagName('button');//找到所有按钮
+        console.log(but);//控制台输出按钮数组
+        var diV=document.getElementById('div');//找到空白div
+        console.log(diV);
+        but[1].onclick=function(){
+            var xSpan=document.createElement('span');//新加<span></span>
+            var xText=document.createTextNode('John Doe x');
+            console.log(xSpan);
+            xSpan.appendChild(xText);
+            xSpan.style.backgroundColor='pink';
+            xSpan.style.margin='5px';
+            xSpan.style.borderRadius='5px';
+            diV.appendChild(xSpan);
+        }
+        but[2].onclick=function(){
+            var xSpan=document.createElement('span');//新加<span></span>
+            var xText=document.createTextNode('Jane Doe x');
+            console.log(xSpan);
+            xSpan.appendChild(xText);
+            xSpan.style.backgroundColor='pink';
+            xSpan.style.margin='5px';
+            xSpan.style.borderRadius='5px';
+            diV.appendChild(xSpan);
+        }
+        but[3].onclick=function(){
+            var xSpan=document.createElement('span');//新加<span></span>
+            var xText=document.createTextNode('Dan Doe x');
+            console.log(xSpan);
+            xSpan.appendChild(xText);
+            xSpan.style.backgroundColor='pink';
+            xSpan.style.margin='5px';
+            xSpan.style.borderRadius='5px';
+            diV.appendChild(xSpan);
+        }
+        but[4].onclick=function(){
+            var xSpan=document.createElement('span');//新加<span></span>
+            var xText=document.createTextNode('Danielle Doe x');
+            console.log(xSpan);
+            xSpan.appendChild(xText);
+            xSpan.style.backgroundColor='pink';
+            xSpan.style.margin='5px';
+            xSpan.style.borderRadius='5px';
+            diV.appendChild(xSpan);
+        }
+        but[5].onclick=function(){
+            var xSpan=document.createElement('span');//新加<span></span>
+            var xText=document.createTextNode('Mike Doe x');
+            console.log(xSpan);
+            xSpan.appendChild(xText);
+            xSpan.style.backgroundColor='pink';
+            xSpan.style.margin='5px';
+            xSpan.style.borderRadius='5px';
+            diV.appendChild(xSpan);
+        }
+        but[6].onclick=function(){
+            var xSpan=document.createElement('span');//新加<span></span>
+            var xText=document.createTextNode('Leah Doe x');
+            console.log(xSpan);
+            xSpan.appendChild(xText);
+            xSpan.style.backgroundColor='pink';
+            xSpan.style.margin='5px';
+            xSpan.style.borderRadius='5px';
+            diV.appendChild(xSpan);
+        }
+        but[0].onclick=function(){
+            // a=diV.childNodes;
+            // for(var i=a.length-1;i>=0;i--){
+            //     diV.removeChild(a[i]); 
+            // }
+            
+        }
+
+    </script>
+</body>
+</html>

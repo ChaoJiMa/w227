@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .view{
+            width: 1500px;
+            height: 844px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid pink;
+        }
+        .imgs{
+            width: 10500px;
+            height: 700px;
+            position: absolute;
+            top: 0;
+            left: -1500px;
+            font-size: 0;
+        }
+        .imgs .slide{
+            width: 1500px;
+        }
+        .dots{
+            position: absolute;
+            bottom: 10px;
+            width: 200px;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+        }
+        .item{
+            width: 20px;
+            height: 20px;
+            border-radius: 15px;
+            border: solid 1px pink;
+            display: inline-block;
+        }
+        .arrs{
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            height: 20px;
+        }
+        #next{
+            position: absolute;
+            left: 1475px;
+        }
+        a{
+            color:pink;
+            font-size: 32px;
+            text-decoration: none;
+        }
+        .on{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- 轮播的窗口-->
+    <div class="view">
+        <!-- 图片部分 -->
+        <div class="imgs">
+            <img class="slide 1" src="../../作业/js11/9338154.jpg" alt="">
+            <img class="slide 2" src="../../作业/js11/0aa6341.jpg" alt="">
+            <img class="slide 3" src="../../作业/js11/60df03194fbcc55e1f9311eae66fc9c2.jpg" alt="">
+            <img class="slide 4" src="../../作业/js11/9338154.jpg" alt="">
+            <img class="slide 5" src="../../作业/js11/0aa6341.jpg" alt="">
+        </div>
+        <!-- 指示灯部分 -->
+        <div class="dots">
+            <li data-index='1' class="item"></li>
+            <li data-index='2' class="item"></li>
+            <li data-index='3' class="item"></li>
+            <li data-index='4' class="item"></li>
+            <li data-index='5' class="item"></li>
+        </div>
+        <!-- 翻页部分 -->
+        <div class="arrs">
+            <a href="javascript:;" id="pre">&lt;</a>
+            <a href="javascript:;" id="next">&gt;</a>
+        </div>
+    </div>
+    <script>
+        var view=document.getElementsByClassName('view')[0];
+        var imgs=document.getElementsByClassName('imgs')[0];
+        var firstImg= document.getElementsByClassName('1')[0],
+            lastImg=document.getElementsByClassName('5')[0];
+        //克隆第一张和最后一张
+        var clonefirst= firstImg.cloneNode(true),
+            clonelast=   lastImg.cloneNode(true);
+        var pre=document.getElementById('pre');
+        var next=document.getElementById('next');
+        var dots=document.getElementsByClassName('dots');
+        var dotss=document.getElementsByClassName('item');
+        var current = 0;    //记录当前是第几张图片
+
+        //插入节点 最后一张插入第一张前面
+        imgs.insertBefore(clonelast,firstImg);
+        imgs.appendChild(clonefirst);
+        
+        //计时器 
+        var timer=setInterval(slide,1000);
+        view.onmouseover = function(){
+            clearInterval(timer);
+        }   //鼠标移入清除动
+        view.onmouseout = function(){
+            timer = setInterval(slide,1000)
+        }   //鼠标移除继续动
+
+
+        //点击向上翻页，往左走，左边的值变小
+        pre.onclick = slide;
+        //点击向下翻页，往右走，左边的值变大
+        next.onclick = slide;
+
+
+        //点击小圆点 事件委托
+        dots.onclick = function(){
+            var e=window.event || arguments[0];
+           if(e.target.nodeName =='LI') {
+                current = e.target.dataset.index;
+                slide();
+           }
+        }
+
+
+        //移动图片   谁点击就调用slide
+        function slide(){
+            //首先判断方向往哪里滑动
+            var direction = this.id=='pre'?-1:1;
+                current = current + direction;//当前图片在更新 往前+1往后-1
+
+                //修改整个图片的位置
+                imgs.style.left = -1500 * current+'px';
+                imgs.style.transition = 'all 2s';
+                //判断临界点  如果遇到第一张，第一张是临界值，说明是往前翻 就应该显示最后一张
+                if(current == 0 || current > 5){
+                    //更新current的值
+                    current = (current == 0) ? 5 : 0;
+                    //过渡结束事件
+                    imgs.addEventListener('transitionend',function(){
+                        imgs.style.left = -1500 * current+'px';
+                        imgs.style.transition = 'all 0s';
+                    },false);
+                }
+                //切换小圆点样式
+                    tabChange(current-1);
+
+        }
+        function tabChange(index){
+            // dotss[index].classList.add('on');
+            for(var i=0;i<dotss.length;i++){
+                dotss[i].classList.remove('on')
+            }
+            dotss[index].classList.add('on');
+        }
+    </script>
+</body>
+</html>

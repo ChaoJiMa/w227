@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div onclick="fun('hello')">div</div>
+    <div id='div2'>div2</div>
+    <script>
+        function fun(val){
+            console.log('div被点了,传递了参数'+val);
+        }
+        // var div2=document.getElementById('div2');
+        // var div2Val='ccc';
+        // // div2.onclick=function(){
+        // //     fun(div2Val);
+        // // }
+        // div2.onclick=function(){
+        //     fun('hello');
+        // }
+        /*2级事件参数传递*/
+        var div2=document.getElementById('div2');
+        var div2Val='nima';
+        div2.addEventListener('click',function(){
+            fun(div2Val);
+        });
+    </script>
+</body>
+</html>

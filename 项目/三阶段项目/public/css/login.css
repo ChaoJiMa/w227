@@ -1,0 +1,107 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+}
+.divnavblack{
+	position: relative;
+	width: 100%;
+	height: 40px;
+	color: snow;
+}
+.divnavblack::after{
+	background-color: rgb(12,12,12);
+	content: '';
+	position: absolute;
+	z-index: 98;
+	width: 100%;
+	height: 40px;
+	opacity: .7;
+	top: 0px;
+}
+.divnav{
+	width: 60%;
+	height: 40px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 99;
+}
+.nav{
+	display: inline-block;
+	min-width: 1500px;
+}
+li{
+	display: inline-block;
+	
+	/* transition: all 1s; */
+}
+li a{
+	color: snow;
+}
+.divios{
+	min-width: 1900px;
+	width: 100%;
+	position: absolute;
+	height: 40px;
+	top: 70px;
+	z-index: 99;
+	/* color: snow; */
+}
+.divios::after{
+	background-color: rgb(12,12,12);
+	content: '';
+	position: absolute;
+	z-index: 98;
+	width: 100%;
+	height: 40px;
+	opacity: 0;
+	top: 0px;
+}
+.box1{
+	width: 60%;
+	height: 40px;
+	margin: 0 auto;
+	position:relative;
+	z-index: 99;
+	line-height: 40px;
+	border-bottom: rgb(128,128, 128) 1px solid;
+}
+.embed{
+	height: 44px;
+}
+section{
+	width: 60%;
+	margin: auto;
+	/* border: 1px solid ; */
+}
+section div{
+	/* border: 1px solid ; */
+	width: 420px;
+}
+h1{
+	font-size: 40px;
+}
+.inp{
+	width: 410px;
+	height: 56px;
+	border-radius: 10px;
+	margin: 0 0 20px 0;
+}
+#btnLogin{
+	width: 410px;
+	height: 56px;
+	background-color: #0071e3;
+	border-radius: 12px;
+	font-weight: 400;
+}
+#zhuceLogin{
+	width: 410px;
+	height: 56px;
+	background-color: #0071e3;
+	border-radius: 12px;
+	font-weight: 400;
+}
+#form2{
+	display: none;
+}

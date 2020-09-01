@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>111</li>
+            <li>222</li>
+        </ul> 
+    </div>
+    <input type="text" placeholder="input name">
+    <img src="../../作业/js9/images/index_slide_con01.png" alt="">
+    <select name="" id="">
+        <option value="">1</option>
+        <option value="">2</option>
+    </select>
+    <script>
+        /*
+        事件的盖帘
+            当用户和web进行交互的时候，事件就发生了
+        事件流
+            描述的是页面中接收事件的顺序
+        事件流的处理方式
+            事件冒泡,当事件发生的时候，由最具体的元素开始执行，然后逐步的向上传递，一直到最顶层window对象
+                btn>father...>father>body>html>document>window
+            事件捕获
+                当事件发生时，首先从最上层执行事件，然后逐层向下，然后传递到具体的元素
+            
+            w3c标准  事件发生时先捕获再冒泡
+        常见的事件类型
+            鼠标事件
+                点击事件    click
+                双击事件    dblclick
+                右键事件    contextmenu
+                移动        mousemove
+                按下        mousedown
+                弹起        mouseup
+            键盘事件
+                按着        keypress
+                按下        keydown
+                键盘弹起    keyup
+                注意，一直按着键盘就是keydown keypress
+            html事件
+                加载，显示  load
+                获取焦点    focus
+                失去焦点    blur
+                滚动滚动条  scroll
+                窗口尺寸改变resize
+                内容改变时  change（适用于下拉菜单select的内容改变）
+                    对于input  在失去聚焦的时候才触发
+                输入        input
+                选中        select（输入框才有选中事件）
+            传统添加事件DOM 0级事件    
+                节点.on+事件名=function（）{事件对于的事情}
+            清除事件    
+                节点.on+事件名=null
+            on添加事件的方式
+                缺点    一种事件只能添加一次事件内容
+                优点    所有浏览器都支持
+            现代事件DOM 2级事件
+        */
+        var li1=document.getElementsByTagName('li')[0];
+        var ul=document.getElementsByTagName('ul')[0];
+        var div=document.getElementsByTagName('div')[0];
+
+        li1.onclick = function(){
+            console.log('l1被点了');
+        }
+        ul.onclick = function(){
+            console.log('ul被点了');
+        }
+        div.onclick = function(){
+            console.log('爷爷被点了');
+        }
+        window.ondblclick = function(){
+            console.log('双击事件');
+        }
+        window.onmousedown = function(){
+            console.log('按下事件');
+        }
+        window.onmouseup = function(){
+            console.log('弹起事件');
+        }
+        window.onkeypress = function(){
+            console.log('press');
+        }
+        window.onkeydown = function(){
+            console.log('down');
+        }
+        window.onkeyup = function(){
+            console.log('up');
+        }
+        window.onload = function(){
+            console.log('页面加载完毕');
+        }
+        var img=document.getElementsByTagName('img')[0];
+        img.onload = function(){
+            console.log('图片页面加载完毕');
+        }
+        img.onerror = function(){
+            console.log('图片页面加载失败');
+        }
+        var input=document.getElementsByTagName('input')[0];
+        input.onfocus = function(){
+            console.log('输入框获取到了焦点');
+        }
+        input.onblur = function(){
+            console.log('输入框失去了焦点');
+        }
+        document.getElementsByTagName('select').onchange = function(){
+            console.log('内容改变了');
+        }
+        //select 只用于select
+        input.onselect = function(){
+            console.log('select事件，选中文本');
+        }
+        input.onchange = function(){
+            console.log('内容改变了');
+        }
+        window.onresize = function(){
+            console.log('窗口尺寸改变了');
+        }
+
+    </script>
+</body>
+</html>

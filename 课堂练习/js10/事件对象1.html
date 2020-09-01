@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            overflow: hidden;
+        }
+        li{
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            background-color: red;
+            float: left;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+</ul>
+<script>
+    var ul = document.getElementsByTagName('ul')[0];
+    ul.onclick = function(){
+        var e =arguments[0] || window.event;
+        var target = event.target  || event.srcElement;
+        /*
+        * 元素节点   1    标签名大写   null
+        * 属性节点  2    属性的名字    属性的值
+        * 文本节点   3    #text     文本内容
+        * */
+        if(target.nodeName == 'LI'){
+            alert(target.innerText);
+        }
+    }
+</script>
+</body>
+</html>

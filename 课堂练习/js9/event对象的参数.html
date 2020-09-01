@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>dd</div>
+    <script>
+        var div=document.getElementsByTagName('div')[0];
+        //兼容性写法
+        div.onclick= function(){
+            var e=arguments[0]||window.event;
+            var target=e.target||e.srcElement;
+            console.log('事件类型是'+e.type);
+            console.log('事件源头是',e.target);
+        }
+        window.onkeydown = function(e){
+            console.log('按下键盘事件类型是'+e.type);
+            console.log('按下键盘事件源头是',e.target);
+        }
+        window.onmousedown = function(){
+            var e=arguments[0]||window.event;
+            var target=e.target||e.srcElement;
+            console.log('事件类型是'+e.type);
+            console.log('事件源头是',e.target);
+            console.log('鼠标的坐标',e.clientX,e.clientY);
+        }
+        window.onkeydown = function(){
+            var e=arguments[0]||window.event;
+            var target=e.target||e.srcElement;
+            console.log('事件类型是'+e.type);
+            console.log('事件源头是',e.target);
+            console.log('键盘的按键是',e.keyCode||e.chaCode);
+        }
+    </script>
+</body>
+</html>

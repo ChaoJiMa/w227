@@ -1,0 +1,59 @@
+
+#div{
+    text-align: center;
+    width: 1500px;
+    height: 800px;
+    min-width: 1350px;
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    left: 0;
+    right: 0;
+}
+.display{
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+.touming{
+    background-color:rgb(95,93,92) ;
+    width: 400px;
+    height: 400px;
+    opacity:0.5;
+    position: absolute;
+    bottom: 190px;
+    transition:  all 1.5s ;
+}
+.p1{
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    color: snow;
+    font-size: 32px;
+    transition: all 1s ;
+}
+.divimg{
+    position: absolute;
+    top: 340px;
+    left: 255px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.divtouming:hover .touming{
+    background-color:rgba(225, 0,0,0);
+   
+}
+.divtouming:hover .p1{
+    opacity: 0;
+    transform: translateY(-50px);
+    
+}
+.divtouming:hover .divimg{
+    opacity: 1;
+}

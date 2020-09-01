@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+            <button id="add">添加</button>
+        <button id="del">删除事件</button>
+    </div>
+    
+    <script>
+       /*dom2级事件
+            添加事件
+                节点.addEventListener(事件的类型，函数名||匿名函数，布尔值)
+                    事件类型：没有on 
+                    函数    function（）{}
+                    布尔值：如果是flase代表事件冒泡，true则代表事件捕获
+                优点：可以添加重复添加同一类事件
+                缺点：兼容性问题  ie8以下不支持
+            删除事件
+                节点.removeEventListener（事件的类型，函数名，布尔值）
+                    删除事件函数不可以是匿名函数
+                注意：删除事件，参数必须和添加时一样，否则删除失效
+       */ 
+       var add=document.getElementById('add');
+        add.addEventListener('click',function(){console.log('点击事件发生了');},true);
+        // add.addEventListener('click',function(){console.log('点击事件发生了hhh');},false);
+
+        // add.addEventListener('click',addEvent,false);//外部添加
+        // function addEvent(){
+        //     console.log('外部定义的函数');
+        // }
+        // add.removeEventListener('click',addEvent,false);//删除add中的addEvent点击事件
+        // var  del=document.getElementById('del');
+        // del.addEventListener('click',function(){ 
+        //     add.removeEventListener('click',addEvent,false);
+        //     console.log('我删掉了一个事件');
+        // },false);
+        
+
+        document.body.addEventListener('click',function(){
+            console.log('body点击事件发生了');
+        },false);
+        var div=document.getElementsByTagName('div')[0];
+            div.addEventListener('click',function(){
+                console.log('div事件');
+            },false);
+    </script>
+    
+</body>
+</html>

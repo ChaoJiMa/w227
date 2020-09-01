@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var str = '123';
+        // var num=123;
+        // var boolean = true;
+        // var girlFriend = {
+        //     age:18,
+        //     sex:'male',
+        //     eat:function(){
+        //         alert('我会吃')
+        //     }
+        // }
+        // girlFriend.beauty = 'yimei';    //添加
+        // // girlFriend.eat();
+        // // alert(girlFriend)
+        // // alert(girlFriend.eat()) ;
+        // alert(JSON.stringify(girlFriend)) ;
+        // for (var i in girlFriend){
+        //         console.log(i+','+girlFriend[i])//注意属性如果在变量内，需要用下标的方式i访问
+        // }
+
+            var student = [
+                {
+                    name:'aaa',
+                    age:18,
+                    sex:'nan',
+                },
+                {
+                    name:'bbb',
+                    age:17,
+                    sex:'nv',
+                }
+            ]
+            var names=[];
+            for(var i=0;i<student.length;i++){
+                // names+=students[i].name
+                names.push(student[i].name);
+                names.join(',');
+                console.log(names);
+            }
+            for(var j in student){
+                console.log(j,student[j].name);
+            }
+    </script>
+</body>
+</html>

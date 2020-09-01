@@ -1,0 +1,84 @@
+cookie
+    是浏览器的一种缓存技术
+
+    网站的识别，可以单独使用，可以配合session（后台）使用
+
+    cookie的特点
+    1.必须运行在服务器环境下
+    2.cookie有过期时间
+        默认的过期时间是一次会话（session），浏览器的打开到关闭
+        可以设置过期时间
+    3.一条一条存的，获取的时候全部获取，每组数据用分号隔开，name=value
+    4.cookie容量有大小，4k左右
+        一个网站有一套cookie
+    5.有目录区别
+        同一个目录，cookie同名的设置,后面的数据会覆盖前面的数据
+        不同目录，cookie可以重名，
+        根目录下的cookie每个网页都可以访问，其他子目录的，其他目录访问不到
+
+        项目当中，一般都存在根路径下   document.cookie = 'c=3;path=/;expires='+odate2;
+    6.不安全
+    7.不管存的是什么，获取到都是字符串
+    8.cookie可以发送到后台
+
+    cookie的设置
+        document.cookie = 'c=1;expires='+odate;
+    cookie的获取
+        document.cookie;
+    cookie的删除
+        过期时间设置为负的
+
+cookie的缺点
+    1.容量小
+    2.每次请求服务器都会发送cookie
+    3.存储和获取比较麻烦
+
+===============================本地存储 h5======================
+  localStorage
+    特点
+     1.存在浏览器中
+     2.容量 5m
+     3.不会向服务器发送数据
+     4.没有过期时间
+     5.没有路径的限制
+     6.不管存什么数据，获取到的都是字符串
+     7.和cookie一样，都不可以直接存数组  [object Object]
+
+    操作
+          存  localStorage.名字 = 值
+          取  localStorage.名字 如果值不存在，返回undefined
+        删除 delete localStorage.名字
+
+        存对象
+            localStorage.obj3 = JSON.stringify({e:6,f:7})
+        取对象
+            JSON.parse(localStorage.obj3)
+
+      存  localStorage.setItem(name,value)
+      取  localStorage.getItem(name)  如果值不存在，返回null
+      删除  localStorage.removeItem(name)
+
+        localStorage.clear() 清除所有的本地存储数据
+
+    创建假数据
+        存到本地存储
+
+        最好存一份初始数据，
+        给一个按钮恢复出厂，清除所有的本地数据，然后存本地初始数据
+
+sessionStorage
+    操作
+              存  sessionStorage.名字 = 值
+              取  sessionStorage.名字 如果值不存在，返回undefined
+            删除 delete sessionStorage.名字
+
+            存对象
+                sessionStorage.obj3 = JSON.stringify({e:6,f:7})
+            取对象
+                JSON.parse(sessionStorage.obj3)
+
+          存  sessionStorage.setItem(name,value)
+          取  sessionStorage.getItem(name)  如果值不存在，返回null
+          删除  sessionStorage.removeItem(name)
+
+            sessionStorage.clear() 清除所有的本地存储数据

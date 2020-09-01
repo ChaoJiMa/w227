@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .div1{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .new{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        } */
+    </style>
+</head>
+<body>
+    <div class="div1"></div>
+    <div data-index="1"></div>
+    <ul>
+        <li id="1">111</li>
+        <li id="2">222</li>
+        <li id="3">333</li>
+    </ul>
+    <button>插入新节点</button>
+    <button>替换第一个节点</button>
+    <button>克隆</button>
+    <div>这是div</div>
+    <script>
+        var div=document.getElementsByTagName('div')[0];
+        if(div.hasAttribute('class')){
+            console.log('有');
+        }else{
+            console.log('无');
+            div.setAttribute('class','div1')
+        }
+        var div=document.getElementsByTagName('div')[1];
+        var data=div.getAttribute('data-index');
+        console.log(data);
+        console.log(div.dataset.index);//获取用户自定义属性index
+        // console.log(div.data-index);//这种无法获取
+        div.className='new';
+
+
+
+        //插入新节点
+        var father=document.getElementsByTagName('ul')[0];
+        var li2=document.getElementById('2');
+        var but=document.getElementsByTagName('button')[0];
+        var count=0;
+        var arr=['aaa','bbb','ccc'];
+        var div=document.getElementsByTagName('div')[2];
+            but.onclick=function(){
+                // count++;
+                var newNode=document.createElement('li');
+                // newNode.innerHTML='新的'+count;
+                newNode.innerHTML='<span>'+arr[count]+'</span>';
+                // newNode.innerText='<span>'+arr[count]+'</span>';不识别标签
+                count++;
+                // father.appendChild(newNode); 插入最后
+                father.insertBefore(newNode,li2);
+                div.outerHTML='<p>ppp</p>';//节点标签页换了
+                // div.innerHTML='<p>ppp</p>';
+                // div.innerText='<p>ppp</p>';
+            }
+            var father=document.getElementsByTagName('ul')[0];
+            var but2=document.getElementsByTagName('button')[1];
+            but2.onclick=function(){
+                var newReplaceNode = document.createElement('li');
+                newReplaceNode.innerText='替代品';
+                var li1=document.getElementById('1');
+                father.replaceChild(newReplaceNode,li1);
+                
+            }
+
+            var but3=document.getElementsByTagName('button')[2];    
+            var father=document.getElementsByTagName('ul')[0];
+            but3.onclick = function(){
+                var li3=document.getElementById('3');
+                var li4=li3.cloneNode(true);
+                console.log(li4);
+                father.appendChild(li4);
+            }
+            
+    </script>
+</body>
+</html>

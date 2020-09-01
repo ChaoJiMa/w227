@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        #div1{
+            width: 85%;
+            height: 200px;
+            border: 3px solid gray;
+            margin: auto;
+            position: relative;
+        }
+        #div2{
+            width: 80%;
+            border: 3px solid gray;
+            margin: auto;
+        }
+        #div3{
+            border-bottom: solid 3px gray;
+            padding: 20px;
+        }
+        #div4{
+            padding: 10px 20px;
+            position: relative;
+        }
+        a{
+            color: black;
+            position: absolute;
+        }
+        .a1{
+            right: 80px;
+        }
+        .a2{
+            right: 20px;
+        }
+        a:hover{
+            color: gray;
+            text-decoration: underline;
+        }
+        #lyb{
+            height: 200px;
+            padding: 5px 20px;
+            border-bottom: solid 3px gray;
+            position: relative;
+        }
+        #text{
+            width: 100%;
+            height: 170px;
+            resize: none;
+            border: 1px solid gray;
+        }
+        #img{
+            width: 150px;
+            height: 150px;
+            padding: 25px 50px 25px 50px;
+        }
+        #mingzi{
+            position: absolute;
+            top: 20px;
+            left: 280px;
+            font-size: 30px;
+        }
+        button{
+            position: absolute;
+            right: 30px;
+            width: 60px;
+            border: none;
+            background-color: gray;
+        }
+        button:hover{
+            background-color: snow;
+        }
+        .div{
+            border: solid 1px;
+            width: 95%;
+            height: 200px;
+            position: relative;
+            margin: 10px auto;
+        }
+        .div .img{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 35px;
+            left: 10px;
+            border-radius: 10px;
+        }
+        .p{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .pnr{
+            border: solid 1px;
+            width: 94%;
+            height: 160px;
+            position: absolute;
+            left: 70px;
+            top: 5px;
+
+        }
+        .shijian{
+            position: absolute;
+            left: 100px;
+            bottom: 7px;
+        }
+        .imgZan{
+            position: absolute;
+            width: 50px;
+            right: 100px;
+            bottom: 7px;
+        }
+        .zanShu{
+            position: absolute;
+            right: 50px;
+            bottom: 7px;
+        }
+        #lyjl{
+            max-height: 1500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <img src="" alt="" id="img">
+        <p id="mingzi"></p>
+        <img src="./img/zan.jpg" alt="" class="imgZan">
+        <p class="zanShu"></p>
+    </div>
+    <div id="div2">
+        <div id="div3">
+            <p>留言板</p>
+        </div>
+        <div id="lyb">
+            <textarea name="" id="text" cols="30" rows="10"></textarea>
+            <button type="button" id="but">留言</button>
+        </div>
+        <div id="div4">
+            <span>留言<span id="lys"></span></span>
+            <a href="" class="a1">上一页</a>
+            <a href="" class="a2">下一页</a>
+        </div>
+        <div id="lyjl">
+            <!-- <div class="div">
+                <img src="./img/giao.jpg" alt="" class="img">
+                <p class="p">Giao桑</p>
+                <p class="pnr"></p>
+                <p class="shijian"></p>
+            </div> -->
+        </div>
+    </div>
+    <script type="text/javascript" src="./lyb.js"></script>
+
+</body>
+</html>

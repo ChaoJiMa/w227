@@ -1,0 +1,140 @@
+---------------------------数组-----------------------
+基本数据类型 number string undefined boolean null
+引用数据类型 数组[] 对象{}
+
+数组 Array
+    存很多值
+        var arr=[值1，值2......] //字面量定义
+        访问数组 arr[] 从零开始 最后一位就是长度-1 
+        数组长度 arr.length
+        document.write('arr=',arr[4]);
+        document.write('arr数组有=',arr.length,'值');
+        document.write('arr最后一个=',arr[arr.length-1],'值');
+        document默认将数组转为字符串
+        console默认数组为数字
+数组的声明方式
+    字面量 var arr=[];
+    关键字new  var arr=new Array()
+    var arr5= new Array(6);//单一一个数 定义一个长度为6的数组 每个值为空 
+        console.log('<br>','arr5=',arr5);
+        console.log(arr5[2]);值没定义是undefined
+        console.log(typeof(arr5));//object 是对象的一种
+
+    判断数组的类型
+        console.log(arr5 instanceof Array);// instanceof 有两个操作数 返回true代表是数组 false代表不是数组
+        console.log('a' instanceof Array);// false
+    对象 obj={
+        属性1：值，
+        属性2：值，
+        行为1：做事情，
+    }
+        var obj1={
+            gao:false,
+            shuai:true,
+            fu:true,
+            // 对象的属性：值
+            hongren:function(){
+                alert('你今天真美');
+            }
+        }
+        // 对象的访问方式
+        console.log('obj1高不高',obj1.gao);
+        console.log('obj1帅不帅',obj1.shuai);
+        console.log('obj1帅不帅',obj1['shuai']);
+        obj1.hongren();
+    数组的添加
+        通过下标添加值
+            arr[0]=1;
+            arr[arr.length]在数组最后添加一个值
+    数组的修改
+        通过下标修改
+            arr[0]=2;
+    数组的删除
+        delete arr3[1];//删除arr3 中的第二个数 长度不改变
+    数组的操作方法
+        添加
+            arr.push() 
+                var arr=[]
+                数组的添加 数组.push(1,'b'); 
+                数组的最后添加值，可以是添加一个值，也可以是多个值，用逗号隔开类似arr[arr.length]=值
+                    arr.push('a')
+                    arr.push('a',3)
+                    arr.push('b')
+                    arr.push('c',2)
+                    console.log(arr);
+                数组的开始添加值，可以添加一个值也可以多个值
+                    arr.unshift('hahaha');
+                    arr.unshift('1',2,3);
+                    console.log(arr);
+        删除方法
+            arr.pop(); //不需要传值 删除最后一个,同时记录了删掉的值
+            arr.shift();//不需要传值 删除第一个,同时记录了删掉的值
+            console.log(arr);
+            var popval=arr.pop();
+                console.log(arr);
+                console.log(popval);
+            var shiftval=arr.shift();
+                console.log(arr);
+                console.log(shiftval);
+        拼接数组
+            splice(开始的下标,删除的个数,插入的元素)
+                添加 
+                    在下标的位置添加,0,元素
+                    arr.splice(1,0,value)
+                删除 
+                    arr.splice(1,不为0 的数字)
+                替换
+                    arr.splice(1,不为0的数字,value)
+        裁剪数组
+            slice(开始下标,结束下标)
+                包括开始下标,不包括结束下标
+                结束下标可以不写 代表开始下标以后的全部取出
+                注意:不改变原数组,记录裁剪到的
+        合并数组
+            concat() 不改变原数组,记录合并后的结果
+                arr1.concat(arr2)
+        数组的排序
+            sort() 把原数组排序,从小到大排序,同时记录排序后的结果,默认是按照字符串排序
+                如果要按照数字排列
+                    arr.sort(fun)
+                    function fun(a,b){
+                        return a-b; b-a代表逆序,由大到小
+                    }
+            arr.reverse()字符串逆序排
+            arr.indexOf(val)  记录val在arr中的下标位置,找不到就-1
+            arr.join('连接符')  
+            var arr=[2,5,6,8,9] 
+            console.log(arr.join('*'));
+            <2*5*6*8**9>
+    数组的for循环
+        var arr=[];
+        arr[0]=1;
+        arr[1]=2;
+        // arr[2]=3;
+        arr[3]=4;
+        console.log(arr.length);
+        console.log(arr[2]);//没有值为undefined
+        arr[3]=2;
+        console.log(arr[3]);
+        var arr2=[];
+            
+            for(var i=1;i<=10;i++){
+                arr2[i-1]=i
+            }
+            console.log(arr2);
+            for(var i=1;i<10;i++){
+                arr2[i]=i+1
+            }
+            console.log(arr2);
+            for(var i=1;i<10;i+2){
+                arr2[i]=i+1
+            }
+            console.log(arr2);
+            for(var i=0;i<10;i+=2){
+                arr2[arr2.length]=i+1
+            }
+            console.log(arr2);
+            var arr3=['a',1,5,8]
+                for(var i=0;i<=arr3.length-1;i++){
+                    console.log(arr3[i]);
+                }

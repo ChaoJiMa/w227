@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>ddd</div>
+    <script>
+        /*
+        事件对象
+            代表事件的状态，比如说是键盘事件，还是鼠标事件，鼠标在哪里点击
+            事件对象从哪里来？ 事件发生时候，就会产生事件对象
+
+            高级浏览器事件发生是，调用函数，
+                函数如果没有传参数  arguments[0]就是event对象
+                如果传递了参数  第一个参数就是event对象
+            ie低版本浏览器
+                arguments[0]    取不到event对象
+                或者传递参数    取不到event对象
+
+        */
+        var div=document.getElementsByTagName('div')[0];
+        // div.onclick = function(e){
+        //     // var event= arguments[0];
+        //     // console.log(event);
+        //     console.log(e);
+        // }
+
+        div.addEventListener('click',function(){
+            console.log(arguments[0]);
+        },false);
+        div.addEventListener('click',function(e){
+            console.log(e);
+        },false);
+
+        //ie低版本
+        div.onclick = function(){
+            var event= window.event;
+            console.log(event);
+        }
+        //兼容性写法
+        div.onclick = function(){
+            var event= window.event||arguments[0];
+            console.log(event);
+        }
+    </script>
+</body>
+</html>

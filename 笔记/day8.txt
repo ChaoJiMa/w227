@@ -1,0 +1,58 @@
+css3
+新增选择器
+    属性选择器
+        [属性-‘值’] 首字符匹配^= 结尾$= 包含*=
+    结构性伪类选择器
+        只管顺序 :nth-child(n)   :fitdt-child  :last-child
+        顺序和类型 :nth-of-type(n)  :first-of-type  :last-of-type
+        偶数even 奇数odd
+    兄弟关系
+         ~所有的弟弟 +相邻弟弟
+    状态伪类选择器
+        :checked :disable :enable :focus ::selection ::-weblit-input-placehoder
+        :not
+    伪元素：
+    ::before ::after ::first-letter ::first-line
+    content的值: 字符串/url（图片的地址）/attr（属性的名字）
+    过渡效果
+        transition
+        all参与过渡的属性
+        n s/ms参与过渡的时间
+        过渡动画
+        延迟时间
+-----------------------动画，字体图标，变换---------------------
+变换 transform  
+    移动  translate(x,y) xy可以是负数，负数反方向
+        transform:translate(x,y)
+        -webkit-transform:translateX(100px)
+        -ms- ie浏览器
+        -moz- 火狐浏览器
+    旋转    rotate(角度 deg) 默认z轴
+        transform:rotateX（角度 deg）
+        transform:rotateY(角度 deg)
+    缩放    scale(x方向的倍数,y方向的倍数)负值翻面
+        transform:scale(x,y)
+    扭曲    
+    倾斜    skew
+        transform:skew(xdeg,ydeg)
+    3D transform-style:preserve-3d;
+        transform:perspective(800px);
+字体图标fontface
+    自定义字体，可以设置大小，颜色，内存小
+    缺点：颜色单一，制作时间长
+    www.iconfont.cn
+    自定义字体
+        @font-face    
+            font-family:'自定义字体的名字'
+            src：url（''）字体路径
+-------------------------动画----------------------
+
+@keyframes 定义一个动画规则
+    from{
+        刚开始的状态
+    }
+    to{
+        结束的状态
+    }
+    animation: 动画名字 时间 动画的类型(线性动画 匀速变化) 延迟时间  动画次数（无限次infinite） forwards停留在最终状态 反向运动alternate;
+    直接写在元素上，自动执行，如果加载hover上，就鼠标悬停才触发

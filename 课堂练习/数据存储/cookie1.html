@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*cookie存数据*/
+//    document.cookie = 'a=1';//默认的过期时间是一次会话（session），浏览器的打开到关闭
+    document.cookie = 'a=1;b=1';//一次只能存调数据
+    var odate = new Date('2020-8-5');
+    document.cookie = 'c=1;expires='+odate;//过期时间是一个时间对象
+    document.cookie = 'c=2;expires='+odate;//过期时间是一个时间对象
+    var odate2 = new Date('2020-8-6');
+    document.cookie = 'c=3;path=/;expires='+odate2;
+    document.cookie = 'd=1;path=/;expires='+odate2;
+    console.log(document.cookie);
+</script>
+</body>
+</html>

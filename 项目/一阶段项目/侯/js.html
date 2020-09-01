@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>i=10,j=10; i+j=?</p>
+    <p id="p"></p>
+    <button onclick="ni()">结果</button>
+    <script>
+        function ni(){
+            var i=50;
+            var j=5;
+            // j=i;//++i =i+1,
+            var h=j%i;
+            // var h=i+=j;//i=i+j;
+            document.getElementById("p").innerHTML=h;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 2000px;
+            height: 200px;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div></div>
+<script>
+    var div = document.getElementsByTagName('div')[0];
+    div.onmousedown = function(e){
+        console.log('clientX',e.clientX);
+        console.log('offsetX',e.offsetX);
+        console.log('pageX',e.pageX);
+        console.log('screenX',e.screenX);
+    }
+</script>
+</body>
+</html>

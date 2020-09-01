@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function FunName (par1,par2){
+            this.attr1 = par1;
+            this.attr2 = par2;
+            this.fun1 = function (){
+                console.log(this.attr1)
+            }
+        }
+        /*修改对象的基因 ，相当于这个方法只声明过一次*/
+        FunName.prototype.fun2 = function(){
+            console.log(this.attr1);
+        }
+        FunName.prototype.sex='nan'
+        var obj1 = new FunName('zhangsan',12)
+        var obj2 = new FunName('lisi',12)
+        obj2.sex = 'nv'
+        // obj1.fun2();
+        // obj2.fun2();
+        // alert(obj1.fun2==obj2.fun2);
+        console.log(obj1);
+        console.log(obj2);
+    </script>
+</body>
+</html>

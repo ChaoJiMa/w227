@@ -1,0 +1,225 @@
+修改样式
+修改结构
+
+获取元素
+    id
+    className
+    tagName
+    querySelector
+    querySelectorAll
+修改样式
+        节点.style.样式
+修改结构
+        添加
+            创建节点：createElement   cloneNode
+            父节点.appendChild()
+            父节点.insertBefore(被插入的节点，原来的节点)
+        删除
+            父节点.removeChild()
+        修改
+            父节点.replaceChild()
+ ==========================
+
+事件的概念
+    *   当用户和web进行交互的时候，事件就发生了
+    * 事件流
+    *   描述的是页面中接收事件的顺序
+    *
+    *   分类
+    *       事件冒泡,当事件发生的时候，由最具体的元素开始执行，然后逐层向上传递，一直到最顶层，window对象
+    *           btn>>father ... >father >body>html>document>window
+    *       事件捕获
+    *           当事件发生时，首先从最上层执行事件，然后逐层向下，然后传递到具体的元素
+    *
+    *       W3C标准   事件发生时，先捕获，再冒泡
+    *
+    *  常见的事件类型
+    *       鼠标事件
+    *           点击事件 click
+    *           双击  dblclick
+    *           右击  contextmenu
+    *           鼠标移动  mousemove
+    *           按下 mousedown
+    *           弹起 mouseup
+                移入  mouseover
+                移出  mouseout
+    *       键盘事件
+     *         按下  keydown
+               按着  keypress
+       *       键盘弹起  keyup
+       *    注意，一直按着键盘, keydown keypress keydown keypress keydown keypress。。。
+       *    html事件
+      *         加载，显示完整 load
+      *         获取焦点  focus
+      *         失去焦点  blur
+      *         滚动滚动条   scroll
+      *         窗口尺寸改变  resize
+      *         内容改变的时候（适用于下拉菜单select的内容改变）  change
+      *             对于input，在失去聚焦的时候才触发 change
+      *         输入   input
+      *         选中文本   select
+      *
+            form表单事件
+                onsubmit
+                onreset
+
+      *    传统事件的添加，DOM 0级事件
+               节点.on事件名 = function（）{
+                  事件对于的事情
+              }
+            事件的删除
+              节点.on事件名 = null
+
+            on添加事件的方式，
+                缺点，事件只能添加一种事件内容
+                优点，所有浏览器都支持
+
+ 现代事件，DOM 2级事件
+    事件添加
+        节点.addEventListener(事件类型，函数名|function(){},boolean)
+        事件类型  没有on 比如点击事件 'click'
+         函数   function (){}
+         布尔值：flase 代表事件冒泡， true 则代表事件捕获
+     事件删除，
+        注意，不可以删除匿名函数，添加和删除的参数必须一样
+            节点.removeEventListener(事件类型，函数名,boolean)
+             事件类型  没有on 比如点击事件 'click'
+              布尔值：flase 代表事件冒泡， true 则代表事件捕获
+
+      兼容性问题 ie8以下，上面的方法不支持
+        要用下面的解决
+           添加事件
+             节点.attachEvent('on'+事件类型，函数名|function(){})
+                    事件类型   比如点击事件 'onclick'
+                     函数   function (){}
+            删除事件
+                节点.detachEvent('on'+事件类型，函数名)
+                       事件类型   比如点击事件 'onclick'
+    function addEvent(dom,eventType,fun){//dom节点，eventType事件类型 fun 函数名
+            if(document.addEventListener){//判断有没有这个方法
+                dom.addEventListener(eventType, fun, false);
+            }else if(document.attachEvent){
+                dom.attachEvent('on'+eventType,fun);
+            }else{
+                dom['on'+eventType] = fun;
+            }
+        }
+
+
+event对象
+    代表事件的状态
+div.onclick = function(){
+        var event = window.event || arguments[0];
+        console.log(event);
+    }
+
+event对象常用的参数
+    事件类型 event.type
+    触发事件的元素  event.target  || event.srcElement
+    鼠标相对浏览器左上角   clientX  clientY
+    鼠标事件相对本元素的距离   offsetX  offsetY
+    鼠标事件相对浏览器左边界的实际距离（包含滚动条）   pageX  pageY
+    鼠标事件相对屏幕左边界的距离   screenX  screenY
+    键盘码   e.keyCode || e.charCode
+
+
+========================
+阻止页面的默认行为
+    1.调用浏览器的确认弹出框  confirm（’弹出框的提示内容‘）
+    2.在事件里（对a标签，点击事件，form表单提交事件）,用事件的属性阻止，
+        ie低版本 event.returnValue = false;
+        高级浏览器   event.preventDefault();
+
+阻止事件的冒泡
+     if(e.stopPropagation){
+            //dom
+            e.stopPropagation();
+        }else{
+            //ie
+            e.cancelBubble = true;
+        }
+
+==========BOM  浏览器对象模型=============
+用js和浏览器对话
+可以做什么
+    1.操作浏览器的窗口
+        alert  prompt confirm
+    2.操作浏览器的导航对象
+    3.历史记录
+    4.可以获取浏览器的屏幕信息
+    5.提供cookie
+
+1.window对象（js中唯一的一个全局对象）
+    所有浏览器都支持window对象，代表浏览器的窗口
+    js的原生对象，函数还有变量，都属于window对象
+    全局变量，window对象的属性   var a=2; window.a就是变量a
+    全局函数，window对象的方法
+    document对象也是window对象的属性
+    window.document.getElementById === document.getElementById
+
+2.窗口尺寸
+    window.innerWidth 窗口的内部宽度(包含竖直方向滚动条的宽度)  单位是像素
+    window.innerHeight 窗口的内部高度
+
+    特殊的ie
+       document.documentElement.clientWidth
+       document.documentElement.clientHeight
+        或者
+        document.body.clientWidth
+        document.body.clientHeight
+
+    下面的不包括滚动条的宽度
+    document.documentElement.clientWidth    文档的宽度
+    document.body.clientWidth  body的宽度,默认相差16px，（body的margin造成的）
+
+兼容性写法  var winWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+
+3.window打开页面和关闭页面的方法
+    window.close() 关闭页面
+    window.open(url,target,窗口特性) 打开页面 window.open('http://www.baidu.com','_blank','height=400,width=500,top=100,left=200')
+
+4.window.screen 用户的屏幕信息
+    screen.width  屏幕宽度
+    screen.height 屏幕高度
+    screen.availHeight 屏幕高度-工具栏的高度
+    screen.availWidth 屏幕宽度-工具栏的宽度
+    '屏幕的颜色深度'+screen.colorDepth
+    '屏幕的像素深度'+screen.pixelDepth
+
+5.location对象
+    hash: "#123"  获取锚点部分
+    host: "localhost:63342"  主机名+端口号
+    hostname: "localhost" 主机名
+    href: "http://localhost:63342/227/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/dom/day11/bom/location%E5%AF%B9%E8%B1%A1.html#123"  完整的url路径  路径有中文或者空格，用 decodeURI(location.href)
+    origin: "http://localhost:63342"
+    pathname: "/227/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/dom/day11/bom/location%E5%AF%B9%E8%B1%A1.html"
+    port: "63342" 端口号
+    protocol: "http:" 协议
+    search:'?name=value' 获取url中用 ？ 隔开的参数部分
+    reload()
+
+6.history
+    history.back() 回退一页
+    history.forward() 前进一页
+    history.go(n) -1代表回退一页  2代表前进两页
+
+7.window.navigator.userAgent 获取浏览器的版本信息
+
+8.计时器
+var timer1= setInterval(function(){
+        console.log('下班了')
+    },1000)
+    document.getElementsByTagName('button')[0].onclick = function(){
+        clearInterval(timer1);
+    }
+
+ var timer2=setTimeout(function(){
+        console.log('下班了')
+    },2000);
+    clearTimeout(timer2);
+
+同步任务
+    一次性从上到下就执行完了
+
+异步任务
+    同步任务执行完才执行

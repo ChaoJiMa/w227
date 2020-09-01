@@ -1,0 +1,65 @@
+事件的概念
+            当用户和web进行交互的时候，事件就发生了
+        事件流
+            描述的是页面中接收事件的顺序
+        事件流的处理方式
+            事件冒泡,当事件发生的时候，由最具体的元素开始执行，然后逐步的向上传递，一直到最顶层window对象
+                btn>father...>father>body>html>document>window
+            事件捕获
+                当事件发生时，首先从最上层执行事件，然后逐层向下，然后传递到具体的元素
+            
+            w3c标准  事件发生时先捕获再冒泡
+        常见的事件类型
+            鼠标事件
+                点击事件    click
+                双击事件    dblclick
+                右键事件    contextmenu
+                移动        mousemove
+                按下        mousedown
+                弹起        mouseup
+            键盘事件
+                按着        keypress
+                按下        keydown
+                键盘弹起    keyup
+                注意，一直按着键盘就是keydown keypress
+            html事件
+                加载，显示  load
+                获取焦点    focus
+                失去焦点    blur
+                滚动滚动条  scroll
+                窗口尺寸改变resize
+                内容改变时  change（适用于下拉菜单select的内容改变）
+                    对于input  在失去聚焦的时候才触发
+                输入        input
+                选中        select（输入框才有选中事件）
+            传统添加事件DOM 0级事件    
+                    节点.on+事件名=function（）{事件对于的事情}
+                清除事件    
+                    节点.on+事件名=null
+                on添加事件的方式
+                    缺点    一种事件只能添加一次事件内容
+                    优点    所有浏览器都支持
+            现代事件DOM 2级事件
+                添加事件
+                节点.addEventListener(事件的类型，函数，布尔值)
+                    事件类型：没有on 
+                    函数    function（）{}
+                    布尔值：如果是flase代表事件冒泡，true则代表事件捕获
+                优点：可以添加重复添加同一类事件
+                缺点：兼容性问题
+            删除事件
+                节点.removeEventListener（事件的类型，函数，布尔值）
+
+                注意：删除事件，参数必须和添加时一样，否则删除失效
+            对于低版本的Ie浏览器
+                事件添加
+                    节点.attachEvent（'on+事件类型'，funtion(){}）；        
+                事件删除
+                    节点.detachEvent（'on+事件类型'，具有名字的函数）
+
+
+event对象常用的参数
+    事件类型    event.type
+    事件源头    event.target
+    鼠标的坐标  event.clientX,event.clientY
+    键盘码      event.keyCode||event.chaCode

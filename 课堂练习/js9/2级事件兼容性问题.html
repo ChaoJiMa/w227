@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="add">添加</button>
+    <script>
+        /*
+            对于低版本的Ie浏览器
+                事件添加
+                    节点.attachEvent（'on+事件类型'，funtion(){}）；        
+                事件删除
+                    节点.detachEvent（'on+事件类型'，具有名字的函数）
+                
+        */
+        var add=document.getElementById('add');
+        // add.attachEvent('onclick',function(){
+        //     console.log('点击事件');
+        // });
+        // add.detachEvent('onclick',function(){
+        //     console.log('点击事件');
+        // });
+
+
+            // function addEvent(dom,eventType,fun){
+            //     if(document.addEventListener){//判断有没有这个方法
+            //         dom.addEventListener(eventType,fun,false);
+            //     }else{
+            //         dom.attachEvent('on'+eventType,fun);
+            //     }
+            // }
+            // addEvent(add,'click',clickEvent);
+            // function clickEvent(){
+            //     console.log('点击事件发生');
+            // }
+            var obj=[
+                {
+                name:'jame',
+                age:18,
+            },
+            {
+                name:'hou',
+                age:19,
+            },
+            {
+                name:'sada',
+                age:20,
+            }
+            ]
+            console.log(obj.name==obj['name']);
+            console.log(obj.name);
+            
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var inputStr = prompt('请输入一段语句');
+    var arr = ['傻逼','憨包','粗鄙','下流','操'];
+    for(var i=0;i<arr.length;i++){
+        if(inputStr.indexOf(arr[i]) >=0 ){
+          inputStr =  inputStr.replace(arr[i],'**');
+        }
+    }
+    console.log(inputStr);
+    /*
+    随机 1-16 蓝球1个
+    随机 1-33 红球6个
+    * */
+
+    var blue = Math.floor(Math.random()*16 + 1);
+    var red = [];
+    for(var i=0;i<6;i++){
+        var num = Math.floor(Math.random()*33 + 1);
+        //在已经取出来的红球里找有没有重复
+     /*   var qudao = false;
+        for(var j = 0;j<red.length;j++){
+            //如果重复就重新取
+            if(num == red[i]){
+                qudao=true;
+                i--;
+            }
+        }
+        if(!qudao){
+            red.push(num)
+        }*/
+
+        if(red.indexOf(num)>=0){
+            i--;
+        }else{
+            red.push(num)
+        }
+    }
+    console.log(red.join(','))
+    console.log(blue)
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #father{
+            height: 500px;
+            background-color: red;
+            display: flex;
+            /*justify-content: space-around;*/
+            justify-content: space-between;
+            /*flex-direction: column;*/
+        }
+
+        .son{
+            /*width: 300px;*/
+            flex:1;
+            height: 100px;
+            background-color: blue;
+            border: 1px solid;
+        }
+        .son:first-of-type{
+            /*width: 600px;*/
+            flex:2;
+
+        }
+
+
+        /*
+        主轴  justify-content  主轴的排布
+        交叉轴  align-items   交叉轴的排布
+        */
+    </style>
+</head>
+<body>
+<div id="father">
+    <div class="son"></div>
+    <div class="son"></div>
+    <div class="son"></div>
+   <!-- <div class="son"></div>
+    <div class="son"></div>-->
+</div>
+<script></script>
+</body>
+</html>

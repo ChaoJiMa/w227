@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二天</title>
+    <style>
+        header{
+            border: 1px solid red;
+            height: 80px;
+        }
+        section{
+            border: 1px solid red;
+            height: 800px;
+        }
+        footer{
+            border: 1px solid red;
+            height: 120px;
+        }
+        div{
+            border: 1px solid rgb(11, 253, 92);
+        }
+    </style>
+</head>
+<body>
+    <header id="top">
+        <div>上半部分</div>
+        <div>下半部分</div>
+    </header>
+    <section>
+        <table  align="center" border="1" cellspacing="0" cellpadding="20">
+            <!-- <table width="400" height="300" align="center" border="1" cellspacing="0"></table> -->
+            <!-- 表格标题 -->
+            <caption>学生信息表</caption>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>班级</th>
+                </tr>
+            </thead>
+            <!-- 表格内容 table body -->
+            <tbody align="center">
+                <tr>
+                    <td>侯杰超</td>
+                    <td rowspan="2">18</td>
+                    <td rowspan="3">227</td>
+                </tr>
+                <tr>
+                    <td>塔克夫</td>
+                </tr>
+                <tr>
+                    <td id="hjc">跑刀仔</td>
+                    <td>17</td>
+                </tr>
+            </tbody>
+            <!-- 表尾 table footer-->
+            <tfoot align="center">
+                <tr>
+                    <td>tututu</td>
+                    <td colspan="2">19</td>
+                </tr>
+            </tfoot>
+        </table>
+        <a href="/课堂练习/day1/day1.html" target="sha">第一天</a>
+        <a href="/课堂练习/day2/day01.html" target="sha">第二天</a>
+        <a href="//baidu.com" target="sha">百度</a>
+        <iframe src="/课堂练习/day1/day1.html" frameborder="0" name="sha">默认页面第一天</iframe>
+    </section>
+    <footer>
+        <a href="#top">回到顶部</a>
+        <a href="/课堂练习/day2/day02.html#sha">sha</a>
+    </footer>
+</body>
+</html>

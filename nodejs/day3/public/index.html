@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./css/bootstrap.css"
+    />
+    <style>
+      body{
+        width: 80%;
+        margin: auto;
+      }
+      #tbody:empty::before{
+        content: '暂无数据';
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="table table-hover table-striped">
+      <div class="row">
+        <div class="col-md-4">
+          <input type="text" name="" id="txtUserName" placeholder="姓名" class="form-control">
+          <select name="selClass" id="selClass">
+            <option value="-1">请选择</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <button type="button" class="btn btn-primary" id="btnSearch">查询</button>
+        </div>
+        <div class="col-md-3">
+          <button type="button" class="btn btn-primary but" data-toggle="modal" data-target="#myModal">添加</button>
+        </div>
+      </div>
+      
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="checkAll"></th>
+          <th>ID</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>班级</th>
+          <th>电话</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+
+      <!-- 页码显示 -->
+      <div id="divPage"></div>
+
+      <!-- 添加 -->
+      <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">添加信息</h4>
+            </div>
+            <div class="modal-body">
+                <p><input type="text" placeholder="姓名" required="required" id="xm"></p>
+                <p><input type="number" placeholder="年龄" required="required" id="age"></p>
+                <p><input type="number" placeholder="班级" required="required" id="bj"></p>
+                <p><input type="number" placeholder="电话" required="required" id="dh"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" id="tiji">添加</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 修改 -->
+      <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="mot">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+            </div>
+            <div class="modal-body">
+              <p><input type="text" placeholder="姓名" required="required" id="xgxm"></p>
+              <p><input type="number" placeholder="年龄" required="required" id="xgage"></p>
+              <p><input type="number" placeholder="班级" required="required" id="xgbj"></p>
+              <p><input type="number" placeholder="电话" required="required" id="xgdh"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" id="tj">修改</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </table>
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/ajax.js"></script>
+    <script src="./js/index.js"></script>
+    <script type='text/javascript'>
+      $('#btnSearch').click(function(){
+        /*
+         * 服务端查询
+         *1.获取用户输入的数据
+         *2.数据传给服务器
+         *3.服务端数据给客户端
+         *4.客户端接受数据进行展示dom操作
+         **/  
+        let user = $('#txtUserName').val();
+        let classid = $('#selClass').val();
+        //ajax
+        var xhr;
+        if(XMLHttpRequest){
+          xhr = new XMLHttpRequest;
+        }else{
+          xhr = new ActiveXObject('microsoft.XMLHTTP')
+        }
+        //2
+        xhr.open('get','/search?studentname='+user+'&classid='+classid)
+        //3
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState == 4 && xhr.status == 200 ){
+            //console.log(xhr.responseText);
+            let obj = JSON.parse(xhr.responseText)
+            if(obj.code == 200){  
+              shuju = obj.data;
+              zhanshi();
+              
+            }else{
+              alert(obj.message)
+            }
+          }
+        }
+        //4
+        xhr.send(null)
+      })
+      $(function(){
+        getClassList()
+      })
+      function getClassList(){
+        //ajax
+        myAjax('get','/getClassList','',function(data){
+           let obj = JSON.parse(data)
+           if(obj.code == 200){
+          
+          obj.data.forEach(function(item,index){
+            $('#selClass').append('<option value ='+item.id+'>'+item.className+'</option>')
+          })
+           }else{
+             alert(obj.message);
+           }
+        })
+      }
+    </script>
+  </body>
+</html>

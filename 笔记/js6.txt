@@ -1,0 +1,104 @@
+--------------------------------数组
+    []
+    new Array()
+    arr[下标]
+    0-arr.length-1
+    数组的长度arr.length
+    arr.push(1,2,3) 最后添加
+    arr.unshift(1,2,3) 开始添加
+    arr.pop() 最后删除
+    arr.shift() 开始删除
+    arr.splice(开始下标，删除个数，添加的值)增删改出
+    arr.slice(开始下标，结束下标) 不改变原数组
+    arr.indexOf(val) val的下标
+    arr.join('连字符') 字符串
+--------------------------------函数
+    声明一个函数
+        function funname([参数1,参数2]){
+            //执行的代码
+            return 表达式；
+        }
+    
+        var returnval=funname(实参1，实参2);
+        如果函数内部有return，returnval代表返回的值
+        如果函数内部有return，returnval代表undefined
+        
+    匿名函数 在声明之后再调用
+        var fun=function([参数1,参数2]){
+            //执行的代码
+            return 表达式；
+        }
+        var returnval=fun(实参1，实参2);
+        fun();
+        代表返回的值
+        如果函数内部有return，returnval代表undefined
+    变量提升
+        全局变量
+            函数外部定义的变量
+            函数内部不用var声明的变量
+        局部变量
+            函数内部用var定义的变量
+        预编译时
+            全局变量的声明 提升到代码最前面
+            函数内部的局部变量也会把变量的声明提升到函数的最前面
+            注意 变量的声明要提升 赋值不提升
+            函数的定义也会提升 同名的后面的覆盖前面的
+        数据作为函数的参数进行改变时
+            基本数据类型
+                只在函数内部改变，函数外部不变
+                 var a=1;
+                    function chan(val){
+                        val=3;
+                        console.log(val)
+                    }
+                        chan(a);
+                        alert(a);
+            引用数据类型
+                var arr=[1,2]
+                function chan(val){
+                    val[0]=3;
+                    console.log(val)
+                }
+                    chan(arr);
+                    console.log(a);
+---------------------------原生对象
+Math 对象
+    Math.max()返回最大值
+    Math.min()返回最大值
+    document.write(Math.min.spply(Math,[1,2,3]));
+        取数组的最小值
+    值是数字 不可以是数组，值用逗号隔开
+        var maxval=max(1,5,8);
+        var minval=min(1,5,8);
+        document.write(maxval);
+        document.write(minval);
+    Math.random() 返回一个一个介于0-1之间的值 随机 不包括0和1
+    Math.floor() 向下取整
+    Math.cell()  向上取整
+    Math.round() 四舍五入取整
+    Math.random()>0.5?a-b:b-a
+Date 对象
+    var date=new Date(); 默认返回中国标准时间
+String 对象
+    创建字符串 
+    字面量
+    new
+    var str='abc';
+    var str2=new String('abc');
+    document.write(str2);
+    document.write('字符串的长度'+str2.length);
+    document.write('字符串转成大写'+str2.toUpperCase())
+    document.write('字符串转成小写'+str2.toLowerCase())
+    var str3='heelo world'
+    document.write('在什么位置的值是什么'+str3.chaAt(3));
+    document.write('在什么位置的值是什么'+str3.indexOf(3));//在字符串中查找3，-1代表没找到，出来值为长度位置，返回第一个找到值的下标
+    document.write('字符串拼接'+str3.concat(str,str2));
+    document.write('字符串截取'+str3.slice(-1,2));//包含开始下标 不包含结束下标 可以是负值 
+    document.write('字符串截取substring'+str3.substring(0,2));//不可以负数
+    document.write('字符串截取substr'+str3.substr(0,2));//参数 第一个位置 第二个长度 从m开始到n的长度
+    var str5='a,b,c'
+        console.log(str5.split(','));
+    var str6='          a          b         c     '
+        console.log(str6.trim());//去掉字符串的首尾空格
+    
+    

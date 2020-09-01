@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="">
+    <input type="text" id="user"/>
+    <p></p>
+</form>
+<script>
+    var inputNode = document.getElementById('user');
+    var pNode = document.getElementsByTagName('p')[0]
+    inputNode.oninput = function(){
+       if(inputNode.value.match(/[0-9a-zA-Z]{6,}/) == null){
+          pNode.innerHTML='输入6个以上数字或字母';
+           inputNode.style.borderColor = 'red'
+       }else{
+           pNode.innerHTML='';
+           inputNode.style.borderColor = 'black';
+       }
+    }
+</script>
+</body>
+</html>

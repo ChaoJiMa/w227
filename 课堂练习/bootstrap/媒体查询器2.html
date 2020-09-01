@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        @media screen and (min-width: 1200px) {
+            body{
+                background: #999999;
+                color: white;
+                font-size: 50px;
+                transition: all 1s;
+            }
+            #middle{
+                background: yellow;
+                display: none;
+            }
+            #small{
+                background: blue;
+                display: none;
+            }
+        }
+        @media screen and (max-width: 1200px) and (min-width: 767px){
+            body{
+                background: #16a184;
+                color: red;
+                font-size: 32px;
+                transition: all 1s;
+            }
+            #large{
+                background: red;
+                display: none;
+            }
+            #small{
+                background: blue;
+                display: none;
+            }
+        }
+        @media screen and (max-width: 767px){
+            body{
+                background: orange;
+                color: green;
+                font-size: 16px;
+                transition: all 1s;
+            }
+            #large{
+                display: none;
+                background: red;
+            }
+            #small{
+                background: blue;
+            }
+            #middle{
+                background: yellow;
+                display: none;
+            }
+        }
+        div{
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+hello world
+    <div id="large">large</div>
+    <div id="middle">middle</div>
+    <div id="small">small</div>
+<script></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html><html class=''>
+<head><meta charset='UTF-8'>
+    <title>学生管理系统</title>
+<link rel="stylesheet" href="/css/login.css">
+<script src="/js/jquery-3.5.1.js"></script>
+</head>
+<body>
+    <div id="loginform">
+        <div id="facebook">
+            <p id="logo">陸</p>
+            <div id="connect">学生管理系统</div>
+        </div>
+        <div id="mainlogin">
+            <div id="or">or</div>
+            <h1>请输入账号密码</h1>
+            <form action="#">
+                <input type="text" placeholder="请输入账号" value="" required id="yhm">
+                <input type="password" placeholder="请输入密码" value="" required id="mm">
+                <button type="button" id="dl">登陆</button>
+            </form>
+            <div id="note">
+                <p>账号或密码错误！</p>
+            </div>
+        </div>
+    </div>
+    <script src="/js/shuju.js"></script>
+    <script src="/js/mima.js"></script>
+    <script>
+        $(window).keydown(function(event){
+            if(event.keyCode == 13){
+                $('#dl').click()
+            }
+        })
+        var system = { 
+                    win: false,  
+                    mac: false, 
+                    xll: false, 
+                    ipad:false 
+                }; 
+                //检测平台 
+                var p = navigator.platform; 
+                system.win = p.indexOf("Win") == 0; 
+                system.mac = p.indexOf("Mac") == 0; 
+                system.x11 = (p == "X11") || (p.indexOf("Linux") == 0); 
+                system.ipad = (navigator.userAgent.match(/iPad/i) != null)?true:false; 
+                if(system.win == true){
+                    console.log('电脑');
+                    var xh=system.win ='电脑'
+                }else if(system.mac == true){
+                    console.log('苹果电脑');
+                    var xh=system.mac='苹果电脑'
+                }else if(system.x11){
+                    console.log('手机');
+                    var xh=system.x11='手机'
+                }else if(system.ipad){
+                    console.log('平板');
+                    var xh=system.ipad='平板'
+                }
+                console.log(xh)
+
+            var shijian = new Date().toLocaleString();
+            $('#dl').click(function(){
+	            // console.log($('#yhm').attr('value'));
+                var yhm = $("#yhm").val();
+                var mm= $("#mm").val();
+                var privacyFlag = 0;
+                //跳转语句
+                $.each(useArr,function(i,v){
+					console.log(useArr.length,i)
+                    if(yhm == v.user && mm == v.pw){
+                        privacyFlag = v.private;
+					if(privacyFlag){
+                        if(JSON.parse(localStorage.getItem("ymsj")) == null){
+                            localStorage.setItem('ymsj',JSON.stringify(ymsj)); 
+                            localStorage.setItem('sj',JSON.stringify(sj)); 
+                            localStorage.setItem('teacher',JSON.stringify(teacher));
+                            localStorage.setItem('student',JSON.stringify(student));
+                            localStorage.setItem('quanxian',JSON.stringify(privacyFlag));
+                            localStorage.setItem('yonghu',JSON.stringify(yhm));
+                            localStorage.setItem('mimachangdu',JSON.stringify(mm.length));
+                            localStorage.setItem('xh',JSON.stringify(xh));
+                            localStorage.setItem('shijian',JSON.stringify(shijian));
+                           location.href= '/home.html'
+                        }else{
+                            localStorage.setItem('quanxian',JSON.stringify(privacyFlag));
+                            localStorage.setItem('yonghu',JSON.stringify(yhm));
+                            localStorage.setItem('mimachangdu',JSON.stringify(mm.length));
+                            localStorage.setItem('xh',JSON.stringify(xh));
+                            localStorage.setItem('shijian',JSON.stringify(shijian));
+                            location.href= '/home.html'
+                            location.href= '/home.html'
+                        }
+				        }
+					
+			        }
+		        })
+		        if(!privacyFlag){
+				    $('#note').css({'display': 'block'})	
+			    }
+            })
+    </script>
+</body>
+</html>

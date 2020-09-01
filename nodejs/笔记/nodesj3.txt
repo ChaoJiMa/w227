@@ -1,0 +1,59 @@
+day03 ajax 的应用
+
+1. ajax 传参
+
+  get 方式：参数加在url地址后面
+  
+  注：ajax 只请求数据，不能跳转页面
+      如果想跳转页面，可以在客户端(网页中)使用location.href进行跳转
+	  
+  post 方式 
+   参数写send方法中
+   要设置请求头的编码 
+   xhr对象.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+  form表格的编码：
+       如果数据中，有文件的提交，需要设置 enctype="multipart/form-data"
+	   
+	   
+  xhr对象
+  xhr对象.readyState  
+	0: 请求未初始化
+
+	1: 服务器连接已建立
+
+	2: 请求已接收
+
+	3: 请求处理中
+
+	4: 请求已完成，且响应已就绪
+	
+  xhr对象.status 状态(http 请求状态码)
+  xhr对象.responseText :获取服务器端响应回来的数据 
+  注：ajax 对数据进行DOM
+  
+  
+ =====================================
+2. ajax 查询
+
+
+
+添加根据班级来搜索 
+//1. 客户端添加 一个select 
+//2. 客户端发起一个请求，请求班级数据
+
+
+分页
+  显示数据(select * from student)   需要两个参数：当前页，每页显示的条数
+  显示页码   一个 :总行数
+  点击页码，请求对应的数据(当前页的值改变，调用 显示数据 的方法)
+
+
+
+
+
+ 
+  
+  
+  
+     

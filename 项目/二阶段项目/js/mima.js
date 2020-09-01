@@ -1,0 +1,26 @@
+var useArr = [
+    {user:"boss",pw:"boss",private:1},
+     {user:"boss1",pw:"boss1",private:1},
+    // 老师
+    {user:"bzr",pw:"bzr",private:2},
+    {user:"bzrzs",pw:"bzrzs",private:2},
+    {user:"gbbzr",pw:"gbbzr",private:2},
+    //学生
+    {user:"mm",pw:"mm",private:3},
+    {user:"lm",pw:"lm",private:3},
+    {user:"xw",pw:"xw",private:3},
+    {user:"sz",pw:"sz",private:3},
+    {user:"jzy",pw:"fc",private:3},
+    {user:"fd",pw:"fc",private:3},
+    {user:"ww",pw:"ww",private:3},
+    {user:"yq",pw:"yq",private:3},
+    {user:"yf",pw:"yf",private:3},
+    {user:"yx",pw:"yx",private:3},
+    {user:"gl",pw:"gl",private:3},
+    {user:"jyl",pw:"jyl",private:3},
+    {user:"py",pw:"py",private:3},
+    {user:"jc",pw:"jc",private:3},
+    {user:"hjc",pw:"hjc",private:3},
+    {user:"fc",pw:"fc",private:3},
+    {user:"fed",pw:"fed",private:3},
+];

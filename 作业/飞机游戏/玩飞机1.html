@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #box {
+        width: 320px;
+        height: 560px;
+        margin: 10px auto;
+        background: url("images/1.png");
+        position: relative;
+        overflow: hidden;
+      }
+      #total {
+        display: none;
+      }
+      #total p {
+        text-indent: 1em;
+        line-height: 30px;
+        color: purple;
+        font-size: 20px;
+      }
+      #startBox {
+        width: 250px;
+        height: 80px;
+        text-align: center;
+        margin: auto auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      #startBox h1 {
+        animation: myAnimation 4s linear infinite;
+      }
+      @keyframes myAnimation {
+        0% {
+          color: yellow;
+        }
+        25% {
+          color: green;
+        }
+        50% {
+          color: deeppink;
+        }
+        100% {
+          color: purple;
+        }
+      }
+      #start {
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        border: none;
+        margin-top: 10px;
+        background: #a8fc86;
+        outline: none;
+        box-shadow: 1px 2px 2px blue;
+      }
+      /*
+            input:focus{
+                        outline: none;
+            }
+        */
+    </style>
+    <script src="util/event.js"></script>
+  </head>
+  <body>
+    <div id="box">
+      <div id="total">
+        <p>敌机数：<span id="kill">3</span></p>
+        <p>总分：<span id="score">300</span></p>
+      </div>
+      <div id="startBox">
+        <h1>少年，玩游戏啦</h1>
+        <button id="start">开始游戏</button>
+      </div>
+    </div>
+
+    <script>
+      //    var eventAction = new EventAction();
+      var oBox = document.getElementById("box"),
+        oTotal = document.getElementById("total"),
+        oStartBox = document.getElementById("startBox"),
+        oStartBtn = document.getElementById("start");
+      var oPlayer,
+        bulletArr = [],
+        enemyArr = [];
+      //记录飞行的方向
+      var bLeft = false,
+        bRight = false,
+        bTop = false,
+        bDown = false;
+      /* eventAction.addEvent(oStartBtn,'click',startGame);
+    function startGame(){
+        console.log('开始游戏')
+    }*/
+
+      oStartBtn.onclick = function () {
+        //隐藏欢迎界面
+        oStartBox.style.display = "none"; //样式控制：style 添加或者删除class  节点.classList.add('className'')
+        oTotal.style.display = "none";
+        // 敌机出现
+        setInterval(showEnemy, 500);
+        setInterval(enemyMove, 100);
+        //玩家飞机出现
+        oPlayer = new Player("images/myplane.gif", 0, 560 - 80, 4);
+        //玩家飞机飞行
+        setInterval(playMove, 30);
+        //子弹飞起来
+        setInterval(bulletMove, 50);
+        //检测子弹和敌机的碰撞
+        setInterval(collision, 40);
+      };
+      function ran(n, m) {
+        return Math.floor(Math.random() * (m - n) + n);
+        /*  Math.random()   0-1随机小数，
+         Math.random() * 10   0-10 随机小数，
+        * Math.ceil(Math.random() * 10 +10 ) 1-10的整数
+        * Math.floor(Math.random() * （10+1） +10  ) 0-9的整数
+        *  Math.random() * 10 + 10   10-20
+        * */
+      }
+      /*敌机的构造函数
+     @constructor EnemyPlane  创建敌机对象
+     @param src  string  图片地址
+     @param x  Number  图片的水平坐标
+     @param y  Number  图片的竖直方向坐标
+     @param speed  Number  敌机移动的速度
+    * */
+      function EnemyPlane(src, x, y, speed) {
+        this.node = document.createElement("img");
+        this.src = src;
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.isDead = false;
+        this.deadTime = 3;
+
+        this.init();
+      }
+      //敌机的初始化函数，让敌机显示在页面内
+      EnemyPlane.prototype.init = function () {
+        this.node.src = this.src;
+        this.node.style.position = "absolute";
+        this.node.style.left = this.x + "px";
+        this.node.style.top = this.y + "px";
+        oBox.appendChild(this.node);
+      };
+      //敌机的移动
+      EnemyPlane.prototype.move = function () {
+        this.node.style.top = this.node.offsetTop + this.speed + "px";
+      };
+      function showEnemy() {
+        enemyArr.push(
+          new EnemyPlane("images/enemy1_fly_1.png", ran(320 - 34, 0), 0, 2)
+        );
+      }
+      function enemyMove() {
+        for (var i = 0; i < enemyArr.length; i++) {
+          if (enemyArr[i].isDead) {
+            //敌机即将死
+            enemyArr[i].deadTime--;
+            if (enemyArr[i].deadTime <= 0) {
+              oBox.removeChild(enemyArr[i].node);
+              enemyArr.splice(i, 1);
+            }
+          } else {
+            if (enemyArr[i].node.offsetTop >= oBox.offsetHeight) {
+              oBox.removeChild(enemyArr[i].node);
+              enemyArr.splice(i, 1);
+            } else {
+              enemyArr[i].move();
+            }
+          }
+        }
+      }
+      //===========敌机结束===============
+      //    =================玩家飞机的构造函数=================
+      /*玩家的构造函数
+ @constructor Player  创建玩家飞机对象
+ @param src  string  图片地址
+ @param x  Number  图片的水平坐标
+ @param y  Number  图片的竖直方向坐标
+ @param speed  Number  敌机移动的速度
+ * */
+      function Player(src, x, y, speed) {
+        this.node = document.createElement("img");
+        this.src = src;
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+
+        this.init();
+      }
+      Player.prototype.init = function () {
+        this.node.src = this.src;
+        this.node.style.position = "absolute";
+        this.node.style.left = this.x + "px";
+        this.node.style.top = this.y + "px";
+        oBox.appendChild(this.node);
+      };
+      //玩家的移动
+      Player.prototype.toTop = function () {
+        var t = this.node.offsetTop - this.speed;
+        if (t <= 0) {
+          t = 0;
+        }
+        this.node.style.top = t + "px";
+      };
+      Player.prototype.toLeft = function () {
+        var l = this.node.offsetLeft - this.speed;
+        if (l <= 0) {
+          l = 0;
+        }
+        this.node.style.left = l + "px";
+      };
+      Player.prototype.toDown = function () {
+        var t = this.node.offsetTop + this.speed;
+        if (t >= oBox.offsetHeight - oPlayer.node.offsetHeight) {
+          t = oBox.offsetHeight - oPlayer.node.offsetHeight;
+        }
+        this.node.style.top = t + "px";
+      };
+      Player.prototype.toRight = function () {
+        var l = this.node.offsetLeft + this.speed;
+        if (l >= oBox.offsetWidth - oPlayer.node.offsetWidth) {
+          l = oBox.offsetWidth - oPlayer.node.offsetWidth;
+        }
+        this.node.style.left = l + "px";
+      };
+      Player.prototype.shoot = function () {
+        bulletArr.push(
+          new Bullet(
+            "images/bullet2.png",
+            oPlayer.node.offsetLeft + (oPlayer.node.offsetWidth / 2 - 6 / 2),
+            oPlayer.node.offsetTop - 14,
+            6
+          )
+        );
+      };
+      function playMove() {
+        if (bTop) {
+          oPlayer.toTop();
+        }
+        if (bDown) {
+          oPlayer.toDown();
+        }
+        if (bLeft) {
+          oPlayer.toLeft();
+        }
+        if (bRight) {
+          oPlayer.toRight();
+        }
+      }
+
+      //=====================玩家飞机的功能结束====================
+
+      //=====================子弹功能开始================
+      function Bullet(src, x, y, speed) {
+        this.src = src;
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.node = document.createElement("img");
+        this.init();
+      }
+      Bullet.prototype.init = function () {
+        this.node.src = this.src;
+        this.node.style.position = "absolute";
+        this.node.style.left = this.x + "px";
+        this.node.style.top = this.y + "px";
+        oBox.appendChild(this.node);
+      };
+      Bullet.prototype.move = function () {
+        this.node.style.top = this.node.offsetTop - this.speed + "px";
+      };
+      function bulletMove() {
+        //        console.log(bulletArr.length);
+        for (var i = 0; i < bulletArr.length; i++) {
+          if (bulletArr[i].node.offsetTop <= -bulletArr[i].node.offsetHeight) {
+            oBox.removeChild(bulletArr[i].node);
+            bulletArr.splice(i, 1);
+          } else {
+            bulletArr[i].move();
+          }
+        }
+      }
+      //子弹功能结束================
+      //检测碰撞
+      function testPZ(node1, node2) {
+        var l1 = node1.offsetLeft; // parseInt(div1.style.left)
+        var r1 = node1.offsetLeft + node1.offsetWidth;
+        var t1 = node1.offsetTop;
+        var b1 = node1.offsetTop + node1.offsetHeight;
+        var l2 = node2.offsetLeft; // parseInt(div1.style.left)
+        var r2 = node2.offsetLeft + node2.offsetWidth;
+        var t2 = node2.offsetTop;
+        var b2 = node2.offsetTop + node2.offsetHeight;
+        if (r1 < l2 || l1 > r2 || b1 < t2 || t1 > b2) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+      //碰撞后要做的事情
+      function collision() {
+        for (var j = 0; j < enemyArr.length; j++) {
+          for (var i = 0; i < bulletArr.length; i++) {
+            if (testPZ(bulletArr[i].node, enemyArr[j].node)) {
+              //碰上了
+              enemyArr[j].node.src = "images/smallplaneboom2.gif";
+              //换爆炸图
+              enemyArr[j].isDead = true;
+              //给一个闪烁的时间
+              //删掉 子弹 和 敌机
+              oBox.removeChild(bulletArr[i].node);
+              bulletArr.splice(i, 1);
+            }
+          }
+        }
+      }
+
+      /*键盘事件*/
+      document.onkeydown = function () {
+        var e = window.event || arguments[0];
+        switch (e.keyCode) {
+          case 37:
+            //向左飞
+            bLeft = true;
+            break;
+          case 38:
+            //向上飞,注意不可以飞出边界
+            bTop = true;
+            break;
+          case 39:
+            //向右飞
+            bRight = true;
+            break;
+          case 40:
+            //向下飞
+            bDown = true;
+            break;
+          case 32:
+            oPlayer.shoot();
+            break;
+          default:
+            console.log("没识别出上面的键盘码" + e.keyCode);
+        }
+      };
+      document.onkeyup = function () {
+        var e = window.event || arguments[0];
+        switch (e.keyCode) {
+          case 37:
+            //向左飞
+            bLeft = false;
+            break;
+          case 38:
+            //向上飞,注意不可以飞出边界
+            bTop = false;
+            break;
+          case 39:
+            //向右飞
+            bRight = false;
+            break;
+          case 40:
+            //向下飞
+            bDown = false;
+            break;
+          default:
+            console.log("没识别出上面的键盘码");
+        }
+      };
+    </script>
+  </body>
+</html>

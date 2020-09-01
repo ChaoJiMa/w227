@@ -1,0 +1,261 @@
+留言板作业
+    功能
+        登录 （验证，form表单提交数据，表单的提交事件）
+        留言板
+            输入框 textarea
+            发布 （发不完要清空输入框）
+
+            每条信息展示
+                删除
+                点赞
+                回复
+                头像
+                名字
+数据
+               [
+                    {
+                        name:
+                        id:
+                        pw:
+                        img:'path'
+                        thumbUp: 0
+                    },
+                    {
+
+                    }
+               ]
+
+登录
+    form表单
+        label for
+        input id type=text name
+
+        form表单的submit事件
+            提前验证
+留言板
+    url  获取用户名
+
+        textarea  留言内容
+        点击发布留言
+            事件：
+                1.获取textarea节点（注意下标字符串问题）的value
+                2.克隆一个留言的节点（包含很多子节点，头像，名字，点赞）
+                3.把第一步获取到的value给第二步克隆的节点的对应留言内容的节点（innerHtml或者innertext）
+                4.修改后的克隆的节点插入留言板的第一个留言前面（insertBefore）
+
+                ul
+                   li 第3条
+                    li 第一条
+                    li 第2条
+                ul
+                  var firstNode  第一条 ;
+
+                  onclick =
+                     cloneNode
+                      firstNode = ul.firstElementChild
+                      insertBefore(cloneNode,firstNode)
+
+=============================函数回顾==============================
+1.创建函数
+    函数声明  function funName(){}   注意可以提升声明
+    表达式    var fun = function(){}   变量的声明提升，赋值不提升，这种声明方式，函数的调用必须在声明后
+
+    对象中定义
+     var obj = {
+            name:'111',
+            age:12,
+            house:['1','2','3'],
+            sayHello:function(){ alert('hello')}
+        }
+     obj.sayHi = function(){ alert('hi')}
+2.函数的调用
+        函数名();
+        变量名();
+        obj.sayHello();
+        <div onclick='funName()'>
+        节点.onclick = function(){}
+        节点.addEventListener('click',匿名函数|函数名，false);
+        setTimeout(匿名函数|函数名,delayTime)
+
+3.函数的组成
+    function 函数名  参数 函数体  返回值（没有返回值，默认返回undefined） 函数的注释
+
+4.回调函数：当特定事件发生的时候，函数会被调用
+  递归函数：函数内部调用自己
+
+5.arguments对象
+    存在于函数内容
+    function fun(x,y){
+        console.log(x)
+        console.log(y)
+        arguments可以获取所有的参数，下标从0开始按照顺序获取实参
+    }
+  fun(1,2,3,4);
+
+  ==============================面向对象====================================
+  面向过程，关注具体的实现方法
+  面向对象，只关注结果，拿来用就行，不需要关心内部的实现
+
+  面向对象  Object Oriented  OO
+
+  对象，是一种数据类型，有很多属性，每个属性都可以有值， 键值对，其实就是一套标准，代表一类数据的集合
+
+  var obj = {
+        sex:'female',
+        shengao:'1.6m以上',
+        name：'',
+        age：18-25,
+        cookie：function(){
+            console.log('会做饭')
+        },
+        beauty:true
+  }
+
+在js中一切皆为对象
+    String对象
+    Math
+    Date
+    RegExp
+    window
+    arguments
+    event对象
+    json对象  以键值对的形式存多组值
+
+  ==对象的创建, 字面量，new
+    var obj = {};
+    obj.name = '张三’
+    obj.age = 18;
+    obj.eat = function(){
+        console.log('会吃')
+    }
+    obj['beauty']= true;
+    var obj = new Object()
+
+对象的访问和修改
+    obj.age = 18;
+    obj['beauty']= true;
+   可以通过下标或（.属性）的方式访问属性或修改
+
+对象属性的删除
+ delete    girlFriend.age;
+
+对象的删除
+    obj = null;
+
+数组和对象的区别
+        arr                obj
+写法  []                    {}
+       new Array()        new Object()
+数据  有序的集合            无序
+遍历数据  for for-in            for-in
+存储数据   尽量是同一种数据类型   不限制
+
+对象数组
+    [obj1,obj2,obj3]
+下标访问,
+添加  push unshift
+删除 pop  shift
+增删替换  splice
+复制一个片段   slice   不改变原数组
+
+==遍历数据的拓展   arr.forEach   arr.filter  arr.map=====
+
+对象的创建
+    单例模式
+        var obj = new Object();
+        obj.attr1 = '';
+        obj.fun1= function(){}
+
+    工厂模式
+        funtion funName(param1,param2){
+             var obj = new Object();
+             obj.attr1 = '';
+            obj.fun1= function(){}
+            return obj;
+        }
+        在函数内部创建对象，返回对象
+    构造函数模式(this new)
+        function FunName(param1,param2){
+             this.attr1 = param1;
+             this.attr2 = param2;
+            this.fun1 = function(){}
+        }
+        var obj1 = new FunName(param1,param2)
+        var obj2 = new FunName(param1,param2)
+
+        new干了什么？
+            1.在函数内部自动创建了一个空对象，
+            2.在函数内把this指向该对象
+            3.返回对象
+
+        不需要创建对象，也不需要return对象
+        缺点：每次创建（对象的）方法，都要创建一个函数，函数要占内存
+
+==========混合模式===========
+function FunName(param1,param2){
+        this.attr1 = param1;
+        this.attr2 = param2;
+        this.fun1 = function(){
+            console.log(this.attr1);
+        }
+    }
+    /*修改对象的基因，相当于这个方法只声明过一次*/
+ FunName.prototype.fun2 = function(){
+        console.log(this.attr1);
+    }
+    FunName.prototype.sex = '男';
+    var obj1 = new FunName('张三',12);
+    var obj2 = new FunName('李四',13);
+
+    =====this的指向=====
+    一般的函数调用，函数内部，谁调用指向谁，
+        funName();   window  对于严格模式 'use strict'，this就是undefined
+        事件触发    指向触发事件的元素
+        定时器     window
+        对象调用    对象
+
+         箭头函数内部，this指向不一样
+        函数.apply()  函数.call()
+
+
+     ==========设计模式======
+        飞机
+            开始功能
+            玩家飞机  敌机
+            飞机移动
+            玩家发射子弹
+            子弹移动
+            碰撞检测
+            杀敌数 总分统计
+            暂停游戏
+
+
+            扩展
+            敌机发射子弹
+            敌机不同的机型
+            敌机的血量
+            玩家有不同的子弹，变大，子弹变成多排
+            宝箱 血量或者子弹变厉害
+
+            功能
+            1.欢迎页面
+            2.点击开始时候，欢迎页面隐藏，敌机和玩家飞机出现
+            3.敌机运动，玩家飞机运动
+            4.发射子弹功能
+            5.子弹和敌机碰撞。爆炸
+            6.分数统计
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

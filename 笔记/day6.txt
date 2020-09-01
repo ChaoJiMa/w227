@@ -1,0 +1,120 @@
+文字围绕图片
+    浮动元素不可以遮挡文本流，浮动元素是脱离文档流，浮动元素变成行内块级元素
+导航应用，列表实现横排
+    浮动元素变成行内块级元素
+    所有子元素浮动，父元素就浮动塌陷
+    连续浮动，一行排不下就换行，废弃空间都不可以再利用
+第一个浮动的元素
+    在文档流里面的位置进行左右浮动，如果水平方向放不下就排在浮动元素下面
+父元素浮动塌陷解决办法
+    给父元素高度
+    父元素overflow：hidden
+    clear 有两种方式
+hover 鼠标悬停
+-----------------------盒模型，定位----------------------
+1.盒模型
+    盒子的厚度 盒子和其他盒子之间的距离 盒子填充 
+
+    边框 border  外边距 margin  内边距 padding  盒子的内容（文字，图片，其他盒子）
+2.盒子的尺寸 计算模式 box-sizing
+    默认情况 content-box 设置的高宽以内容为边界
+        盒子的尺寸=border边框+width宽度+hight高度+padding内边距
+    怪异模式：border-box 设置的高宽以border为边界
+        盒子的尺寸=width宽度+hight高度
+3.border
+    设置四个边
+        border 复合属性 边框的粗细（1px） 边框的类型solid/dashed/dotted/double 边框颜色
+        border-width 粗细
+        border-style 线条
+        border-color 颜色
+    设置单边
+        border-top
+        border-right
+        border-bottom
+        border-left
+    补充：轮廓线 outline：10px solid royalblie 。设置四个边，尺寸不占空间
+4.padding
+    padding 可以设置四个边的内边距
+    一个值 设置四个边的内边距都一样
+    两个值  第一个值代表上下内边距 第二个值代表左右内边距 第三个值代表下的内边距
+    三个值 第一个值代表上内边距 第二个值待变左右内边距 第三个值代表下内边距 四个值代表作编剧
+    记忆方法，从上面开始顺时针设置，没设置的边取对边的值
+
+    单边的内边距的设置
+    padding-top/bottom/hitght/left
+    特点： margin可以是负数，但padding不可以为负数
+5.border-redius 圆角
+
+        设置一个值  设置四个角的弧度
+        设置两个值  第一个值代表左上角和右下角 第二个值代表右上角和左下角
+        设置三个值  第一个值左上角 第二个值右上角和左下角 第三个值代表右下角
+        设置四个值  第一左上 第二右上角 第三个右下角 第四个左下角
+    设置单个值
+        boder-top-left-radius
+        boder-rop-right-radius
+        boder-bottm-left-radius
+        boder-bottm-right-radius
+    正圆
+        前提高宽一样，border-radius的值是高宽（包含边框）的一半
+6.margin的bug   父子关系
+    首尾子元素的上下方向的margin，会应用到父元素上面
+7.margin bug的解决方案
+    a.把子元素的margin换成父元素的padding
+    b.给父元素加border
+    c.给父元素加overflow：hidden
+    e.给父元素加float 
+    f给父元素加display：inline-block
+8.margin的应用
+    margin：0 auto；可以水平居中一块内容,居中的内容要有宽度
+9.margin合并（兄弟关系）
+    垂直方向margin相遇，取最大值为最终值
+    水平方向margin相遇，两个值叠加
+----------------------------定位------------------------------
+元素重叠的时候用定位
+                    定位的元素水平居中 需要有宽度
+                        margin： auto；
+                        left：0；
+                        right：0；
+给元素设定一个位置
+    positon ：常见有四种
+        staric 默认 不定位
+        relative 相对定位
+        absolute 绝对定位
+        fired  固定定位
+配合使用的位置
+    top
+    bottom
+    left
+    right
+    值可以是负数，单独使用无效果
+配合使用的层级关系  默认后来者居上 默认0
+    z-index：数值；控制层级 -9999到9999
+1.相对定位
+    没有脱离文档流，虽然可能离开了原位，但是位置依然保留
+    相对自己原来的位置进行定位
+    没有变成行内块级元素
+2.绝对定位
+    脱离文档流，影响文档的布局
+    变成行内块级元素
+    祖先元素不定位，相对body定位
+    祖先元素定位，相对最近一级已定位的祖先元素定位
+3.固定定位
+    脱离文档流，影响文档的布局
+    变成行内块级元素
+    相对浏览器窗口定位
+4.static  默认 不定位
+5.定位遵循的原则
+    父相子绝
+    父元素相对定位，子元素绝对定
+    -----------------------background---------------------
+    background 可以是颜色 也可以url（图片路径）
+    background-color:
+    background-image:url()
+        background-repeat:no-repeat; 不重复 默认是重复排列
+        background-size: ;改变背景图片大小
+        background-positon 背景的位置
+            一个值
+                如果是长度或者百分比水平方向的偏移 
+                如果是top或者bottom代表垂直方向的位置，水平方向默认居中
+            两个值代表一个水平一个垂直
+

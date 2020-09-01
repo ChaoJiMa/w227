@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    localStorage.stuArr =JSON.stringify( [
+        {name:'齐朝鑫',age:12},
+        {name:'彭圣杰',age:8},
+    ]);
+    var stuArr = JSON.parse(localStorage.stuArr);
+    stuArr.push({name:'伏成',age:40});
+    stuArr.splice(0,1);
+    localStorage.stuArr = JSON.stringify(stuArr);
+        console.log(JSON.parse(localStorage.stuArr));
+
+    delete localStorage.stuArr;
+
+</script>
+</body>
+</html>

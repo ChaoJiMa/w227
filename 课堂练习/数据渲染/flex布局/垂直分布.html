@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #father{
+            height: 200px;
+            background-color: red;
+         /*   /!*变成行内块级元素*!/
+            width: 200px;
+            display: table-cell;
+            vertical-align: middle;*/
+           /*子元素会变成行内块元素*/
+            display: flex;
+            align-items: center;
+        }
+        .son{
+            height: 80px;
+            width: 200px;
+            background-color: #0077aa;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="father">
+        <div class="son"></div>
+    </div>
+<script>
+
+</script>
+</body>
+</html>

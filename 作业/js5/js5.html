@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        练习一
+        function mianji(r,g){
+            var yuan=3.14*r*r*2+2*3.14*r*g;
+            var tiji=r*r*3.14*g;
+            return '面积'+yuan+'体积'+tiji;
+        }
+        var a=prompt('请输入半径');
+        var b=prompt('请输入高度');
+        console.log(mianji(a,b));
+        练习二
+        function xianhua(shu) {
+            var ge=a%10
+                shi=parseInt(a/10)%10;
+                bai=parseInt(a/100)
+            if(shu==ge*ge*ge+shi*shi*shi+bai*bai*bai){
+                alert('是水仙花');
+                return shu;
+            }else{
+                alert('不是水仙花');
+            }
+        }
+        var a=prompt('请输入一个三位数');
+        console.log(xianhua(a));
+        练习三
+                a1=+prompt('请输入第一个数');
+                a2=+prompt('请输入第一个数');
+                a3=+prompt('请输入第一个数');
+                if(a1>=10||a2>=10||a3>=10){
+                    alert('请输入1-9');
+                }else if(a1<1||a2<1||a3<1){
+                    alert('请输入1-9');
+                }else{
+                    arr=[a1,a2,a3]
+                    arr=arr.sort(
+                        function arr(a,b) {
+                            return b-a ;
+                        }
+                    );
+                    console.log(arr);
+                }
+        练习四
+        function juxing(hang,lie){
+            for(var i=1;i<=hang;i++){
+                for(var j=1;j<=lie;j++){
+                    document.write('*')
+                }
+                document.write('<br>');
+            }
+        }
+        var a=prompt('请输入高');
+        var b=prompt('请输入宽');
+        juxing(a,b);
+        练习六
+        function count(nian1,nian2){
+            var nian1=new Date(nian1)
+            var nian2=new Date(nian2);
+            var nian=(nian2.getTime()-nian1.getTime())/(1000*60*60*24);
+            return nian;
+            }
+            var nian = count('2017,12,1','2021,12,17');
+            console.log(nian);
+        // 练习七
+    </script>
+</body>
+</html>

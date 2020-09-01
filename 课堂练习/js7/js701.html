@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            height:30px;
+            background-color: pink;
+            position: relative;
+            text-align: center;
+        }
+        img{
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: pink;
+            width: 30px;
+            height: 30px;
+        }
+        #div2{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            border: 1px solid;
+        }
+        .yinCang{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id='div1'>
+        <p>点击显示隐藏</p>
+    </div>
+    <div id="div2">
+    <img src="./close-16x16.png" alt="" class="img">
+    </div>
+    <script>
+        //隐藏 display:none
+        //visibility:hidden
+        //opacity:0;
+        //height:0;
+        // var djy=document.getElementsByTagName('div')[1];
+        // var djx=document.getElementsByTagName('div')[0];
+        // var img =document.querySelector('img');
+        var djy=document.getElementById('div1');
+        var djx=document.getElementById('div2');
+        var img=document.getElementsByClassName('img')[0];
+        console.log(document.getElementsByClassName('img'));
+        //
+        var s=true;
+        djx.onclick=function(){
+            if(s){
+                // djy.style.display='none';
+                // djy.className='yinCang';
+                djy.classList.add('yinCang');
+                img.src='./down-arr-16x16.png';
+                s=false;
+            }else{
+                djy.classList.remove('yinCang');
+                // djy.className='';
+                // djy.style.display='block';
+                img.src='./close-16x16.png';
+                s=true;
+            }
+            
+        }
+    </script>
+</body>
+</html>

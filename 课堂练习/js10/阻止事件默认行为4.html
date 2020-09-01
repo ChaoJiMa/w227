@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="//baidu.com" onclick="return confirm('是否要跳转')">tobaidu</a>
+
+<form action="//baidu.com" onsubmit='fun()'>
+    <input type="text" name="user"/>
+    <button>提交</button>
+</form>
+<script>
+    /*阻止页面的默认行为*/
+
+ function fun(){
+     var user=document.getElementsByName('user')[0].value;
+     var e = arguments[0] || window.event;
+     console.log(user);
+        if(user == ''){
+            alert('user没有值');
+            //阻止页面的默认行为
+            e.returnValue = false;
+//            e.preventDefault();
+        }
+    }
+</script>
+</body>
+</html>

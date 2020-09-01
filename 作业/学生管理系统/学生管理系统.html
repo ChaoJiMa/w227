@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生管理系统</title>
+</head>
+<body>
+    <script>
+        var xuesheng=[
+            {
+                name:'张一',
+                age:18,
+                gender:'男',
+                class:1,
+                id:10,
+            },
+            {
+                name:'张二',
+                age:19,
+                gender:'女',
+                class:1,
+                id:11,
+            },
+            {
+                name:'张三',
+                age:20,
+                gender:'男',
+                class:1,
+                id:12,
+            },
+            {
+                name:'张四',
+                age:21,
+                gender:'女',
+                class:2,
+                id:13,
+            },
+            {
+                name:'张五',
+                age:22,
+                gender:'男',
+                class:2,
+                id:14,
+            },
+            {
+                name:'张六',
+                age:23,
+                gender:'女',
+                class:2,
+                id:15,
+            },
+            
+        ];
+        var isLoginIn = false;
+        var loginUser= -1;//用于记录当前登录的账户信息，值代表数组的下标，通过下标可以获取用户的所有信息，-1代表不存在的账户，谁都没登录
+            jishu=0;
+        //登陆
+        function denglu(){
+            var yonghuming='123',
+                mima=123;
+            var isLoginIn = false;
+            for(i=1;i<=3;i++){
+                var yhm=prompt('请输入学生管理系统用户名：');
+                var mm=prompt('请输入学生管理系统密码：');
+                    if(i<3){
+                        if(yhm==yonghuming && mm==mima){
+                            isLoginIn = true;
+                            loginUser= i;
+                            alert('登录成功');
+                            caidan();
+                            break;
+                        }else if(yhm!=yonghuming && mm!=mima){
+                            alert('用户名密码错误，剩余'+(3-i)+'次');
+                        }
+                    }else if(i==3){
+                        alert('错误三次，退出系统！');
+                        var isLoginIn = false;
+                        return;
+                    } 
+            }
+            return denglu();
+        }
+        var signIn = denglu();
+        // 主界面
+        function caidan(){
+            var action =+prompt('欢迎登录，请选择你想要的操作\n1: 查询学生信息\n2：添加学生信息\n3：删除学生信息\n4：修改学生信息\n5：退出')
+            switch(action){
+                case 1:
+                    chaxunCd();
+                    break;
+                case 2:
+                    tianjia();
+                    break;
+                case 3:
+                    shanchu();
+                    break;
+                case 4:
+                    xiugai();
+                    break;
+                case 5:
+                    tuichu();
+                    break;
+            }
+        }
+        //查询学生信息菜单
+        function chaxunCd(){
+            var cxTj=+prompt('请选择你需要的查询条件\n1: 姓名\n2：年龄\n3：学号\n4：返回上级菜单');
+            switch (cxTj){
+                case 1:
+                    xm();
+                    break;
+                case 2:
+                    nn();
+                    break;
+                case 3:
+                    xh();
+                    break;
+                case 4:
+                    fh();
+                    break;
+            }
+        }
+        //姓名为条件
+        function xm(){
+            // var chaxunxm=prompt('请输入你要查询的姓名：');
+            //     a=-1;
+            // for(i=0;i<xuesheng.length-1;i++){
+            //     if(chaxunxm==xuesheng[i].name){
+            //         a=i;
+            //         break;
+            //     }
+            // }
+            // if(a==-1){
+            //     alert('查无此人');
+            //     chaxunCd();
+            // }else{
+            //     alert('姓名：'+xuesheng[a].name+'\n年龄：'+xuesheng[a].age+'\n性别：'+xuesheng[a].gender+'\n班级：'+xuesheng[a].class+'\n学号：'+xuesheng[a].id);
+            //     chaxunCd();
+            // }
+            for(var i=0;i<xuesheng.length-1;i++){
+                if(xuesheng[i].name.indexOf(prompt('请输入你要查询的姓名：'))!=-1){
+                    console.log(xuesheng[i]);
+                    chaxunCd();
+                }
+            }
+            
+        }
+        //年龄为条件
+        function nn(){
+            var chaxunnn=+prompt('请输入你要查询的年龄：');
+                a=-1;
+                for(i=0;i<xuesheng.length-1;i++){
+                if(chaxunnn==xuesheng[i].age){
+                    a=i;
+                    break;
+                }
+            }
+                if(a==-1){
+                    alert('查无此人');
+                    chaxunCd();
+                }else{
+                    alert('姓名：'+xuesheng[a].name+'\n年龄：'+xuesheng[a].age+'\n性别：'+xuesheng[a].gender+'\n班级：'+xuesheng[a].class+'\n学号：'+xuesheng[a].id);
+                    chaxunCd();
+                }
+        }
+        //学号为条件
+        function xh(){
+            var chaxunxh=+prompt('请输入你要查询的学号：');
+                a=-1;
+                for(i=0;i<xuesheng.length-1;i++){
+                if(chaxunxh==xuesheng[i].id){
+                    a=i;
+                    break;
+                }
+            }
+                if(a==-1){
+                    alert('查无此人');
+                    chaxunCd();
+                }else{
+                    alert('姓名：'+xuesheng[a].name+'\n年龄：'+xuesheng[a].age+'\n性别：'+xuesheng[a].gender+'\n班级：'+xuesheng[a].class+'\n学号：'+xuesheng[a].id);
+                    chaxunCd();
+                }
+        }
+        //返回
+        function fh(){
+            caidan();
+        }
+        //添加学生信息
+        function  tianjia(){
+            var tjName=prompt('请输入你要添加的姓名：');
+            var tjAge=+prompt('请输入你要添加的年龄：');
+            var tjGender=prompt('请输入你要添加的性别：');
+            var tjClass=+prompt('请输入你要添加的班级：');
+            var tjId=+prompt('请输入你要添加的学号：');
+            a={
+                name:tjName,
+                age:tjAge,
+                gender:tjGender,
+                class:tjClass,
+                id:tjId,
+            };
+            xuesheng.push(a)
+            alert('添加成功');
+            // console.log(tjName);
+            // console.log(xuesheng);
+            caidan();
+        }
+        //删除学生信息
+        function shanchu(){
+            var scxx=prompt('请输入你需要删除的人：');
+                a=xuesheng.indexOf(scxx);
+                xuesheng.splice(a,1);
+                console.log(xuesheng);
+                caidan();
+        }
+    </script>
+</body>
+</html>

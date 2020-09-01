@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./day8.css" type="text/css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        header{
+            color: black;
+        }
+        header>nav:first-child{
+            background-color: springgreen;
+            height: 30px;
+        }
+        header>nav:first-child li:not(#rli){
+            float: left;
+        }
+        #rli{
+            float: right;
+        }
+        a{
+            color: blue;
+            text-decoration: none;
+        }
+        .def{
+            width: 80%;
+            min-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="def">
+                <li>xxxx</li>
+                <li>xxxx</li>
+                <li id="rli">xxxxx
+                    <a href="">xxxx</a>
+                </li>
+            </ul>
+        </nav>
+        <nav></nav>
+    </header>
+</body>
+</html>

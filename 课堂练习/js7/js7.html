@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            height: 200px;
+            width: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">
+        <h1>标题</h1>
+        <img src="" alt="p">
+        <p class="p1">图片的描述</p>
+        <p class="p2">图片的描述</p>
+    </div>
+    <div id="box2"></div>
+    <script>
+        // var box=document.getElementById('box');//返回的节点只有一个，元素节点
+        //     box=document.getElementsByTagName('h1');//通过标签名获取的节点
+        //     box=document.getElementsByTagName('h1[0]');//通过标签名获取的节点
+        // var children=box.childNodes;
+        // console.log(box);
+        // var hasChild=box.hasChildNodes();
+        // console.log(children);//返回所有子节点，包含换行等文本节点和所有的子元素节点
+        // console.log(hasChild);//判断元素是否由子节点 有就true
+        // var box2=document.getElementById('box2');
+        // var hasChild=box2.hasChildNodes();
+        // // console.log(hasChild);
+        // // console.log(hasChild.childrenNodes);
+
+        //     console.log(box.firstChild); //获取第一个子节点，包含空的文本节点
+        //     console.log(box.lastChild); //获取最后一个子节点，包含空的文本节点
+        //     console.log(box.previousSibling); //获取前一个兄弟，包含空的文本节点
+        //     console.log(box.nextSibling); //获取后一个兄弟，包含空的文本节点
+        //     console.log(box.nextElementSibling); //获取后一个的兄弟元素节点，不包含文本节点
+        //     console.log(box.children)//得到的都是元素节点靠谱
+        //     console.log(box.parentNode)//返回父节点
+        //     console.log(document.body)//返回页面节点
+//封装函数 获取节点
+        function getId(id){
+            return  document.getElementById(id);
+        }
+        var box1=getId('box');
+        console.log(box1);
+        console.log(box1.nodeName);
+        // function byClass(className){
+        //     var eleClassName=[];
+        //     var elesAll=document.getElementsByTagName('*');
+        //     console.log(elesAll);
+        //     //遍历页面所有的元素 找类名是className的节点
+        //     for(i=0;i<elesAll.length;i++){
+        //         //节点的className的值 如果和className相等就是要找的元素
+        //         //这里有bug 可以考虑字符串转为数组用str.split或者节点的属性classlast
+        //         if(elesAll[i].className.indexOf(className)!=-1){
+        //             //找到节点就存储=====
+        //             console.log();
+        //             eleClassName.push(elesAll[i]);
+        //         }
+        //     }
+        //     return eleClassName;
+        // }
+        // console.log(byClass('p1'));
+        var boxele=document.getElementById('box');
+        //获取节点的方法
+        // a=document.getElementsByClassName('box')[0];
+        // b=document.getElementsByTagName('div')[0];
+        // console.log(a);
+        // console.log(b);
+        console.log(boxele);
+        //第一种获取属性的方法
+        console.log(boxele.attributes);//返回节点所有的属性，每个值都是属性的名字=属性的值
+        console.log(boxele.attributes[0]);//id=‘box’
+        console.log(boxele.getAttributeNode('id'));//id='box'
+        //第二种获取属性的方法
+        var attrNode=boxele.getAttributeNode('id');
+        console.log(attrNode);//id='box'
+        console.log(attrNode.nodeName);//属性名
+        console.log(attrNode.nodeValue);//值
+        console.log(attrNode.nodeType);//2 
+        //第三种获取属性的方法
+        console.log(boxele.getAttribute('class'));//得到的是属性的值
+        //第四种获得属性的方法
+        //用点的方式获取
+        console.log(boxele.className);
+        console.log(boxele.id);
+        console.log(boxele.title);
+        var div=document.getElementsByTagName('div')[0];
+        console.log(div.style.backgroundColor);
+        div.style.backgroundColor='blue';
+        console.log(div.style.backgroundColor);
+            div.style='font-size:32px';
+            div.style.backgroundColor='pink';
+            div.style.backgroundImage='url()';
+            div.style.backgroundRepeat='no-repeat';
+            //节点.style 获取style属性的值 注意设置style属性会覆盖原有的style的所有值
+            // 如果不想影响其他的style样式，就用 节点.style.对应的样式的名字
+            div.setAttribute('class','box');
+    </script>
+</body>
+</html>

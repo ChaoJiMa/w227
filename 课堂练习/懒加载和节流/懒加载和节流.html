@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>图片懒加载</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            overflow: hidden;
+        }
+        img {
+            display: block;
+            margin: auto;
+            border-radius: 10px;
+            height: 323px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="img/img1.jpg" data-src='img/img1.jpg'>
+        <img src="img/img1.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+        <img src="img/giao.jpg" data-src='img/img1.jpg'>
+    </div>
+
+<script>
+    var imgs = document.querySelectorAll('img');                                        //获取所有img元素
+    /*懒加载*/
+    
+    window.onscroll = function(){
+		var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;          //滚动条距离顶部的高度
+		var winTop = document.documentElement.clientHeight || document.body.clientHeight;       //获取屏幕可视区域高度
+		for(var i=0;i < imgs.length;i++) {                                                          
+            if(!!imgs[i].getAttribute('data-src')) {                                             //判断自定义中有没有内容
+                if(imgs[i].offsetTop < scrollTop + winTop - 60) {                                //图片的距离顶部的高度小于滚动条顶部+屏幕可视区域的高度
+                    imgs[i].src = imgs[i].getAttribute('data-src');                              //图片转换
+                    imgs[i].setAttribute('data-src', '');                                        //自定义内容清空
+                }
+            }
+            
+		}
+    }
+    /*
+    window.onscroll = function(){
+        var win = window.innerHeight;                                                                   //获取可视区域的高度
+        // console.log(win);
+        for( var i=0;i<imgs.length;i++){
+            // console.log(imgs[i].getBoundingClientRect().top);
+            if(imgs[i].getBoundingClientRect().top <= win-323){                                         //获取元素到可视区域顶部的距离
+                imgs[i].src = imgs[i].getAttribute('data-src'); 
+            }
+            
+        }
+    }
+     */
+</script>
+</body>
+</html>
+
+
+
+

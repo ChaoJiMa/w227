@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		div{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h2>登录</h2>
+		<form method="post" enctype="">
+			<p><input type="text" placeholder="用户名" name="txtUser" id="user" class="from-control"></p>
+			<p><input type="password" placeholder="密码" name="txtPwd" id="pwd" class="from-control"></p>
+			<p><button class="btn btn-primary" type="button" id="btnLogin">登录</button></p>
+		</form>
+	</div>
+	<script src="./js/jquery-3.5.1.js"></script>
+	<script>
+		$('#btnLogin').click(function(){
+			//发起ajax请求
+			//1.
+			var xhr;
+			if(XMLHttpRequest){
+				xhr = new XMLHttpRequest();
+			}else{
+				xhr = new ActiveXObject('microsoft.XMLHTTP')
+			}
+			//2.
+			let user = $('#user').val();
+			let pwd = $('#pwd').val();
+			xhr.open('post','/login');
+			//3.
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					//得到返回的数据进行dom操作
+					console.log(xhr.responseText);
+					if(xhr.responseText == '登陆成功'){
+						location.href = 'index.html'
+					}else{
+						alert(xhr.responseText)
+					}
+				}
+			}
+			//4.
+			xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+			xhr.send('txtUser='+user+'&txtPwd='+pwd); 
+		})
+	</script>
+</body>
+</html>

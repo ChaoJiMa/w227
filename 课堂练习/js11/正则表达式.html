@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //正则表达式的创建方法
+        //var reg = /[a-z]/;  //匹配一个字符串
+        // var reg = /[a-z]/g;  //匹配全局字符串
+        // var reg = /[a-z]+/g;  //连续匹配字符串
+        var reg = /[a-z]{3}/g;  //连续匹配三个字符串
+        var reg2 = new RegExp('[a-z]');
+        /* string marchp 匹配*/
+        /*调用规则*/
+        var str = 'abc123daba';
+            //用正则匹配
+        var result = str.match(reg);
+        /*
+        match 
+            如果有匹配结果 返回一个数组 满足条件的值
+            如果没有匹配到结果 就返回null
+        */
+        console.log(result);
+        //调用方法2
+        var result1 = reg2.test('123');
+        //规则匹配方式 返回ture 或 false
+        console.log(result1);
+
+        var str2 = 'abc123#qqq/.';
+        console.log(str2.match(/[0-9]/g));
+        console.log(str2.match(/[0-9][0-9][0-9]/g));
+        console.log(str2.match(/[0-9]{3}/g));
+        console.log(str2.match(/[0-9]+/g));
+        console.log(str2.match(/\d+/g));
+        console.log(str2.match(/\D+/g));
+        console.log(str2.match(/[A-Z]+/ig));//忽略大小写全局
+        console.log(str2.match(/.\/+/ig));
+
+       
+
+    </script>
+</body>
+</html>

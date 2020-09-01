@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全民飞机大战</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #beijing {
+            background-image: url(./img/startBg.jpg);
+            width: 700px;
+            height: 965px;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            position: relative;
+            margin: auto;
+            /* border: solid 1px; */
+        }
+
+        #jifen {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: none;
+            z-index: 999;
+        }
+
+        #jifen img {
+            width: 30px;
+        }
+
+        #kaishi {
+            position: absolute;
+            top: 500px;
+            left: 260px;
+            /* border: solid 1px; */
+        }
+
+        #xzZhanji {
+            position: absolute;
+            top: 500px;
+            left: 250px;
+            display: none;
+        }
+
+        .zhanji1 {
+            width: 100px;
+        }
+
+        .zhanji2 {
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="beijing">
+        <div id="jifen">
+            <img src="./img/imgFont0.png" alt="">
+        </div>
+        <div id="kaishi">
+            <img src="./img/startButton.png" alt="">
+        </div>
+        <div id="xzZhanji">
+            <img src="./img/P1.png" alt="" class="zhanji1">
+            <img src="./img/player.png" alt="" class="zhanji2">
+        </div>
+    </div>
+    <script>
+        //点击开始按钮 背景图转换 按钮隐藏 显示可选择出战战机
+        var play = document.getElementById('kaishi');
+        var beijing = document.getElementById('beijing');
+        var jifen = document.getElementById('jifen');
+        var xzZhanji = document.getElementById('xzZhanji');
+        var wofeiji, difangji = [],
+            enemyArr = [];
+        //记录飞行方向
+        var bLeft = false,
+            bRight = false,
+            bTop = false,
+            bDown = false;
+        play.onclick = function () {
+            beijing.style.backgroundImage = 'url(./img/img_bg_level_1.jpg)';
+            play.style.display = 'none';
+            xzZhanji.style.display = 'block ';
+            jifen.style.display = 'block ';
+        }
+        //点击选择战机  出现玩家选择战机和敌机
+        xzZhanji.onclick = function () {
+            var e = arguments[0];
+            var target = e.target;
+            // console.log(arguments[0].target);
+            /*如果点击第一个战机时  出现玩家选择的战机和敌机*/
+            if (target.className == 'zhanji1') {
+                // console.log('1')
+                //选择板块隐藏
+                xzZhanji.style.display = 'none';
+                //我方飞机的出现
+                wofeiji = new wofei('./img/P1.png', 300, 800, 4, 100);
+                //敌方飞机的出现
+                setInterval(showEnemy, 500);
+                setInterval(wofangMove, );
+            }
+            /*如果点击第二个战机时  出现玩家选择的战机和敌机*/
+            else if (target.className == 'zhanji2') {
+                // console.log('2')
+                xzZhanji.style.display = 'none';
+                wofeiji = new wofei('./img/player.png', 280, 800, 4, 100);
+                setInterval(showEnemy, 500);
+                setInterval(wofangMove, );
+            }
+        }
+
+        /*
+            我方飞机的初始化
+            创建我方飞机对象
+            图片地址
+            水平坐标
+            垂直坐标
+            移动速度
+            血量
+        */
+        function wofei(src, x, y, speed, xue) {
+            this.node = document.createElement('img');
+            this.src = src;
+            this.x = x;
+            this.y = y;
+            this.speed = speed;
+            this.xue = xue;
+            this.init();
+        }
+        //在wofei对象添加函数
+        wofei.prototype.init = function () {
+            this.node.src = this.src;
+            this.node.style.position = 'absolute';
+            this.node.style.left = this.x + 'px';
+            this.node.style.top = this.y + 'px';
+            this.node.speed = this.speed;
+            this.node.xue = this.xue;
+            beijing.appendChild(this.node);
+        }
+        //我方飞机移动
+        wofei.prototype.toTop = function () {
+            var t = this.node.offsetTop - this.speed;
+            if (t <= 0) {
+                t = 0;
+            }
+            this.node.style.top = t + 'px';
+        }
+        wofei.prototype.toLeft = function () {
+            var l = this.node.offsetLeft - this.speed;
+            if (l <= 0) {
+                l = 0;
+            }
+            this.node.style.left = l + 'px';
+        }
+        wofei.prototype.toDown = function () {
+            var t = this.node.offsetTop + this.speed;
+            if (t >= beijing.offsetHeight - wofeiji.node.offsetHeight) {
+                t = beijing.offsetHeight - wofeiji.node.offsetHeight;
+            }
+            this.node.style.top = t + 'px';
+        }
+        wofei.prototype.toRight = function () {
+            var l = this.node.offsetLeft + this.speed;
+            if (l >= beijing.offsetWidth - wofeiji.node.offsetWidth) {
+                l = beijing.offsetWidth - wofeiji.node.offsetWidth;
+            }
+            this.node.style.left = l + 'px';
+        }
+        wofei.prototype.shoot = function () {
+            difangji.push(new Bullet('./img/enemyBullet.png', wofeiji.node.offsetLeft + (wofeiji.node.offsetWidth /
+                2 - 6 / 2), wofeiji.node.offsetTop - 14, 6))
+        }
+
+        function wofangMove() {
+            if (bTop) {
+                wofeiji.toTop();
+            }
+            if (bDown) {
+                wofeiji.toDown();
+            }
+            if (bLeft) {
+                wofeiji.toLeft();
+            }
+            if (bRight) {
+                wofeiji.toRight();
+            }
+        }
+        /*=================敌机==================*/
+        //随机数 ran
+        function ran(n, m) {
+            return Math.floor(Math.random() * (m - n) + n);
+            /*  Math.random()   0-1随机小数，
+             Math.random() * 10   0-10 随机小数，
+            * Math.ceil(Math.random() * 10 +10 ) 1-10的整数
+            * Math.floor(Math.random() * （10+1） +10  ) 0-9的整数
+            *  Math.random() * 10 + 10   10-20
+            * */
+        }
+        /*
+            敌方飞机的初始化
+            创建敌方飞机
+            图片地址
+            水平坐标
+            垂直坐标
+            移动速度
+            血量
+        */
+        function difang(src, x, y, speed, xue) {
+            this.node = document.createElement('img');
+            this.src = src;
+            this.x = x;
+            this.y = y;
+            this.speed = speed;
+            this.xue = xue;
+            this.isDead = false;
+            this.init();
+        }
+        //在difang对象添加函数
+        difang.prototype.init = function () {
+            this.node.src = this.src;
+            this.node.style.position = 'absolute';
+            this.node.style.left = this.x + 'px';
+            this.node.style.top = this.y + 'px';
+            this.node.speed = this.speed;
+            this.node.xue = this.xue;
+            beijing.appendChild(this.node);
+        }
+        //敌机的移动
+        difang.prototype.move = function () {
+            this.node.style.top = this.node.offsetTop + this.speed + 'px';
+        }
+
+        function showEnemy() {
+            enemyArr.push(new difang('./img/emeny.png', ran(600, 0), 0, 1, 50));
+        }
+
+        function enemyMove() {
+
+        }
+        /*键盘事件*/
+        //按下
+        document.onkeydown = function () {
+            var e = window.event || arguments[0];
+            switch (e.keyCode) {
+                case 37:
+                    //向左飞
+                    bLeft = true;
+                    break;
+                case 38:
+                    //向上飞,注意不可以飞出边界
+                    bTop = true;
+                    break;
+                case 39:
+                    //向右飞
+                    bRight = true;
+                    break;
+                case 40:
+                    //向下飞
+                    bDown = true;
+                    break;
+                case 32:
+                    beijing.shoot();
+                    break;
+                default:
+                    console.log('没识别出上面的键盘码' + e.keyCode)
+            }
+        }
+        //弹起
+        document.onkeyup = function () {
+            var e = window.event || arguments[0];
+            switch (e.keyCode) {
+                case 37:
+                    //向左飞
+                    bLeft = false;
+                    break;
+                case 38:
+                    //向上飞,注意不可以飞出边界
+                    bTop = false;
+                    break;
+                case 39:
+                    //向右飞
+                    bRight = false;
+                    break;
+                case 40:
+                    //向下飞
+                    bDown = false;
+                    break;
+                case 13:
+                    startAndStop();
+                    break;
+                default:
+                    console.log('没识别出上面的键盘码')
+            }
+        }
+    </script>
+</body>
+
+</html>

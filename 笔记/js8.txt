@@ -1,0 +1,85 @@
+1.获取元素节点的方法
+    id 单个
+    className 数组
+    tagName   数组
+    name      数组
+    querySelector    单个
+    querySelectorAll 数组
+    childNodes  包含空白  换行符 元素节点和文本节点
+    children    靠谱 返回的是元素节点
+    hasChildNodes 返回true  包含文本节点
+    nextSibling     弟弟
+    previousSibling     哥哥
+    parentNode      父元素
+    document.body
+    document.documentElement
+    document.formName
+    document.formName.input
+    节点的属性
+                    nodeName    nodeType    nodeValue
+        元素节点    大写标签名        1         null
+        文本节点    #text            3       文本的内容
+        属性节点    属性名字          2        属性的值
+    获取属性
+        getAttribute('属性的名字');
+        getAttributeNode('属性的节点');
+        attributes('属性节点的集合');
+        node.getAttribute(属性的名字)
+        node.attrName
+    设置属性
+        node.setAttribute(属性名字，属性的值)
+        node.attrName=attrValue;
+    判断是否有属性
+        node.hasAttribute(属性名)
+    自定义属性
+        <div bata-index='1></div>
+        div.getAttribute('data-index');
+        console.log(div.dataset.index);
+    样式控制
+        修改Style
+            node.style=''   会覆盖原有的style属性的所有值
+            node.style.background='red'
+        添加class方法
+            node.classList.add()
+            node.classList.remove()
+    节点的添加
+        创建节点
+            document.createElement('标签名');
+            document.createTextNode('文本内容');
+        添加节点
+            父节点.appendChild(子节点);
+        删除节点
+            父节点.removChild(子节点);
+        节点的插入
+            父节点.insertBefore(新节点，旧节点);
+        替换节点
+            父节点.replaceChild(新节点，旧节点);
+        节点的克隆
+            节点.cloneNode()
+            值为空为克隆自己本身
+            ture克隆节点所有后代 属性也会有
+            false 克隆节点本身
+        节点的内容 节点的内部添加内容，内容有标签可以识别
+            节点的内容部分添加内容
+                节点.innerHtml
+                节点.innerText 不识别标签，如果有标签就当作字符串输出
+            节点内容改变
+                节点.outerHTML  内容如果有标签 可以识别 吧节点本身的标签也换掉
+    获取元素的大小
+        1.clientWidth || clientHeight
+            元素实际的高宽，不包括border以外 返回的是数字
+        2.offsetWidth || offsetHight
+            元素实际的高宽,包括border,不包括margin
+            返回的是数字
+        3.offsetLeft || offsetTop
+            元素的左上角离页面的水平偏移和竖直偏移
+            绝对定位的元素,相对已经定位的元素的左上角(不算border)偏移,否则相对页面偏移
+        5.scrollTop||
+            获取滚动条距离顶部的距离
+        //页面的滚动条滚动了多少  有的浏览器是用的body 有的是用的documentElement
+        var scrollTop= document.documentElement.scrollTop || document.body.scrollTop;
+        //页面滚动事件
+        window.onscroll=function(){
+        var scrollTop= document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(scrollTop);
+        }   

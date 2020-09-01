@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            text-align: center;
+        }
+        li{
+            display: inline-block;
+            position: relative;
+            top: 450px;
+            background-color: rgba(234,158,103);
+            
+        }
+        button{
+            padding: 14px 60px;
+            color: snow;
+            background-color: rgba(234,158,103);
+            border: 0;
+        }
+        button:hover{
+            padding: 20px 60px 13px 60px;
+            background-color: rgba(238,174,128);
+        }
+        #div{
+            margin: 200px 0;
+            width: 100%;
+            height: 500px;
+            background-color: rgba(222,95,3);
+            
+        }
+        .div{
+            position: relative;
+            width: 1050px;
+            height: 500px;
+            /* border: 1px solid; */
+            margin: 0 auto;
+        }
+        img{
+            position: absolute;
+            top: 60px;
+            left: 20px;
+        }
+        .img1{
+            z-index: 5;
+            /* opacity: 0; */
+        }
+        .img2{
+            z-index: 4;
+            /* opacity: 0; */
+
+        }
+        .img3{
+            z-index: 3;
+            /* opacity: 0; */
+
+        }
+        .img4{
+            z-index: 2;
+            /* opacity: 0; */
+
+        }
+        .img5{
+            z-index: 1;
+            /* opacity: 0; */
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="div">
+        <div class="div">
+            <img src="./images/index_slide_con01.png" alt="" class="img1">
+            <!-- <img src="./images/index_slide_con02.png" alt="" class="img2">
+            <img src="./images/index_slide_con03.png" alt="" class="img3">
+            <img src="./images/index_slide_con04.png" alt="" class="img4">
+            <img src="./images/index_slide_con05.png" alt="" class="img5"> -->
+            <ul>
+                <li><button class="1">第一页</button></li>
+                <li><button class="2">第二页</button></li>
+                <li><button class="3">第三页</button></li>
+                <li><button class="4">第四页</button></li>
+                <li><button class="5">第五页</button></li>
+            </ul>
+        </div>
+        
+        <script>
+            var but=document.getElementsByTagName('button');
+            var img=document.getElementsByTagName('img')[0];
+            var imgSrc=['./images/index_slide_con01.png','./images/index_slide_con02.png','./images/index_slide_con03.png','./images/index_slide_con04.png','./images/index_slide_con05.png',]
+            console.log(but,img);
+            for(var i=0;i<but.length;i++){
+                but[i].onclick = function(){
+                    // var num=String(this.firstChild.nodeValue);
+                    var num=String(this.getAttribute('class'));
+                        console.log(num);
+                    img.src=imgSrc[num-1];
+                }
+            }
+                
+            
+            
+            
+            // but[0].onclick = function(){
+            //     img.src='images/index_slide_con01.png';
+            // }
+            // but[1].onclick = function(){
+            //     img.src='images/index_slide_con02.png';
+            // }
+            // but[2].onclick = function(){
+            //     img.src='images/index_slide_con03.png';
+            // }
+            // but[3].onclick = function(){
+            //     img.src='images/index_slide_con04.png';
+            // }
+            // but[4].onclick = function(){
+            //     img.src='images/index_slide_con05.png';
+            // }
+        </script>
+    </div>
+</body>
+</html>

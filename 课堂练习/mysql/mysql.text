@@ -1,0 +1,39 @@
+-- 创建表
+/*
+  语法：
+    craete table<表名>
+    (
+       <列名> <列名的数据类型>[<列的约束>]
+    )
+    1.数据类型
+	数字
+
+
+
+	  int 整型
+	  浮点（带小数点）
+	     float 单精度 4字节
+	     double 双精度 8字节
+	     decimal (总位数，小数点后面的位数) 17字节
+	非数字
+	   字符串：(unicode 编码 支持中文显示)
+	       固定字符串
+		char nchar
+	       非固定字符串
+		varchar nvarchar
+		text ntext（长文本--文章）
+	   日期
+	      date
+
+	      datetime
+	 注意：varchar char 需要给长度
+*/
+创建数据库
+  CREATE DATABASE 数据库;
+连接数据库
+  USE 数据库;
+如何保证数据的完整性
+  完整性 = 可靠性 + 准确性
+  数据完整性分类
+    1.实体完整性（实体不重复）  主键约束  唯一元素  标识列
+

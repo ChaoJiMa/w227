@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+    <button>添加</button>
+    <script>
+        // var btn=document.getElementsByTagName('button')[0];
+        // var ulEle=document.querySelector('ul');
+
+        // btn.onclick=function(){
+        //     //创建元素节点
+        //     var eleNode=document.createElement('li');//<li>新加的</li>
+        //     var textNode=document.createTextNode('新加的');//新加的
+        //     eleNode.appendChild(textNode);
+
+        //     var delNode=document.createElement('span');
+        //     var delText=document.createTextNode('X');
+        //     delNode.appendChild(delText);
+        //     eleNode.appendChild(delNode);
+        //     ulEle.appendChild(eleNode);
+        //     // ulEle.appendChild(delNode);
+            
+        //    var delNodes=document.getElementsByTagName('span')[0];
+        //             delNodes.onclick=function(){
+        //                 console.log('XXX');
+        //             ulEle.removeChild(delNodes.parentNode);
+        //         } 
+        // }
+        var btn = document.getElementsByTagName('button')[0];
+    var ulEle = document.querySelector('ul');
+    btn.onclick=function(){
+        //创建元素节点
+        var eleNode = document.createElement('li') //<li>新加的 <span>X</span></li>
+        // var textNode = document.createTextNode('新加的')// 新加的
+        // eleNode.appendChild(textNode);   
+
+        var delNode = document.createElement('span');
+        var delText = document.createTextNode('x');
+        delNode.appendChild(delText);
+        eleNode.appendChild(delNode);
+        ulEle.appendChild(eleNode);
+        // var delNodes = document.getElementsByTagName('span')[0];
+        // console.log(delNode)
+        delNode.onclick = function (){
+            // console.log('xxxxx')
+            ulEle.removeChild(delNode.parentNode);
+        }
+    }
+        
+    </script>
+</body>
+</html>

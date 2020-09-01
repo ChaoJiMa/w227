@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+li{
+    border: 1px solid;
+    
+}
+ul>li{
+    float: left;
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    overflow: hidden;
+}
+ul{
+    height: 60px;
+}
+ul>li:hover{
+    background-color: violet;
+    height: auto;
+}
+ol>li{
+    float: left;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    overflow: hidden;
+}
+ol>li:hover{
+    background-color: yellow;
+    height: auto;
+}

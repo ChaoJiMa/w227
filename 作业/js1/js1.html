@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var a=10;
+        //     b=3;
+        //     c=a/b;
+        //     document.write(parseInt(c));
+        //     c=a%b;
+        //     console.log(toString(c));
+
+
+      var hou=prompt();
+            f=0;
+            x=0;
+        if(hou>60){
+            f=parseInt(hou/60);
+            hou=parseInt(hou%60);
+            if(f>60){
+                x=parseInt(f/60);
+                f=parseInt(f%60);
+            }
+        }
+        document.write(x+'时'+f+'分'+hou+'秒')
+    </script>
+</body>
+</html>

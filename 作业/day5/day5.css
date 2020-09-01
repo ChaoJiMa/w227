@@ -1,0 +1,110 @@
+*{
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+h1{
+    margin: 20px;
+}
+p{
+    margin: 20px;
+}
+body{
+    background-color: #004165;
+    color: snow;
+}
+section{
+    text-align: center;
+    background-color: snow;
+    color: black;
+}
+
+a{
+    color: snow;
+}
+.inline-block{
+    display: inline-block;
+    vertical-align: top;
+}
+.imgleft{
+    float: left;
+    overflow: hidden;
+}
+.ulcolor{
+    background-color:#00a0af ;
+    padding: 5px;
+}
+.ulnav li{
+    float: left;
+    width: 450px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    overflow: hidden;    
+}
+.ulnav{
+    height: 50px;
+    display: inline-block;
+}
+.ulnav li:hover{
+    background-color: #00a0af;
+    height: auto;
+}
+.ulright li{
+    float: right;
+    width: 830px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    overflow: hidden;  
+}
+.ulright{
+    height: 50px;
+    display: inline-block;
+}
+.ulright li:hover{
+    background-color: #00a0af;
+    height: auto;
+}
+#back{
+    background: url(./练习-作业/images1/banner.jpg);
+    width: 1920px;
+    height: 480px;
+    text-align: center;
+   padding-top:300px;
+}
+.button{
+    padding: 8px 40px;
+    margin: 5px;
+}
+.divfg{
+    width: 400px;
+    padding: 0 200px 0;
+    margin: 20px 0;
+    line-height: 1px;
+    border-left: 200px solid #ddd;
+    border-right: 200px solid #ddd;
+    text-align: center;
+}
+.p1{
+    text-decoration: underline;
+    color: cadetblue;
+}
+.imgcenter{
+    text-align: center;
+}
+.bor{
+    text-align: left;
+    width: 400px;
+}
+footer{
+    text-align: center;
+}
+.bor p {
+    margin: 20px 0;
+}
+.img1{
+    width: 150px;
+    display: inline-block;
+}

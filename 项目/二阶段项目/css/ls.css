@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+input{
+    height: 30px;
+    /* border-radius: 5px; */
+}
+select{
+    height: 30px;
+}
+input,select,button{
+    border-radius: 5px;
+    border: 0.5px solid;
+    outline: none;
+}
+
+.xiugai {
+    margin: 0 10px;
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.93;
+    display: none;
+    z-index: 999;
+}
+
+#huiseKuang {
+    display: none;
+}
+
+.table-fixed {
+    background-color: white;
+    position: absolute;
+    width: 80%;
+    top: 35%;
+    left: 10%;
+}
+
+#bigKuang {
+    position: relative;
+}
+
+#bigKuang button {
+    width: 60px;
+    height: 30px;
+}
+
+#cxKuang {
+    margin: 10px 0;
+}
+
+#yeMian {
+    position: absolute;
+    left: 30px;
+}
+
+#yeMian>input {
+    position: absolute;
+    top: 10px;
+}
+
+#jump {
+    position: absolute;
+    right: -242px;
+    top: 10px;
+}
+
+
+/* #yeMian>button {
+    display: inline-block;
+} */
+
+#pageBox {
+    overflow: hidden;
+    display: inline-block;
+    margin: 0;
+}
+
+#pageBox li {
+    float: left;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.onlyYe {
+    float: left;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+#pageBox li:hover {
+    cursor: pointer;
+    background-color: rgb(120, 169, 197);
+}
+
+#pageBox .active {
+    background-color: #2500aa;
+}
+
+#pageBox .danye {
+    width: 30px;
+}

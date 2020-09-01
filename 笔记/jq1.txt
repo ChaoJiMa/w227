@@ -1,0 +1,97 @@
+https://jquery.cuishifeng.cn/  api文档
+https://jquery.com/ 官网
+
+什么是jQuery？ js的一个函数库
+快速上手，小型，功能丰富
+遍历（访问每一个）和操作（除了dom还有属性） dom
+事件处理
+动画
+
+jQuery是一个快速，小型且功能丰富的JavaScript库。借助易于使用的API（可在多种浏览器中使用），使HTML文档的遍历和操作，事件处理，动画和Ajax等事情变得更加简单。兼具多功能性和可扩展性，jQuery改变了数百万人编写JavaScript的方式。
+
+jQuery
+jQuery ui  封装了一套类似按钮的款式好看
+jQuery mobile  移动端
+sizzle选择器
+qunit  单元测试
+
+jQuery
+    1.实现了浏览器的兼容，直接调用就可以了
+    2.调用、语法简洁
+        document.getElementById('idVal')>> $('#idVal')
+        $('ul>li').click()
+    3.上手容易，适合的人群多
+    4.有大量的jq组件和插件
+
+======怎么使用jq====
+开发版本  development
+生产版本  product
+
+版本号
+    a.b.c
+        a 主版本号 （大改动，和原来可能都不一样了）
+        b 次版本 （bug修复，功能的添加或删除）
+        c 小版本 （代码有改动，使用没有变化）
+使用方法
+    1. 引入jQuery文件
+
+    ===========获取节点=======
+    1.选择器使用
+    $('选择器')
+        返回的是jq对象，
+        通过下标才可以获取到节点对象
+    $===jQuery
+
+    特有的
+    $('li:first')[0]  第一个li节点
+    $("li:eq(1)")[0]  第二个个li节点
+    :even  奇数个，下标是偶数
+    :odd 偶数个，下标是奇数
+    :gt(index)  下标大于index值
+    :lt(index)  下标小于index值
+    :header   h1-h6标签对应的元素
+    $(":root")  html节点  根节点
+    $("div:contains('John')") div中有John字符串的元素
+    $(":empty")  没有子节点的元素
+    $("div:has(p)") 有子元素p的div元素
+    $("td:parent")  td的父元素
+    $(":hidden") 默认取页面上用display：none隐藏起来的元素（包含head title meta script之类的）
+    $(':input')  textarea button select input
+    :text  type=text
+    :password type=password
+    :submit  type=submit
+
+    =======属性方法======
+    属性的获取（注意jq的方法只能是jq对象调用）
+        $('div').attr('title')  返回第一个满足条件的元素的属性值
+    ============== 属性的设置
+        $('div').attr('title','jq修改后的')
+        多个属性的设置
+        $('div').attr({attr1:attr1Val,attr2:attr2Val})
+        //下面函数内的this指向节点本身
+        $("div").attr("title", function() { console.log(this);return this.className });
+======prop和attr方法大部分是一样的结果
+区别是
+    $(':input').attr('disabled')》》disabled
+    $(':input').prop('disabled')  》》 true
+
+===============属性的删除
+ $().removeAttr(name)  || $().removeProp(name)
+    删除全部符合条件的节点的属性
+    返回删除后的结果
+
+    $().addClass() 原生添加 节点.classList.add()  节点.className += ' newValue'
+    $().removeClass()  原生删除  节点.classList.remove() 节点.className用字符串的处理方式
+
+    $().toggleClass(class) 切换class，如果有就删除，没有就添加
+
+
+        $('div:eq(0)').html()  除了文本还会提取 html标签,对于特殊字符会写成转义符的显示
+        <a>ddd</a> 》》 &lt;a&gt;ddd&lt;/a&gt;
+       $('div:eq(0)').text() 只提取文本
+
+     $('div:eq(0)').html('内容') 可以识别html标签
+     $('div:eq(0)').text(’内容‘) 全部当做字符串插入文本
+
+     $('input:eq(0)').val()  获取值
+     $('input:eq(0)').val('456') 设置值

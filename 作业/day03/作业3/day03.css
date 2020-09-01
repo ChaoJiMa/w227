@@ -1,0 +1,35 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul li * {
+    vertical-align: middle;
+}
+.inline-block{
+    display: inline-block;
+    vertical-align: top;
+}
+.clear{
+    clear: both;
+}
+.top-menu{
+    vertical-align: top;
+    height: 40px;
+    line-height: 40px;
+    background-color:#004165;
+    color: snow;
+    padding-left: 10px;
+}
+.sub-menu{
+    vertical-align: top;
+    height: 50px;
+    line-height: 50px;
+    background-color: #00a0af;
+    color: snow;
+    padding-left: 10px;
+}

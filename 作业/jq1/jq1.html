@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../jquery-3.5.1.min.js" type="text/javascript"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+        }
+        #box{
+            /* border: solid 1px; */
+        }
+        .box1{
+            position: relative;
+            width: 600px;
+            margin: auto;
+            /* border: 1px solid; */
+        }
+        .txwz{
+            position: relative;
+            /* border: solid 1px; */
+        }
+        .touxiang{
+            width: 60px;
+        }
+        .p1{
+            position: absolute;
+            left: 70px;
+            top: 5px;
+        }
+        a{
+            color: blue;
+        }
+        .tusjZan{
+            position: relative;
+            width: 500px;
+            /* border: 1px solid; */
+            margin: auto;
+            top: -30px;
+            left: 40px;
+        }
+        .chatu{
+            width: 250px;
+        }
+        .zan{
+            position: absolute;
+            right: 0;
+        }
+        .pl{
+            position: relative;
+            /* border: solid 1px; */
+        }
+        .pltx{
+            width: 50px;
+        }
+        .plsj{
+            position: absolute;
+            /* border: solid 1px; */
+            top: 0;
+            left: 55px;
+            width: 400px;
+        }
+        .plzan{
+            position: absolute;
+            right: 0;
+        }
+        .hf{
+            width: 495px;
+            height: 20px;
+            resize : none;
+        }
+        .sj{
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class='box1'>
+            <div class="txwz">
+               <img src="./images/1.jpg" alt="" class="touxiang">
+                <p class="p1"><a href="">Andy:</a>轻轻的我走了，正如我轻轻的来；我轻轻的招手，作别西天的云彩</p> 
+            </div>
+            <div class="tusjZan">
+                <img src="./images/img1.jpg" alt="" class="chatu">
+                <div>
+                <span class="sjtu"><img src="./images/bg1.jpg" alt=""><span class="sj">时间</span></span>
+                <span href="" class="zan">
+                    <img src="./images/bg2.jpg" alt="" class="yzan">
+                    <span class="yw">赞</span>
+                </span> 
+            </div>
+            <div class="jishu"><img src="./images/praise.png" alt=""><span class="cha">4个人觉得点赞</span></div>
+
+            <div id="box1">
+                <div class="pl">
+                    <img src="./images/my.jpg" alt="" class="pltx">
+                    <div class="plsj">
+                        <div>
+                            <p class="p2"><a href="">我：</a><span>写的太好了</span></p>
+                            <div>
+                                <span class="sj">时间</span>
+                                <span href="#" class="plzan">
+                                    <img src="./images/bg2.jpg" alt="" class="plyzan">
+                                    <span class="pljishu">1赞</span>
+                                    <span class="plsc">删除</span>
+                                </span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <textarea name="" id="" cols="30" rows="10" placeholder='评论...' class="hf"></textarea>
+            <button>回复</button>
+        </div>
+    </div>
+    <script>
+        /*时间*/
+        $('.sj').text(sj());
+        function sj(){
+            var date=new Date();  
+            var hh=date.getHours();            
+            var mm=date.getMinutes();           
+            var ss=date.getSeconds();                   
+            var yy=date.getFullYear();          
+            var MM=date.getMonth()+1;  //因为1月这个方法返回为0，所以加1          
+            var dd=date.getDate();  
+            var nowday=new Date(yy,MM,dd,hh,mm,ss).toLocaleString().replace("年","-").replace("月","-").replace("日",""); 
+            return nowday;
+        }
+        console.log($('.sj').text());       
+        /*鼠标移入移除*/
+        $('#box1').on('mouseover', '.pl', function(){
+            // debugger;
+            $(this).find('.plzan').show();
+        })    
+        $('#box1').on('mouseout', '.pl', function(){
+            $(this).find('.plzan').hide();
+        }) 
+        /*点赞*/   
+        $('.zan').click(function(){
+            if($('.yzan').attr('src') == './images/bg2.jpg'){
+                $('.yzan').attr('src','./images/bg3.jpg');
+                $('.yw').text('取消赞');
+                $('.cha').prepend("<span class='wo'>我和</span>");
+            }else{
+                $('.yzan').attr('src','./images/bg2.jpg');
+                $('.yw').text('赞');
+                $('span').detach('.wo');
+            }
+        })
+        $('#box1').on('click','.plzan',function(){
+            if($('.plyzan').attr('src') == './images/bg2.jpg'){
+                $('.plyzan').attr('src','./images/bg3.jpg');
+                $('.pljishu').text(2+'取消赞');
+            }else{
+                $('.plyzan').attr('src','./images/bg2.jpg');
+                $('.pljishu').text(1+'赞');
+            }
+        })
+        /*删除*/
+        $('#box1').on('click','.plsc',function(){
+            
+            $(this).parents('.pl').empty();
+        })
+        /*评论*/
+        $('.hf').click(function(){
+            $('.hf').css({'height':'50px'});
+        })
+        $('button').click(function(){
+            var a= $('.hf').val();
+            var time = sj();
+            if($('.hf').val()==''){
+                alert('回复不能为空')
+            }else{
+                $('.hf').css('height','20px');
+                $('#box1').append('<div class="pl"><img src="./images/my.jpg" alt="" class="pltx"><div class="plsj"><div><p class="p2"><a href="">我：</a><span>'+$('.hf').val()+'</span></p><div><span class="sj">' + time + '</span><span href="" class="plzan"><img src="./images/bg2.jpg" alt="" class="plyzan"><span class="pljishu">1赞</span> <span class="plsc">删除</span></span></div></div></div></div>');
+                $('.hf').val('');
+            }
+        })
+        
+    </script>
+</body>
+</html>

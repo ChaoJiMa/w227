@@ -1,0 +1,163 @@
+*{
+    border: none;
+}
+li{
+    list-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 40px 50px 20px 50px;
+    color: snow;
+}
+ul{
+    text-align: center;
+    line-height: 20px;
+}
+a{
+    text-decoration: none;
+    color: snow;
+}
+header{
+    background: url("./images2/banner_01.jpg");
+    height: 740px;
+    width: 1250px;
+    margin: 0 auto;
+}
+#back{
+    background: url(./images2/day5_35.png);
+    height: 740px;
+    width: 1250px;
+    margin: 0 auto;
+    
+}
+.divcenter{
+    text-align: center;
+    color: snow;
+    display:table-cell;
+    vertical-align: middle;
+    width: 1250px;
+    height: 550px;
+}
+.divcenter1{
+    text-align: center;
+    color: snow;
+    display:table-cell;
+    vertical-align: middle;
+    width: 1250px;
+    height: 740px;
+}
+.div{
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+input{
+    background-color: rgb(22,160,134);
+    color: snow;
+    padding: 10px 25px;
+    border-radius: 6px;
+}
+.divleft{
+    width: 1250px;
+    height: 450px;
+    background-color: rgb(245,246,248);
+    margin: 0 auto;
+}
+.divheight{
+    width: 500px;
+    position: relative;
+    left: 60px;
+    display: inline-block;
+
+}
+.imgpositon{
+    position: relative;
+    left: 60px;
+    top: 50px;
+    display: inline-block;
+}
+.imgpositon1{
+    position: relative;
+    left: 60px;
+    top: 40px;
+}
+.div2{
+    width: 500px;
+    position: relative;
+    left: 650px;
+    bottom:300px;
+}
+.div3{
+    position: relative;
+    left: 120px;
+}
+.divimg{
+    position: absolute;
+    left: 250px;
+    top: 110px;
+}
+.divp{
+    width: 230px;
+    text-align:center ;
+    position: relative;
+    top: 130px;
+    right: 50px;
+}
+.divp2{
+    width: 1250px;
+    text-align: center;
+    position: relative;
+    top: 80px;
+}
+.p{
+    margin: 0;
+    padding: 0;
+}
+.divinput{
+    position: relative;
+    left: 380px;
+    top: 100px;
+}
+.img1{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(22,160,134) ;
+   text-align: center;
+   padding: 11px 4px 5px 4px;
+   border-radius: 0 8px 8px 0;
+   position: relative;
+   top: 5px;
+   right: 7px;
+}
+.img2{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(22,160,134) ;
+   text-align: center;
+   padding: 12px 6px 4px 4px;
+   border-radius: 0 8px 8px 0;
+   position: relative;
+   top: 9px;
+   right: 7px;
+}
+.input{
+    background-color: rgb(27,188,155);
+    color: snow;
+    padding: 20px;
+    border-radius: 8px 0 0 8px;
+}
+.divfooter{
+    width: 1250px;
+    background-color: snow;
+    margin: 0 auto;
+    
+}
+#div{
+    padding: 50px 40px 60px 40px;
+}
+.img3{
+    position: relative;
+    left: 1000px;
+    bottom: 130px;
+}

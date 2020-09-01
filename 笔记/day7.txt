@@ -1,0 +1,90 @@
+-------------------------------css3--------------------------
+1.css3 是css的最新标准
+2.css3和css2区别
+    css3是完全向后兼容的，css2的语法都可以使用
+    css3新增了选择器，比如子代
+    css3新增了样式，圆角，颜色渐变，背景图片大小
+    css3涉及兼容性问题，有的新特性不支持
+3.新增的选择器    
+    属性选择器，可以和其他选择器构成复合选择器
+        [属性=‘值’]{
+        }
+        属性值全匹配  ^开头 $结尾  *包含
+        [属性 ^=‘值’]{
+            属性值匹配以某字符串开头
+        }
+        [属性 $=‘值’]{
+            属性值匹配以某字符串结尾
+        }
+        [属性 *=‘值’]{
+            属性值匹配包含某字串
+        }
+    结构性伪类选择器
+        div：first-child  div作为第一个孩子，注意不是div的第一个孩子
+        div：first-of-type div类型的第一个
+        div: last-child  既是div又是最后一个孩子
+        div：last-of-type div类型的最后一个
+        div:nth-child(n){既是div又是第n个孩子
+        }
+        div:nth-of-type(n){div类型的第n个
+        }
+        n可以是表达式 even偶数 odd奇数 2n 2n+1 n从0开始数
+        某家人有三个孩子，第一个儿子，第二个女儿，第三个女儿
+            老大  所有孩子的第1个  first-child
+            大女儿 女儿类型的第一个 first-of-type
+    兄弟选择器
+        哥哥选择器 ~ 弟弟选择器 所有满足弟弟选择器条件的弟弟们
+        哥哥选择器 + 弟弟选择器 满足弟弟选择器条件的相邻弟弟
+    UI元素状态伪类选择器
+        :checked  元素选中的时候 checkbox radio
+        :enabled    不禁用的元素
+        :disabled 禁用状态的元素
+        :focus 输入框被选中的时候
+            input:focus{
+            outline: 2px red solid;
+        }
+        :placeholder
+            ::-webkit-input-placeholder修改占位符的样式
+            input::-webkit-input-placeholder{
+            color: red;
+        }
+        ::selection 给选中的文字
+            ::selection{
+                鼠标选中一段文字，文字背景变黄
+                background-color：yellow；
+            }
+******* :not()
+            li:not(:last-child):after{
+            content: '丨';
+        }
+        li:not(:first-child):after{
+            content: '$$';
+            margin: 0 5px;
+        }
+        li:not(:nth-child(3)){
+            color: red;
+        }
+    伪类 LoVe HAte    link visited hover active
+    伪元素选择器  在页面上有这个内容
+        ::before
+        ::after
+        ::first-letter 首字母 第一个字
+        ::first-line 第一行
+    before和after的content
+        值的类型
+            1.可以是文本
+            2.可以是图片url（地址‘path’）
+            3.attr（属性）可以是属性 注意属性不加引号 可以是自定义属性 自定义属性需要data-开头
+            4.
+    隐藏 透明度的设置
+        1.display:none ;页面不在保留元素的位置，可能会影响后面的元素
+        2.visibility:hidden; 隐藏但是空间依然保留 visible显示
+        3.opacity:0-1 透明度 
+        4.rgba(250, 0,0,0.1);
+    过渡效果
+        transition: all s  ease；参与过渡效果的属性（all代表所有属性） 
+        过渡时间单位s或者ms 
+        过渡动画 ease由慢到快 ease-in慢速开始 ease-out慢速结束 ease-in-out 默认linear匀速 延迟时间单位s ms
+        -webkit-transition: ;谷歌浏览器
+    box-shadow:阴影水平方向的偏移可以负值，垂直方向偏移，模糊值，外延值，inset设置内阴影 多个值用逗号隔开
+    

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 1200px;
+            background-color: pink;
+            border: 20px solid;
+            padding: 20px;
+            margin: 30px;
+            position: relative;
+            overflow: hidden;
+            overflow-y: scroll;
+            /* 滚动条 ,注意脱离文档流*/
+
+        }
+        *{
+            margin: 0;
+        }
+        p{
+            /* position: absolute; */
+            height: 1500px;
+            background-color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>p1</p>
+    </div>
+    <script>
+        /*
+    获取元素的大小
+        1.clientWidth || clientHeight
+            元素实际的高宽，不包括border以外 返回的是数字
+        2.offsetWidth || offsetHight
+            元素实际的高宽,包括border,不包括margin
+            返回的是数字
+        3.offsetLeft || offsetTop
+            元素的左上角离页面的水平偏移和竖直偏移
+            绝对定位的元素,相对已经定位的元素的左上角(不算border)偏移,否则相对页面偏移
+        4.scrollHight || scrollWidth
+            获取元素内容的实际大小,主要是获取滚动条的高度
+                比如父元素高度  200px,子元素    400px
+                scrollHight代表内地的真实高度400px,高度还包括复原的(border和padding)
+        5.scrollTop||
+            获取滚动条距离顶部的距离
+        */
+        var div=document.getElementsByTagName('div')[0];
+        var p=document.getElementsByTagName('p')[0];
+        console.log('clientHeight)'+div.clientHeight);//高
+        console.log('clientWidth'+div.clientWidth);//宽
+        console.log('offsetHeight'+div.offsetHeight);
+        console.log('offsetWidth'+div.offsetWidth);
+        console.log('offsetLeft'+div.offsetLeft);
+        console.log('offsetTop'+div.offsetTop);
+        console.log('offsetLeft'+p.offsetLeft);
+        console.log('offsetTop'+p.offsetTop);
+        console.log('scrollHight'+p.scrollHeight);
+        console.log('scrollWidth'+p.scrollWidth);
+        console.log('scrollTop'+div.scrollTop);
+        //页面的滚动条滚动了多少  有的浏览器是用的body 有的是用的documentElement
+        var scrollTop= document.documentElement.scrollTop || document.body.scrollTop;
+        //页面滚动事件
+        window.onscroll=function(){
+        var scrollTop= document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(scrollTop);
+        }
+    </script>
+</body>
+</html>
