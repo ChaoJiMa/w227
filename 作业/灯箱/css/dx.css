@@ -1,0 +1,42 @@
+#dx{
+  width: 80%;
+  margin: auto;
+}
+figure{
+  margin: 10px 26px;
+  float: left;
+  position: relative;
+}
+figcaption{
+  position: absolute;
+  left:50%;    /* 定位父级的50% */
+  top:50%;
+  transform: translate(-50%,-50%); /*自己的50% */
+  font-size: 25px;
+  color: snow;
+}
+figcaption:hover{
+  padding: 10px 20px;
+  border: 1px solid;
+}
+#zz{
+  position:fixed; 
+  top:0; 
+  left:0; 
+  z-index:1987; 
+  width:100%; 
+  height:100%; 
+  background:rgba(0,0,0,0.9); 
+  filter:alpha(opacity=70); 
+  display: none;
+}
+#zz img{
+  vertical-align: middle;
+  width: 800px;
+}
+#zz div{
+  position: absolute;
+  left:50%;    /* 定位父级的50% */
+  top:50%;
+  transform: translate(-50%,-50%); /*自己的50% */
+}
