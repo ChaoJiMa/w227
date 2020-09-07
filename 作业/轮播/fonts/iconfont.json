@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "16846111",
+      "name": "more_horiz_24px备份 2",
+      "font_class": "more_horiz_24pxbeifen2",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "16846269",
+      "name": "chevron_left_24px",
+      "font_class": "chevron_left_24px",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "16846281",
+      "name": "chevron_right_24px",
+      "font_class": "chevron_right_24px",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "16846881",
+      "name": "check_circle_24px",
+      "font_class": "check_circle_24px",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    }
+  ]
+}

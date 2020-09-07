@@ -1,0 +1,39 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1599125150309'); /* IE9 */
+  src: url('iconfont.eot?t=1599125150309#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMwAAsAAAAAB5AAAALjAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDKgqCAIFmATYCJAMUCwwABCAFhG0HfRufBsgusG14k4ujNdsYO0T1cRUggB/i4WsNfX937wIACtAhjw8LBayiO76qVVUiwtRI9GXhc6nLNgBYKURQHZY+WtkyyaNTkPqU4UeqCepvAaenLljgMtegzPX/ElD2938upzeBApnfzg4sxbWnd9QLMFtAgY01KbISxpbaRZwQ/WqnCTQb1yjmaHrRA8kKNCkQT0wNQnIrpChRtlGoR1YW8REa0/sk8EH+Pv5pj0aSKkMzj2+mIjD6s/2xvPtGHCE+z4FoHRkLQCEeRl1X4nRqQZzmon+8NaBRo8RZqb7H3vaIXgsvZjVq/sNLskLUUGUr2HPThZ/tlCL42UuR+NlHkfk5JgHKORVoRo0t4NQjJ5xZYHk7QuqlL3vX3HleUnDyqvLui9LQeUsA4Lu3rgx5vIM+w+sZ9vs2Ir4Rr/pnZ2TiupaaxOZFjoWyPgzvtvQkuZr6IXXSgjzwPNAPH3Eh/fsHHup/kKjph+5Xrxnx7Rt97eNHWOUNzo8x7wDpXawBkvgUyY+xm9Af5f/nn0lK1mCNfrrlx/KXK89QrFMDCMWrxbAWr6wrpRSZq5LXUlF+UWVOHEho1gwY5+j2+xxN3+pKQqM+C0mDMcgaTaCFXIBKiyWoNdqFZvNm1rfoIcSJ0oQ5Rw6ETs8gafcZsk6f0EL+gkq//1DrjAzNLiNvxxZTcZ86ITAoMUJCa4SFuU2JVaaqaheqS2ZQNKWS7UMRZVHS1tzazc6gjeKMOdFltV1KSqjgFpl2zkPT5MQRXMewbNakdPpbWujYh5rD3IJUhwQUJKEIImQNwYRxNsqbS6m977sg1RJTkJhhLOg+SIhivRNtmrWuQGdU9irGt7wTtUzVTpIoghI4CzHtDEMmE0c448N0KExqpu1IOPq14EZ0rar5fo31j7ugGfp4FSlylKii1v/MBSoaF2xdae90VkPIKNrtOWENlwW3FROpHNTm9sKCqVooXEAPG0qYibCJRgAA') format('woff2'),
+  url('iconfont.woff?t=1599125150309') format('woff'),
+  url('iconfont.ttf?t=1599125150309') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1599125150309#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 100px;
+  font-style: normal;
+  color: rgb(100, 100, 100);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 左 */
+.icon-chevron_left_24px:before {
+  content: "\e638";
+  position: absolute;
+  left: 20%;
+  top: 50%;
+}
+/* 右 */
+.icon-chevron_right_24px:before {
+  content: "\e639";
+  position: absolute;
+  right:20%;
+  top: 50%;
+}
+/* 关闭 */
+.icon-check_circle_24px:before {
+  content: "\e641";
+  position: absolute;
+  right: 0;
+}
+
